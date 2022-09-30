@@ -1,0 +1,11 @@
+body > div {
+	min-height: 100vh;
+	background-image: radial-gradient(#fb923c 0.8500000000000001px, transparent 0.8500000000000001px),
+		radial-gradient(#fb923c 0.8500000000000001px, rgba(212, 213, 217, 0) 0.8500000000000001px);
+	background-size: 34px 34px;
+	background-position: 0 0, 17px 17px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
