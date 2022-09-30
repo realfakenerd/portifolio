@@ -15,7 +15,7 @@
 	<div class="items-center grid-flow-col gap-4">
 		<a href="/about" class="link link-hover">About</a>
 		<a href="/contact" class="link link-hover">Contact</a>
-		<a href="/work" class="link link-hover">Work</a>
+		<a href="/projects" class="link link-hover">Work</a>
 	</div>
 
 	<div class="place-self-center">
