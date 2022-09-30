@@ -1,5 +1,51 @@
 <script>
+	import { fly } from 'svelte/transition';
+	import { backOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+
+	let init = false;
+	onMount(() => {
+		init = true;
+	});
 	let submission = 'New Submission';
+
+	const inputs = [
+		{
+			id: 'userEmail',
+			label: 'Your Email',
+			input: {
+				type: 'email',
+				placeholder: 'your@email.com'
+			}
+		},
+		{
+			id: 'userSubject',
+			label: 'The Subject',
+			input: {
+				type: 'text',
+				placeholder: 'New Subject',
+				name: 'subject'
+			}
+		},
+		{
+			id: 'userName',
+			label: 'Your Name',
+			input: {
+				type: 'text',
+				placeholder: 'John Doe',
+				name: 'name'
+			}
+		},
+		{
+			id: 'userText',
+			label: 'Type your message',
+			input: {
+				type: 'textarea',
+				placeholder: 'Type Here',
+				name: 'message'
+			}
+		}
+	];
 </script>
 
 <svelte:head>
@@ -22,73 +68,42 @@
 				</ul>
 			</div>
 			<div>
-				<img src="hands_email.png" alt="asd" />
+				<img src="hands_email.png" alt="hand email png" />
 			</div>
 		</div>
 		<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 			<div class="card-body">
-				<form action="https://formsubmit.co/lucas210898.lao@gmail.com" method="POST">
+				<form action="https://formsubmit.co/de5e032fc98d660bcfcb0caaf3adeb3a" method="POST">
 					<input type="hidden" name="_captcha" value="false" />
 					<input type="hidden" name="_template" value="box" />
-					<input type="hidden" name="_next" value="http://localhost:5173/redirection" />
-					<input type="hidden" name="_subject" bind:value={submission} />
-					<div class="form-control w-full max-w-xs">
-						<label for="UserEmail" class="label">
-							<span class="label-text">Your Email</span>
-						</label>
-						<input
-							required
-							id="UserEmail"
-							name="email"
-							type="email"
-							placeholder="your@email.com"
-							class="input input-bordered border-orange-400"
-						/>
-					</div>
-
-					<div class="form-control w-full max-w-xs">
-						<label for="UserSubjection" class="label">
-							<span class="label-text">The Subject</span>
-						</label>
-
-						<input
-							required
-							id="UserSubjection"
-							name="subject"
-							type="text"
-							placeholder="New Subject"
-							class="input input-bordered border-orange-400"
-							bind:value={submission}
-						/>
-					</div>
-
-					<div class="form-control w-full max-w-xs">
-						<label for="UserName" class="label">
-							<span class="label-text">Your Name</span>
-						</label>
-						<input
-							required
-							id="UserName"
-							name="name"
-							type="text"
-							placeholder="John Doe"
-							class="input input-bordered border-orange-400"
-						/>
-					</div>
-
-					<div class="form-control w-full max-w-xs">
-						<label for="UserText" class="label">
-							<span class="label-text">Type your message</span>
-						</label>
-						<input
-							required
-							id="UserText"
-							type="textarea"
-							name="message"
-							placeholder="Type here"
-							class="textarea textarea-bordered border-orange-400"
-						/>
-					</div>
+					<!-- <input type="hidden" name="_next" value="/redirection" /> -->
+					<input type="hidden" name="_subject" value="New Submission" />
+					{#if init}
+						{#each inputs as { input, label, id }, i (id)}
+							<div
+								class="form-control w-full max-w-xs"
+								in:fly={{
+									duration: 600,
+									delay: 600 * i,
+									x: 100,
+									y: 10 - i * 10,
+									easing: backOut
+								}}
+							>
+								<label for={id} class="label">
+									<span class="label-text">{label}</span>
+								</label>
+								<input
+									required
+									{id}
+									name={input.type}
+									type={input.name}
+									placeholder={input.placeholder}
+									class="input input-bordered border-orange-400"
+								/>
+							</div>
+						{/each}
+					{/if}
 
 					<div class="form-control mt-6">
 						<button class="btn btn-ghost bg-orange-400 text-white" type="submit">Send</button>
