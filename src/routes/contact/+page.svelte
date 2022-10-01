@@ -73,7 +73,7 @@
 		</div>
 		<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 			<div class="card-body">
-				<form action="https://formsubmit.co/de5e032fc98d660bcfcb0caaf3adeb3a" method="POST">
+				<form action="https://formsubmit.co/realfakenerd@gmail.com" method="POST">
 					<input type="hidden" name="_captcha" value="false" />
 					<input type="hidden" name="_template" value="box" />
 					<!-- <input type="hidden" name="_next" value="/redirection" /> -->
