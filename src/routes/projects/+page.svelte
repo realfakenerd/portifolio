@@ -49,7 +49,7 @@
 			<h1 class="text-4xl">Here is some of my Projects</h1>
 		</div>
 		<section>
-			<ul class="grid grid-cols-1 md:grid-cols-3 gap-5">
+			<ul class="grid grid-cols-1 gap-5 md:grid-cols-3">
 				{#if init}
 					{#each projects as p, i (i)}
 						<li
@@ -59,11 +59,11 @@
 							<div class="card-body">
 								<h2 class="card-title">
 									<span>{p.title}</span>
-                                    {#each p.used as u, i (i)}
-                                        <span class="badge">{u}</span>
-                                    {/each}
+									{#each p.used as u, i (i)}
+										<span class="badge">{u}</span>
+									{/each}
 								</h2>
-								
+
 								<p>{p.description}</p>
 								<div class="card-actions">
 									<a href={p.link} target="_blank" class="btn btn-link">git repo</a>

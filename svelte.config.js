@@ -9,9 +9,11 @@ const config = {
 		postcss: true
 	}),
 
-
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		version: {
+			name: Math.random().toString().substring(2,8)
+		}
 	}
 };
 

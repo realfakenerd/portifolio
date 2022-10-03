@@ -55,7 +55,7 @@
 <div class="hero min-h-[70vh] backdrop-blur-sm">
 	<div class="hero-overlay opacity-50 md:rounded-b-3xl" />
 	<div class="hero-content flex-col lg:flex-row-reverse">
-		<div class="text-center lg:text-left flex flex-col md:flex-row gap-3">
+		<div class="flex flex-col gap-3 text-center md:flex-row lg:text-left">
 			<div class="max-w-sm">
 				<h1 class="text-5xl font-bold">Let's talk 📜</h1>
 				<p class="py-6">
@@ -64,14 +64,14 @@
 				</p>
 				<p>Feel free to check my social media 🙂</p>
 				<ul>
-					<li />
+					<li><a href="http://twitter.com" target="_blank" class="btn btn-link">twitter</a></li>
 				</ul>
 			</div>
 			<div>
-				<img src="hands_email.png" alt="hand email png" />
+				<img src="hands_email.webp" height="400" width="364" alt="hand email" />
 			</div>
 		</div>
-		<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+		<div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
 			<div class="card-body">
 				<form action="https://formsubmit.co/realfakenerd@gmail.com" method="POST">
 					<input type="hidden" name="_captcha" value="false" />

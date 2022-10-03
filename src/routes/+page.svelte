@@ -29,9 +29,16 @@
 
 <section class="hero min-h-[70vh] backdrop-blur-sm">
 	<div class="hero-overlay opacity-50 md:rounded-b-3xl" />
-	<div class="hero-content flex-col lg:flex-row-reverse gap-10">
+	<div class="hero-content flex-col gap-10 lg:flex-row-reverse">
 		{#if init}
-			<img src="hands_show.png" class="w-1/2 md:w-auto" alt="hands_show png" in:fade={{ delay: 900 }} />
+			<img
+				src="hands_show.webp"
+				class="w-1/2 md:w-auto"
+				alt="hands_show png"
+				height="400"
+				width="245"
+				in:fade={{ delay: 900 }}
+			/>
 		{/if}
 		<div class="flex flex-col items-start gap-3 font-semibold">
 			{#if init}

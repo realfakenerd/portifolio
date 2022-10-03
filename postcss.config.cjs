@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: [
+	plugins: [
 		require('tailwindcss'),
 		require('autoprefixer'),
 		require('css-declaration-sorter')({
@@ -9,4 +9,4 @@ module.exports = {
 			preset: 'default'
 		})
 	]
-}
+};

@@ -11,7 +11,7 @@
 
 <div class="navbar backdrop-blur-sm">
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost normal-case text-xl">Home</a>
+		<a href="/" class="btn btn-ghost text-xl normal-case">Home</a>
 	</div>
 	<div class="flex-none">
 		<nav>
