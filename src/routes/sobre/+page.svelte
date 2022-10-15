@@ -74,18 +74,14 @@
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 [&>*]:shadow-md [&>*]:bg-base-200">
-			<div class="card max-w-sm">
+			<div class="card md:w-[26rem] md:max-w-md">
 				<div class="card-body">
-					<p>
+					<div class="card-title">Tech Skills</div>
+					<p class="max-h-fit">
 						I'm always learning new things, improving myself and my projects one at a time.
 						Currently focusing on being and Software Analyst and improving my backend skills with
 						Rust.
 					</p>
-				</div>
-			</div>
-			<div class="card md:min-h-16 md:w-[26rem] md:max-w-md">
-				<div class="card-body ">
-					<div class="card-title">Tech Skills</div>
 					<ul class="grid grid-cols-3 place-items-center gap-3 md:grid-cols-5">
 						{#if init}
 							{#each skills as s, i (i)}

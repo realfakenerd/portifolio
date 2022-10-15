@@ -2,6 +2,7 @@
 	import { fly, fade } from 'svelte/transition';
 	import { backOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
+	import Hero from '$lib/components/Hero.svelte';
 	const text = [
 		{
 			t: 'Hi! 👋',
@@ -27,27 +28,24 @@
 	<title>Home</title>
 </svelte:head>
 
-<section class="hero min-h-[70vh] backdrop-blur-sm">
-	<div class="hero-overlay opacity-50 md:rounded-b-3xl" />
-	<div class="hero-content flex-col gap-10 lg:flex-row-reverse">
+<Hero reverse>
+	{#if init}
+		<img
+			src="hands_show.webp"
+			class="w-1/2 md:w-auto"
+			alt="hands_show png"
+			height="400"
+			width="245"
+			in:fade={{ delay: 900 }}
+		/>
+	{/if}
+	<div class="flex flex-col items-start gap-3 font-semibold">
 		{#if init}
-			<img
-				src="hands_show.webp"
-				class="w-1/2 md:w-auto"
-				alt="hands_show png"
-				height="400"
-				width="245"
-				in:fade={{ delay: 900 }}
-			/>
+			{#each text as t, index (index)}
+				<h1 class={t.c} in:fly={{ delay: 800 * index, easing: backOut, y: 100 }}>
+					{t.t}
+				</h1>
+			{/each}
 		{/if}
-		<div class="flex flex-col items-start gap-3 font-semibold">
-			{#if init}
-				{#each text as t, index (index)}
-					<h1 class={t.c} in:fly={{ delay: 800 * index, easing: backOut, y: 100 }}>
-						{t.t}
-					</h1>
-				{/each}
-			{/if}
-		</div>
 	</div>
-</section>
+</Hero>

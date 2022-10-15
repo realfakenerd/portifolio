@@ -6,6 +6,68 @@ body > div {
 	background-position: 0 0, 17px 17px;
 }
 
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-from-right {
+	from {
+		transform: translateX(30px);
+	}
+}
+
+@keyframes slide-to-left {
+	to {
+		transform: translateX(-30px);
+	}
+}
+
+::page-transition-outgoing-image(main-content) {
+	animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::page-transition-incoming-image(main-content) {
+	animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+::page-transition-outgoing-image(.post-image),
+::page-transition-incoming-image(.post-image) {
+	animation: none;
+	mix-blend-mode: normal;
+	height: 100%;
+	overflow: clip;
+}
+
+::page-transition-outgoing-image(.post-image) {
+	object-fit: contain;
+}
+
+::page-transition-incoming-image(.post-image) {
+	object-fit: cover;
+}
+
+main {
+	contain: paint;
+	width: fit-content;
+	page-transition-tag: main-content;
+}
+
+[style*='--tag'] {
+	contain: paint;
+	width: fit-content;
+	page-transition-tag: var(--tag);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
