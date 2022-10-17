@@ -63,7 +63,7 @@
 			</p>
 			<p>Feel free to check my social media 🙂</p>
 			<ul>
-				<li><a href="http://twitter.com" target="_blank" class="btn btn-link">twitter</a></li>
+				<li><a href="http://twitter.com" rel="noreferrer" target="_blank" class="btn btn-link">twitter</a></li>
 			</ul>
 		</div>
 		<div>

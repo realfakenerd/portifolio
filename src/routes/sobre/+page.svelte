@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 	import { backOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import type {PageData} from './$types'
 	const skills = [
 		{
 			skill: 'javascript',
@@ -50,6 +51,8 @@
 	onMount(() => {
 		init = true;
 	});
+
+	export let data: PageData;
 </script>
 
 <svelte:head>
@@ -61,15 +64,12 @@
 		<div class="flex flex-col items-center justify-center gap-5 md:flex-row">
 			<div class="avatar md:place-self-end">
 				<div class="w-32 rounded-full ring ring-orange-400 ring-offset-2 ring-offset-base-100">
-					<img src="avatar.webp" alt="avatar webp" />
+					<img src={data.authorData.profile_image} alt="avatar webp" />
 				</div>
 			</div>
 			<div class="max-w-md">
 				<h1 class="text-xl">Hello! <span>🙂</span></h1>
-				<p>
-					I'm Lucas a web and game developer who loves the browser. 20-something-year-old, frontend
-					developer, sometimes fullstack developer and cake maker.
-				</p>
+				<p>{data.authorData.bio}</p>
 			</div>
 		</div>
 

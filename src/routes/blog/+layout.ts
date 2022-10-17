@@ -1,18 +1,11 @@
-import type { AllPosts } from '$lib/types';
+import type { Articles } from '$lib/fromAPI';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ fetch }) => {
-    const base = 'https://api.buttercms.com/v2/'
-    const apitoken='1c03d4ec998c5609c847a1198e4b6f338e1461fc'
-    const url = `
-        ${base}posts/?auth_token=${apitoken}
-    `
-    const res = await fetch(url);
+    const res = await fetch("/api/posts");
     
-    
-    const svelteData = await res.json() as AllPosts;
+    const data = await res.json() as Articles[];
     return {
-        posts: svelteData.data,
-        meta: svelteData.meta
+        articles: data
     }
 };

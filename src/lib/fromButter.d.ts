@@ -1,6 +1,6 @@
 export interface AllPosts {
     meta: Meta;
-    data: Datum[];
+    data: Post;
 }
 
 export interface Post {
@@ -43,7 +43,13 @@ export interface Category {
 }
 
 export interface Meta {
-    next_page:     null;
-    previous_page: null;
+    next_post: null | NextOrPreviousPage;
+    previous_post: null | NextOrPreviousPage;
     count:         number;
+}
+
+export interface NextOrPreviousPage {
+    slug: string;
+    title: string;
+    featured_image: string; 
 }

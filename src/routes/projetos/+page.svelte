@@ -65,7 +65,7 @@
 
 							<p>{p.description}</p>
 							<div class="card-actions">
-								<a href={p.link} target="_blank" class="btn btn-link">git repo</a>
+								<a rel="noreferrer" href={p.link} target="_blank" class="btn btn-link">git repo</a>
 							</div>
 						</div>
 					</li>

@@ -12,6 +12,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@fontsource/fira-mono": "^4.5.0",
 		"@playwright/test": "^1.25.0",
 		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
@@ -22,9 +23,11 @@
 		"buttercms": "^1.2.9",
 		"css-declaration-sorter": "^6.2.2",
 		"cssnano": "^5.1.9",
+		"daisyui": "^2.31.0",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"ioredis": "^5.2.3",
 		"postcss": "^8.4.16",
 		"prettier": "^2.7.1",
 		"prettier-plugin-tailwindcss": "^0.1.13",
@@ -37,9 +40,7 @@
 		"typescript": "^4.7.4",
 		"vite": "^3.1.0",
 		"vite-plugin-compression": "^0.5.1",
-		"vite-plugin-remove-console": "^0.0.7",
-		"@fontsource/fira-mono": "^4.5.0",
-		"daisyui": "^2.31.0"
+		"vite-plugin-remove-console": "^0.0.7"
 	},
 	"type": "module"
 }
