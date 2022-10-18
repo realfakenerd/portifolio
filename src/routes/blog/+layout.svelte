@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
 	import Hero from '$lib/components/Hero.svelte';
+	import type { LayoutData } from './$types';
+	export let data: LayoutData;
 </script>
 
 <svelte:head>
@@ -7,13 +9,29 @@
 </svelte:head>
 
 <Hero>
-	<div class="form-control w-full">
-		<div class="input-group">
-			<input
-				type="text"
-				placeholder="Procurar postagens…"
-				class="input w-full input-bordered"
-			/>
+	<section class="flex flex-row justify-between w-full gap-5">
+		{#if data.currentRoute.match('/blog/')}
+
+			<button class="btn btn-ghost" on:click={() => window.history.back()}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-6 h-6"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+					/>
+				</svg>
+			</button>
+		{/if}
+		<div class="form-control w-full">
+			<div class="input-group">
+				<input type="text" placeholder="Procurar postagens…" class="input w-full input-bordered" />
 				<button class="btn btn-square">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +47,8 @@
 						/></svg
 					>
 				</button>
+			</div>
 		</div>
-	</div>
+	</section>
 	<slot />
 </Hero>
