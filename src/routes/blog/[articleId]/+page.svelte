@@ -13,8 +13,8 @@
 
 <article class="prose-lg md:prose">
 	<figure class="[&>img]:rounded-lg relative group">
-		<img class="relative z-10" src={article.image.url} alt={article.image.alt} />
-		<img
+		<img width="560" height="370" class="relative z-10" src={article.image.url} alt={article.image.alt} />
+		<img width="560" height="370"
 			class="
                 absolute top-1 transition duration-500 left-0 z-0
                 filter blur-lg saturate-100 group-hover:saturate-200 group-hover:blur-xl group-hover:scale-105
@@ -31,7 +31,7 @@
         {#if article.nextPost?.title}
 			<a class="flex gap-2 items-center" href={'/blog/' + article.nextPost?.slug}>
 				<figure>
-					<img class="w-20 rounded-lg" src={article.nextPost?.image} alt="next post" />
+					<img width="80" height="40" class="w-20 rounded-lg" src={article.nextPost?.image} alt="next post" />
 				</figure>
 				<div class="flex flex-col bg-base-300 p-2 rounded-lg">
 					<div class="text-xs uppercase font-semibold">post anterior</div>
@@ -42,7 +42,7 @@
         {#if article.previousPost?.title}
 			<a class="flex gap-2 items-center" href={'/blog/' + article.previousPost?.slug}>
 				<figure>
-					<img class="w-20 rounded-lg" src={article.previousPost?.image} alt="next post" />
+					<img width="80" height="40" class="w-20 rounded-lg" src={article.previousPost?.image} alt="next post" />
 				</figure>
 				<div class="flex flex-col bg-base-300 p-2 rounded-lg">
 					<div class="text-xs uppercase font-semibold">proximo post</div>

@@ -26,6 +26,7 @@
 
 <svelte:head>
 	<title>Home</title>
+	<link rel="preload" as="image" href="https://dev-lucasouverney.vercel.app/hands_show.webp">
 </svelte:head>
 
 <Hero reverse>
