@@ -89,7 +89,7 @@
 									<a
 										data-sveltekit-prefetch
 										class="capitalize {$page.routeId === link.url ? 'active bg-orange-400' : ''}"
-										href={link.url}
+										href={"/"+link.url}
 									>
 										<Icon d={link.d} />
 										<span>
