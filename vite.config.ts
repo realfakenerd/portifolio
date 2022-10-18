@@ -10,7 +10,7 @@ const config: UserConfig = {
 		removeConsole(),
 		viteCompression({
 			algorithm: 'brotliCompress',
-			verbose: true,
+			verbose: false,
 			threshold: 512,
 			compressionOptions: {
 				level: 3
@@ -21,6 +21,9 @@ const config: UserConfig = {
 		minify: 'terser',
 		reportCompressedSize: false,
 		target: 'esnext'
+	},
+	define: {
+		'process.env': process.env
 	}
 };
 

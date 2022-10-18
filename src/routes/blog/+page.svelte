@@ -13,7 +13,7 @@
 			class="card w-full card-compact max-w-md bg-base-100 shadow-lg shadow-orange-900/20 hover:shadow-orange-900/50 transition"
 		>
 			<figure>
-				<img height="200" class="bg-base-300 object-cover w-full h-40" src={article.image.url} alt={article.image.alt} />
+				<img height="200" width="160" loading="lazy" class="bg-base-300 object-cover w-full h-40" src={article.image.url} alt={article.image.alt} />
 			</figure>
 			<div class="card-body">
 				<h1 class="card-title">

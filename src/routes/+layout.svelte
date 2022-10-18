@@ -7,13 +7,14 @@
 	export let data: LayoutData;
 </script>
 
+
 <header class="container mx-auto py-0 md:py-3">
 	<Navbar />
 </header>
 {#key data.currentRoute}
 	<main
 		in:fly={{ y: -5, duration: 250, delay: 250 }}
-		out:fly={{ y: 5, duration: 250}}
+		out:fly={{ y: 5, duration: 250 }}
 		class="container mx-auto min-h-full -z-10"
 	>
 		<slot />
@@ -36,14 +37,24 @@
 		<span>built with</span>
 		<a href="https://kit.svelte.dev" target="_blank" rel="noreferrer">
 			<img
+				loading="lazy"
 				class="h-10 w-10"
+				height="40"
+				width="40"
 				src="https://svelte.dev/_app/immutable/assets/stopwar-947a4798.svg"
 				alt="svelte logo"
 			/>
 		</a>
 		<span>and</span>
 		<a href="https://buttercms.com/" target="_blank" rel="noreferrer">
-			<img class="w-20" src="https://cdn.buttercms.com/JSSDbrHPSnGlLUcyHTn5" alt="butter logo" />
+			<img
+				loading="lazy"
+				class="w-20"
+				height="20"
+				width="80"
+				src="https://cdn.buttercms.com/JSSDbrHPSnGlLUcyHTn5"
+				alt="butter logo"
+			/>
 		</a>
 	</div>
 </footer>
