@@ -5,15 +5,15 @@
 	import Hero from '$lib/components/Hero.svelte';
 	const text = [
 		{
-			t: 'Hi! 👋',
+			t: 'Olá! 👋',
 			c: 'text-xl animate-bounce'
 		},
 		{
-			t: 'Lucas here',
+			t: 'Lucas aqui',
 			c: 'text-6xl text-orange-400'
 		},
 		{
-			t: 'I build the best apps for your web browser',
+			t: 'Eu faço os melhores webapps para o seu navegador',
 			c: 'text-4xl'
 		}
 	];
@@ -33,7 +33,6 @@
 	{#if init}
 		<img
 			src="hands_show.webp"
-			class="w-1/2 md:w-auto"
 			alt="hands_show png"
 			height="400"
 			width="245"
