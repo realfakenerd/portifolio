@@ -16,7 +16,8 @@
 			input: {
 				type: 'email',
 				placeholder: 'seu@email.com'
-			}
+			},
+			klass: 'col-span-2 md:col-span-1'
 		},
 		{
 			id: 'userName',
@@ -25,7 +26,8 @@
 				type: 'text',
 				placeholder: 'Jose Silva Sauro',
 				name: 'name'
-			}
+			},
+			klass: 'col-span-2 md:col-span-1'
 		},
 		{
 			id: 'userSubject',

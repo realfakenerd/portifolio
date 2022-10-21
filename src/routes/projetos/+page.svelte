@@ -14,38 +14,41 @@
 		description: string;
 		link: string;
 		used: string[];
+		site?: string;
 	}
 
 	const projects: Projects[] = [
 		{
 			title: 'Thaser',
-			description: `A Rewrite of Phaser game engine made in Typascript, 
-                        there's a lot of work to be done, test to be writen, small optimizations, VSCode extensions...`,
+			description: `Uma reescritura do motor gráfico Phaser feito inteiramente em typescript, 
+			ainda tem muito trabalho a ser feito, testes a serem escritos, pequenas otimizações, extensão do VSCode...`,
 			link: 'https://github.com/realfakenerd/thaser',
 			used: ['vite', 'typescript', 'jest']
 		},
 		{
 			title: 'Almonderoid',
-			description: `An modern remake of Asteroids made entirely on Typescript using WebGL, Svelte and Vercel`,
+			description: `Um remake moderno de Asteroids escrito inteiramente em Typescript usando WebGL, Svelte and Vercel`,
 			link: 'https://github.com/realfakenerd/almonderoid',
-			used: ['vercel', 'webgl', 'svelte']
+			used: ['vercel', 'webgl', 'svelte'],
+			site: 'https://almonderoid.vercel.app/'
 		},
 		{
 			title: 'Pokedex',
-			description: `A pokedex database made with svelte and Routify`,
+			description: `Um pokedex feito com svelte e routify`,
 			link: 'https://github.com/realfakenerd/pokedex',
-			used: ['routify', 'svelte']
+			used: ['routify', 'svelte'],
+			site: 'https://supremepokedex.vercel.app/'
 		}
 	];
 </script>
 
 <svelte:head>
-	<title>Projects</title>
+	<title>Projetos</title>
 </svelte:head>
 
 <Hero>
 	<div style="align-self: flex-start;">
-		<h1 class="text-4xl">Here is some of my Projects</h1>
+		<h1 class="text-4xl">Aqui estão meus projetos</h1>
 	</div>
 	<section>
 		<ul class="grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -64,8 +67,11 @@
 							</h2>
 
 							<p>{p.description}</p>
-							<div class="card-actions">
-								<a rel="noreferrer" href={p.link} target="_blank" class="btn btn-link">git repo</a>
+							<div class="card-actions [&>a]:btn [&>a]:btn-ghost text-orange-400">
+								<a rel="noreferrer" href={p.link} target="_blank">git repo</a>
+								{#if p.site}
+									<a rel="noreferrer" href={p.site} target="_blank"> site </a>
+								{/if}
 							</div>
 						</div>
 					</li>
