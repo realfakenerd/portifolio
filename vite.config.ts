@@ -4,7 +4,7 @@ import removeConsole from 'vite-plugin-remove-console';
 import viteCompression from 'vite-plugin-compression';
 import type { UserConfig } from 'vite';
 
-const config: UserConfig = {
+const config = {
 	plugins: [
 		sveltekit(),
 		removeConsole(),
@@ -25,6 +25,6 @@ const config: UserConfig = {
 	define: {
 		'process.env': process.env
 	}
-};
+} satisfies UserConfig;
 
 export default config;

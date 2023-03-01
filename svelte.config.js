@@ -1,19 +1,18 @@
 import adapter from '@sveltejs/adapter-vercel';
-import preprocess from 'svelte-preprocess';
+import {vitePreprocess} from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess({
+	preprocess: vitePreprocess({
 		postcss: true
 	}),
 	
 	kit: {
-		adapter: adapter(),
-		version: {
-			name: Math.random().toString().substring(2,8)
-		}
+		adapter: adapter({
+			runtime: 'edge'
+		})
 	}
 };
 
