@@ -9,3 +9,9 @@ export const load: LayoutLoad = async ({ fetch }) => {
         articles: data
     }
 };
+
+export const config = {
+	isr: {
+		expiration: 60 * 60 * 24
+	}
+}
