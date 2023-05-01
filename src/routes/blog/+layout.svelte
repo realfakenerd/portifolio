@@ -9,17 +9,16 @@
 </svelte:head>
 
 <Hero>
-	<section class="flex flex-row justify-between w-full gap-5">
+	<section class="flex w-full flex-row justify-between gap-5">
 		{#if data.currentRoute.match('/blog/')}
-
-			<button class="btn btn-ghost" on:click={() => window.history.back()}>
+			<button class="btn-ghost btn" on:click={() => window.history.back()}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="w-6 h-6"
+					class="h-6 w-6"
 				>
 					<path
 						stroke-linecap="round"
@@ -31,8 +30,8 @@
 		{/if}
 		<div class="form-control w-full">
 			<div class="input-group">
-				<input type="text" placeholder="Procurar postagens…" class="input w-full input-bordered" />
-				<button class="btn btn-square">
+				<input type="text" placeholder="Procurar postagens…" class="input-bordered input w-full" />
+				<button class="btn-square btn">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-6 w-6"

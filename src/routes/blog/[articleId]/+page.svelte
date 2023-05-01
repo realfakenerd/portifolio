@@ -12,12 +12,20 @@
 </svelte:head>
 
 <article class="prose-lg md:prose">
-	<figure class="[&>img]:rounded-lg relative group">
-		<img width="560" height="370" class="relative z-10" src={article.image.url} alt={article.image.alt} />
-		<img width="560" height="370"
+	<figure class="group relative [&>img]:rounded-lg">
+		<img
+			width="560"
+			height="370"
+			class="relative z-10"
+			src={article.image.url}
+			alt={article.image.alt}
+		/>
+		<img
+			width="560"
+			height="370"
 			class="
-                absolute top-1 transition duration-500 left-0 z-0
-                filter blur-lg saturate-100 group-hover:saturate-200 group-hover:blur-xl group-hover:scale-105
+                absolute left-0 top-1 z-0 blur-lg saturate-100
+                filter transition duration-500 group-hover:scale-105 group-hover:blur-xl group-hover:saturate-200
             "
 			src={article.image.url}
 			alt={article.image.alt}
@@ -27,30 +35,42 @@
 	<section>
 		{@html article.body}
 	</section>
-	<section class="grid grid-row-2 md:grid-cols-2 place-items-center">
-        {#if article.nextPost?.title}
-			<a class="flex gap-2 items-center" href={'/blog/' + article.nextPost?.slug}>
+	<section class="grid-row-2 grid place-items-center md:grid-cols-2">
+		{#if article.nextPost?.title}
+			<a class="flex items-center gap-2" href={'/blog/' + article.nextPost?.slug}>
 				<figure>
-					<img width="80" height="40" class="w-20 rounded-lg" src={article.nextPost?.image} alt="next post" />
+					<img
+						width="80"
+						height="40"
+						class="w-20 rounded-lg"
+						src={article.nextPost?.image}
+						alt="next post"
+					/>
 				</figure>
-				<div class="flex flex-col bg-base-300 p-2 rounded-lg">
-					<div class="text-xs uppercase font-semibold">post anterior</div>
+				<div class="flex flex-col rounded-lg bg-base-300 p-2">
+					<div class="text-xs font-semibold uppercase">post anterior</div>
 					<div class="text-xs font-normal">{article.nextPost?.title}</div>
 				</div>
 			</a>
 		{/if}
-        {#if article.previousPost?.title}
-			<a class="flex gap-2 items-center" href={'/blog/' + article.previousPost?.slug}>
+		{#if article.previousPost?.title}
+			<a class="flex items-center gap-2" href={'/blog/' + article.previousPost?.slug}>
 				<figure>
-					<img width="80" height="40" class="w-20 rounded-lg" src={article.previousPost?.image} alt="next post" />
+					<img
+						width="80"
+						height="40"
+						class="w-20 rounded-lg"
+						src={article.previousPost?.image}
+						alt="next post"
+					/>
 				</figure>
-				<div class="flex flex-col bg-base-300 p-2 rounded-lg">
-					<div class="text-xs uppercase font-semibold">proximo post</div>
+				<div class="flex flex-col rounded-lg bg-base-300 p-2">
+					<div class="text-xs font-semibold uppercase">proximo post</div>
 					<div class="text-xs font-normal">{article.previousPost?.title}</div>
 				</div>
 			</a>
 		{/if}
-		
+
 		<section />
 	</section>
 </article>

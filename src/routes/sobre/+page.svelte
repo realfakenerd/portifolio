@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { backOut } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import '@fontsource/fira-mono/400.css';
 	const skills = [
 		{
 			skill: 'javascript',
@@ -56,159 +55,180 @@
 		init = true;
 	});
 
+	const editor_terminal = [
+		{
+			title: 'editor',
+			klass: 'decoration-lime-500 text-teal-400',
+			link: {
+				path: 'https://neovim.io/',
+				title: 'neovim'
+			}
+		},
+		{
+			title: 'terminal linux',
+			klass: 'decoration-red-500',
+			link: {
+				path: 'https://gnome-terminator.org/',
+				title: 'terminator'
+			}
+		},
+		{
+			title: 'neovim gui',
+			klass: 'decoration-green-400 text-blue-400',
+			link: {
+				path: 'https://neovide.dev',
+				title: 'neovide'
+			}
+		},
+		{
+			title: 'neovim config',
+			klass: 'decoration-teal-400 text-blue-200',
+			link: {
+				path: 'https://astronvim.com',
+				title: 'astro nvim'
+			}
+		}
+	];
+
+	const frameworks_libs = [
+		{
+			title: 'css',
+			klass: 'decoration-teal-400',
+			link: {
+				path: 'https://tailwindcss.com/',
+				title: 'tailwindcss'
+			}
+		},
+		{
+			title: 'javascript framework',
+			klass: 'decoration-orange-500',
+			link: {
+				path: 'https://svelte.dev',
+				title: 'svelte'
+			}
+		},
+		{
+			title: 'frontend framework',
+			klass: 'decoration-orange-500',
+			link: {
+				path: 'https://kit.svelte.dev',
+				title: 'sveltekit'
+			}
+		}
+	];
+
+	const hosting_co = [
+		{
+			title: 'hosting',
+			klass: 'decoration-stone-500',
+			link: {
+				path: 'https://vercel.app/',
+				title: 'vercel'
+			}
+		},
+		{
+			title: 'database',
+			klass: 'decoration-yellow-500',
+			link: {
+				path: 'https://aws.amazon.com/',
+				title: 'AWS'
+			}
+		},
+		{
+			title: 'provedor de email',
+			klass: 'decoration-zinc-500',
+			link: { path: 'https://workspace.google.com/', title: 'GSuit' }
+		}
+	];
 	export let data: PageData;
+	const { user } = data;
 </script>
 
 <svelte:head>
 	<title>Sobre</title>
 </svelte:head>
 
-<section class="min-h-[70vh] py-10 px-5 backdrop-blur-sm">
-	<section class="flex flex-col items-center justify-center gap-10">
-		<div class="flex flex-col items-center justify-center gap-5 md:flex-row">
-			<div class="avatar md:place-self-end">
-				<div class="w-32 rounded-full ring ring-orange-400 ring-offset-2 ring-offset-base-100">
-					<img src={data.authorData.profile_image} alt="avatar webp" />
-				</div>
-			</div>
-			<div class="max-w-md">
-				<h1 class="text-xl">Olá! <span>🙂</span></h1>
-				<p>{data.authorData.bio}</p>
+<section class="p-3">
+	<section class="flex flex-col items-center justify-center gap-2">
+		<div
+			class="flex rounded-xl p-4 flex-col items-center justify-center gap-2 bg-background md:flex-row"
+		>
+			<img class="w-32 rounded-full" src={user.avatar_url} alt="avatar webp" />
+			<div class="flex flex-col gap-2">
+				<section>
+					<h1 class="text-title-medium">{user.name}</h1>
+					<h2 class="text-body-medium">Olá! <span>🙂</span></h2>
+				</section>
+				<section>
+					<p class="text-body-medium">
+						Eu estou sempre aprendendo novas coisas, melhorando minhas habilidades e meus projetos,
+						um de cada vez. Atualmente estou focando em ser Analista de Sistemas e em melhorar
+						minhas habilidades no backend com Rust e banco de dados com Redis
+					</p>
+				</section>
 			</div>
 		</div>
 
-		<div class="grid grid-rows-2 w-full gap-5 [&>*]:shadow-md [&>*]:bg-base-200">
-			<div class="card">
-				<div class="card-body">
-					<h1 class="card-title">Tech Skills</h1>
+		<div class="w-full">
+			<div class="flex rounded-xl p-4 flex-col gap-2 bg-background">
+				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
-					<section class="custom-grid gap-12 place-items-center grid">
-						<p>
-							Eu estou sempre aprendendo novas coisas, melhorando minhas habilidades e meus
-							projetos, um de cada vez. Atualmente estou focando em ser Analista de Sistemas e em
-							melhorar minhas habilidades no backend com Rust e banco de dados com Redis
-						</p>
-						<ul class="grid grid-cols-3 place-items-center gap-3 md:grid-cols-5">
-							{#if init}
-								{#each skills as s, i (i)}
-									<li
-										class="p-2 bg-base-100 rounded-xl shadow-md mouseover transition ease-out"
-										in:fly={{ delay: 300 * i, y: -100, easing: backOut }}
-									>
-										<img height="40" width="40" src={s.img} alt={s.skill} />
-									</li>
-								{/each}
-							{/if}
-						</ul>
-					</section>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<h1 class="card-title">O que eu uso Atualmente:</h1>
-
-					<section
-						class="grid grid-cols-1 md:grid-cols-3 gap-3 [&>ul>li>h2]:text-xl [&>ul]:p-3 [&>ul]:rounded-md 
-						[&>ul]:bg-base-100 [&>ul]:font-mono"
-					>
-						<ul
-							class="
-								[&>li>a]:link [&>li>a]:text-orange-300 [&>li>a:hover]:text-orange-400
-								[&>li>a]:decoration-2
-								"
-						>
-							<li>
-								<h2>Editor + Terminal</h2>
+				<section
+					style="font-family: 'Fira Code', monospace"
+					class="flex flex-col gap-y-2 md:flex-row items-start justify-between"
+				>
+					<ul class="text-body-medium w-full md:w-fit rounded-lg bg-surface-variant py-2">
+						<li class="pl-3">
+							<h2 class="text-body-large">Editor + Terminal</h2>
+						</li>
+						{#each editor_terminal as { klass, title, link }, i (i)}
+							<li class="list">
+								<span>{title} =></span>
+								<a class={klass} href={link.path}>{link.title}</a>
+								<hr class="border-outline" />
 							</li>
-							<li>
-								<span>Editor =></span>
-								<a class="decoration-blue-500" href="http://code.visualstudio.com">VSCode</a>
+						{/each}
+					</ul>
+					<ul class="text-body-medium w-full md:w-fit rounded-lg bg-surface-variant py-2  ">
+						<li class="pl-3">
+							<h2 class="text-body-large">Frameworks & Libs</h2>
+						</li>
+						{#each frameworks_libs as { title, klass, link }, i (i)}
+							<li class="list">
+								<span>{title} =></span>
+								<a class={klass} href={link.path}>{link.title}</a>
+								<hr class="border-outline" />
 							</li>
-							<li>
-								<span>Terminal Linux =></span>
-								<a class="decoration-red-400" href="https://gnome-terminator.org/"> Terminator </a>
+						{/each}
+					</ul>
+					<ul class="text-body-medium rounded-lg w-full md:w-fit bg-surface-variant py-2  ">
+						<li class="pl-3">
+							<h2 class="text-body-large">Hosting & Co.</h2>
+						</li>
+						{#each hosting_co as { title, klass, link }, i (i)}
+							<li class="list">
+								<span>{title} =></span>
+								<a class={klass} href={link.path}>{link.title}</a>
+								<hr class="border-outline" />
 							</li>
-							<li>
-								<span>Terminal Windows =></span>
-								<a
-									class="decoration-blue-500"
-									href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&gl=us"
-								>
-									Terminal
-								</a>
-							</li>
-						</ul>
-						<ul
-							class="
-							[&>li>a]:link [&>li>a]:text-orange-300 [&>li>a:hover]:text-orange-400
-							[&>li>a]:decoration-2
-							"
-						>
-							<li>
-								<h2>Frameworks & Libs</h2>
-							</li>
-							<li>
-								<span>CSS =></span>
-								<a class="decoration-teal-500" href="https://tailwindcss.com/">TailwindCSS</a>
-							</li>
-							<li>
-								<span>CSS lib =></span>
-								<a class="decoration-rose-500" href="https://daisyui.com/">Daisyui</a>
-							</li>
-							<li>
-								<span>Javascript Framework =></span>
-								<a class="decoration-orange-500" href="https://svelte.dev/">Svelte</a>
-							</li>
-							<li>
-								<span>Frontend Framework =></span>
-								<a class="decoration-orange-500" href="https://kit.svelte.dev/">SvelteKit</a>
-							</li>
-							<li>
-								<span>Javascript Framework =></span>
-								<a class="decoration-lime-500" href="https://vuejs.org/">Vue</a>
-							</li>
-						</ul>
-						<ul
-							class="
-							[&>li>a]:link [&>li>a]:text-orange-300 [&>li>a:hover]:text-orange-400
-							[&>li>a]:decoration-2
-							"
-						>
-							<li>
-								<h2>Hosting & Co.</h2>
-							</li>
-							<li>
-								<span>Hosting =></span>
-								<a class="decoration-stone-500" href="https://vercel.app/">Vercel</a>
-							</li>
-							<li>
-								<span>Provedor de Email =></span>
-								<a class="decoration-stone-500" href="https://workspace.google.com/">GSuit</a>
-							</li>
-							<li>
-								<span>Cloud database =></span>
-								<a class="decoration-green-500" href="https://supabase.com/">Supabase</a>
-							</li>
-						</ul>
-					</section>
-				</div>
+						{/each}
+					</ul>
+				</section>
 			</div>
 		</div>
 	</section>
 </section>
 
-<style>
-	.custom-grid {
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+<style lang="postcss">
+	.list {
+		@apply py-2 pl-3 pr-6 transition-colors;
 	}
 
-	@media (min-width: 768px) {
-		.custom-grid {
-			grid-template-columns: 1fr 2fr;
-		}
+	.list a {
+		@apply underline decoration-solid decoration-1;
 	}
 
-	.mouseover:hover {
-		@apply -translate-y-2 shadow-xl;
+	.list:hover {
+		@apply bg-background text-on-background;
 	}
 </style>

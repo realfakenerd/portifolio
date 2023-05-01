@@ -2,37 +2,20 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
-	const { articles } = data;
+	const { posts } = data;
 </script>
 
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-	{#each articles as article, index (article.slug)}
+<section class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+	{#each posts.articles as article, index (article.id)}
 		<a
-			href={'/blog/' + article.url}
-			data-sveltekit-prefetch
-			class="card w-full card-compact max-w-md bg-base-100 shadow-lg shadow-orange-900/20 hover:shadow-orange-900/50 transition"
+			href={'/blog/' + article.article_name}
+			class="card card-compact w-full max-w-md bg-base-100 shadow-lg shadow-orange-900/20 transition hover:shadow-orange-900/50"
 		>
-			<figure>
-				<img
-					height="200"
-					width="160"
-					loading={index === 0 || index === 1 ? 'eager' : 'lazy'}
-					class="bg-base-300 object-cover w-full h-40"
-					src={article.image.url}
-					alt={article.image.alt}
-				/>
-			</figure>
 			<div class="card-body">
 				<h1 class="card-title">
-					{article.title}
+					{article.article_name}
 				</h1>
-				<div class="inline-flex gap-1">
-					{#each article.tags as tag}
-						<span class="badge">{tag}</span>
-					{/each}
-				</div>
-				<h3 class="text-sm italic">{article.published}</h3>
-				<p>{article.summary}</p>
+				<h3 class="text-sm italic">{article.summary}</h3>
 			</div>
 		</a>
 	{/each}
