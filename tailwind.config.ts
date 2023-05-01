@@ -42,5 +42,5 @@ export default withMaterialColors({
 	},
 	plugins: [typography]
 } satisfies Config, {
-	primary: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+	primary: `#00ff00`
 })
