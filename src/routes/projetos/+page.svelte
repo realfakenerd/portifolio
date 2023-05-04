@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { backOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import Hero from '$lib/components/Hero.svelte';
@@ -10,6 +9,7 @@
 	});
 
 	export let data: PageData;
+	const repos = data.repos.filter((e) => e.name !== 'portifolio' && e.name !== 'realfakenerd');
 </script>
 
 <svelte:head>
@@ -21,19 +21,19 @@
 		<h1 class="text-headline-medium">Aqui estão meus projetos</h1>
 	</div>
 	<section class="w-full">
-		<ul class="grid grid-cols-1 md:grid-cols-3 gap-2">
-			{#each data.repos as repo, i (i)}
+		<ul class="grid grid-cols-1 gap-2 md:grid-cols-3">
+			{#each repos as repo (repo.id)}
 				<li
-					class="flex self-stretch flex-col w-full rounded-xl bg-background text-on-background p-4 gap-2 justify-between"
+					class="interactive-bg-background text-on-background flex w-full flex-col justify-between gap-2 self-stretch rounded-xl p-4"
 				>
-					<section>
-						<h2 class="text-title-large capitalize">
+					<section class="flex flex-col gap-y-2">
+						<h2 class="text-title-large capitalize" aria-label={repo.name}>
 							<span>{repo.name}</span>
 						</h2>
 						<div class="flex flex-row gap-2">
 							{#if repo.language}
 								<span
-									class="inline-flex bg-surface-tint place-items-center rounded-md p-1 px-2 text-label-small text-surface"
+									class="ring-outline text-label-small inline-flex place-items-center rounded-md px-4 ring-1"
 								>
 									{repo.language}
 								</span>
@@ -41,20 +41,22 @@
 						</div>
 						<p class="text-body-medium">{repo.description}</p>
 					</section>
-					<div class="text-primary">
+					<div>
 						<a
-							class="button bg-primary text-on-primary"
+							class="button interactive-bg-primary text-on-primary"
 							rel="noreferrer"
 							href={repo.html_url}
+							aria-label="github url"
 							target="_blank"
 						>
 							git repo
 						</a>
 						{#if repo.homepage}
 							<a
-								class="button bg-primary text-on-primary"
+								class="button interactive-bg-secondary text-on-secondary"
 								rel="noreferrer"
 								href={repo.homepage}
+								aria-label="homepage url"
 								target="_blank"
 							>
 								site

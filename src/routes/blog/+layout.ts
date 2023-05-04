@@ -1,19 +1,10 @@
-import type { LayoutLoad } from './$types';
+import type { LayoutLoad } from "./$types";
+import type { Post } from '$lib/lib';
 
-export interface Posts {
-	total: number;
-	articles: Article[];
-}
+// export const prerender = true;
 
-export interface Article {
-	id: number;
-	article_name: string;
-	summary: string;
-}
-
-export const load: LayoutLoad = async ({ fetch }) => {
-	const res = await fetch('https://raw.githubusercontent.com/realfakenerd/blog/main/articles.json');
-	return {
-		posts: (await res.json()) as Posts
-	};
-};
+export const load = (async ({ fetch }) => {
+  const response = await fetch('/api/posts');
+  const posts: Post[] = await response.json();
+  return { posts }
+}) satisfies LayoutLoad;

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import '@fontsource/fira-mono/400.css';
+	import '@fontsource/fira-mono';
 	const skills = [
 		{
 			skill: 'javascript',
@@ -151,7 +151,7 @@
 <section class="p-3">
 	<section class="flex flex-col items-center justify-center gap-2">
 		<div
-			class="flex rounded-xl p-4 flex-col items-center justify-center gap-2 bg-background md:flex-row"
+			class="bg-background flex flex-col items-center justify-center gap-2 rounded-xl p-4 md:flex-row"
 		>
 			<img class="w-32 rounded-full" src={user.avatar_url} alt="avatar webp" />
 			<div class="flex flex-col gap-2">
@@ -170,14 +170,13 @@
 		</div>
 
 		<div class="w-full">
-			<div class="flex rounded-xl p-4 flex-col gap-2 bg-background">
+			<div class="bg-background flex flex-col gap-2 rounded-xl p-4">
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
-				<section
-					style="font-family: 'Fira Code', monospace"
-					class="flex flex-col gap-y-2 md:flex-row items-start justify-between"
-				>
-					<ul class="text-body-medium w-full md:w-fit rounded-lg bg-surface-variant py-2">
+				<section class="flex flex-col items-start justify-between gap-y-2 md:flex-row font-mono">
+					<ul
+						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
+					>
 						<li class="pl-3">
 							<h2 class="text-body-large">Editor + Terminal</h2>
 						</li>
@@ -189,7 +188,7 @@
 							</li>
 						{/each}
 					</ul>
-					<ul class="text-body-medium w-full md:w-fit rounded-lg bg-surface-variant py-2  ">
+					<ul class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit">
 						<li class="pl-3">
 							<h2 class="text-body-large">Frameworks & Libs</h2>
 						</li>
@@ -201,7 +200,7 @@
 							</li>
 						{/each}
 					</ul>
-					<ul class="text-body-medium rounded-lg w-full md:w-fit bg-surface-variant py-2  ">
+					<ul class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit">
 						<li class="pl-3">
 							<h2 class="text-body-large">Hosting & Co.</h2>
 						</li>
@@ -229,6 +228,6 @@
 	}
 
 	.list:hover {
-		@apply bg-background text-on-background;
+		@apply bg-background-hover text-on-background;
 	}
 </style>

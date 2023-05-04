@@ -1,6 +1,6 @@
-<section class="h-full flex">
+<section class="flex h-full">
 	<div
-		class="flex flex-row w-full flex-wrap items-center gap-4 justify-center md:justify-between p-4"
+		class="flex w-full flex-row flex-wrap items-center justify-center gap-4 p-4 md:justify-between"
 	>
 		<slot />
 	</div>

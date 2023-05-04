@@ -1,22 +1,43 @@
 <script lang="ts">
+	import { formatDate } from '$lib/utils';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
-	const { posts } = data;
+
+	console.log(data);
 </script>
 
-<section class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-	{#each posts.articles as article, index (article.id)}
-		<a
-			href={'/blog/' + article.article_name}
-			class="card card-compact w-full max-w-md bg-base-100 shadow-lg shadow-orange-900/20 transition hover:shadow-orange-900/50"
-		>
-			<div class="card-body">
-				<h1 class="card-title">
-					{article.article_name}
-				</h1>
-				<h3 class="text-sm italic">{article.summary}</h3>
+<ul class="flex flex-col md:flex-row md:flex-wrap gap-2">
+	{#each data.posts as post (post.id)}
+		<li class="p-4 w-[20rem] flex flex-col gap-y-2 rounded-xl interactive-bg-background">
+			<div class="flex justify-between">
+				<div class="flex flex-col gap-y-2">
+					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
+						<h1 class="text-title-medium ">
+							{post.fm.title}
+						</h1>
+					</a>
+
+					<section class="flex gap-x-2">
+						{#each post.fm.categories as cat}
+							<span class="text-label-small hover:underline">#{cat}</span>
+						{/each}
+					</section>
+					<p class="text-body-medium">{post.fm.description}</p>
+				</div>
+				<figure>
+					<img
+						class="rounded-lg object-center object-cover h-20"
+						height="80"
+						width="80"
+						src={post.fm.image}
+						alt="publication"
+					/>
+				</figure>
 			</div>
-		</a>
+			<span class="py-1 px-2 bg-surface-variant rounded-lg w-fit">
+				<p class="text-label-large">{formatDate(post.fm.date)}</p>
+			</span>
+		</li>
 	{/each}
-</section>
+</ul>
