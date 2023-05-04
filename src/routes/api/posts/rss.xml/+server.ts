@@ -1,13 +1,13 @@
-import type { Post } from '$lib/lib'
-import type { RequestHandler } from './$types'
+import type { Post } from '$lib/lib';
+import type { RequestHandler } from './$types';
 
 export const GET = (async ({ fetch }) => {
-  const response = await fetch('/api/posts')
-  const posts = await response.json() as Post[];
+	const response = await fetch('/api/posts');
+	const posts = (await response.json()) as Post[];
 
-  const headers = { 'Content-Type': 'application/xml' }
+	const headers = { 'Content-Type': 'application/xml' };
 
-  const xml = `
+	const xml = `
 		<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 			<channel>
 				<title>if-else</title>
@@ -17,8 +17,8 @@ export const GET = (async ({ fetch }) => {
 				<ttl>${60 * 24}</ttl>
 				<atom:link href="https://dev-lucasouverney.vercel.app/api/posts/rss.xml" rel="self" type="application/rss+xml"/>
 				${posts
-      .map(
-        (post) => `
+					.map(
+						(post) => `
 						  <item>
 							  <title>${post.fm.title}</title>
 							  <description>${post.fm.description}</description>
@@ -27,11 +27,11 @@ export const GET = (async ({ fetch }) => {
 							  <pubDate>${new Date(post.fm.date).toUTCString()}</pubDate>
 						  </item>
 					  `
-      )
-      .join('')}
+					)
+					.join('')}
 			</channel>
 		</rss>
-	  `.trim()
+	  `.trim();
 
-  return new Response(xml, { headers })
-}) satisfies RequestHandler
+	return new Response(xml, { headers });
+}) satisfies RequestHandler;

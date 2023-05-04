@@ -20,7 +20,7 @@
 
 		<figure>
 			<img
-				class="rounded-xl shadow-md w-full max-h-96 object-cover object-center"
+				class="max-h-96 w-full rounded-xl object-cover object-center shadow-md"
 				src={meta.image}
 				alt="poster"
 			/>

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body > div {
 	min-block-size: 100vh;
 }
@@ -15,7 +14,8 @@ body > div {
 	@apply shadow-md;
 }
 
-input, textarea {
+input,
+textarea {
 	@apply interactive-bg-surface-variant ring-on-surface-variant w-full 
 	rounded-xl border-none py-2 pl-4 ring-1 transition;
 }
@@ -32,7 +32,7 @@ input:focus {
 	@apply flex flex-col gap-y-2;
 }
 
-.prose :is(h1,h2,h3,h4,h5) {
+.prose :is(h1, h2, h3, h4, h5) {
 	@apply text-primary;
 }
 
@@ -57,13 +57,13 @@ input:focus {
 }
 
 .prose a {
-	@apply underline text-tertiary;
+	@apply text-tertiary underline;
 }
 
 .prose pre {
 	max-inline-size: 100%;
 	tab-size: 2;
-	@apply p-2 rounded-xl bg-background font-mono text-body-small overflow-x-scroll;
+	@apply bg-background text-body-small overflow-x-scroll rounded-xl p-2 font-mono;
 }
 
 .prose p {
@@ -71,5 +71,5 @@ input:focus {
 }
 
 .prose img {
-	@apply w-full max-h-48 object-cover object-center bg-background;
+	@apply bg-background max-h-48 w-full object-cover object-center;
 }

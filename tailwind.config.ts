@@ -46,7 +46,7 @@ export default withMaterialColors(
 					{ lineHeight: '1rem', fontWeight: '500', letterSpacing: '0.5px' }
 				]
 			}
-		},
+		}
 	} satisfies Config,
 	{
 		primary: `#000000`

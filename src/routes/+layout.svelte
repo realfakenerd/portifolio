@@ -57,7 +57,8 @@
 				o: 'M19.17,12l-4.58-4.59L16,6l6,6l-3.59,3.59L17,14.17L19.17,12z M1.39,4.22l4.19,4.19L2,12l6,6l1.41-1.41L4.83,12L7,9.83 l12.78,12.78l1.41-1.41L2.81,2.81L1.39,4.22z',
 				f: 'M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'
 			}
-	},{
+		},
+		{
 			title: 'Blog',
 			path: '/blog',
 			d: {
@@ -65,7 +66,6 @@
 				f: nl
 			}
 		}
-
 	];
 
 	export let data: LayoutData;
@@ -104,7 +104,7 @@
 		</nav>
 		<Toggle />
 	</div>
-	<div class="w-full flex flex-col gap-y-2 md:hidden">
+	<div class="flex w-full flex-col gap-y-2 md:hidden">
 		<div class="self-end pr-8">
 			<Toggle />
 		</div>

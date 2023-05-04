@@ -173,7 +173,7 @@
 			<div class="bg-background flex flex-col gap-2 rounded-xl p-4">
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
-				<section class="flex flex-col items-start justify-between gap-y-2 md:flex-row font-mono">
+				<section class="flex flex-col items-start justify-between gap-y-2 font-mono md:flex-row">
 					<ul
 						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
 					>
@@ -188,7 +188,9 @@
 							</li>
 						{/each}
 					</ul>
-					<ul class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit">
+					<ul
+						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
+					>
 						<li class="pl-3">
 							<h2 class="text-body-large">Frameworks & Libs</h2>
 						</li>
@@ -200,7 +202,9 @@
 							</li>
 						{/each}
 					</ul>
-					<ul class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit">
+					<ul
+						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
+					>
 						<li class="pl-3">
 							<h2 class="text-body-large">Hosting & Co.</h2>
 						</li>

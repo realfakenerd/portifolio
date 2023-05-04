@@ -7,9 +7,9 @@
 	console.log(data);
 </script>
 
-<ul class="flex flex-col md:flex-row md:flex-wrap gap-2">
+<ul class="flex flex-col gap-2 md:flex-row md:flex-wrap">
 	{#each data.posts as post (post.id)}
-		<li class="p-4 w-[20rem] flex flex-col gap-y-2 rounded-xl interactive-bg-background">
+		<li class="interactive-bg-background flex w-[20rem] flex-col gap-y-2 rounded-xl p-4">
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
 					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
@@ -27,7 +27,7 @@
 				</div>
 				<figure>
 					<img
-						class="rounded-lg object-center object-cover h-20"
+						class="h-20 rounded-lg object-cover object-center"
 						height="80"
 						width="80"
 						src={post.fm.image}
@@ -35,7 +35,7 @@
 					/>
 				</figure>
 			</div>
-			<span class="py-1 px-2 bg-surface-variant rounded-lg w-fit">
+			<span class="bg-surface-variant w-fit rounded-lg px-2 py-1">
 				<p class="text-label-large">{formatDate(post.fm.date)}</p>
 			</span>
 		</li>
