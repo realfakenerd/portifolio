@@ -17,8 +17,8 @@ export const GET = (async ({ fetch }) => {
 				<ttl>${60 * 24}</ttl>
 				<atom:link href="https://dev-lucasouverney.vercel.app/api/posts/rss.xml" rel="self" type="application/rss+xml"/>
 				${posts
-					.map(
-						(post) => `
+			.map(
+				(post) => `
 						  <item>
 							  <title>${post.fm.title}</title>
 							  <description>${post.fm.description}</description>
@@ -27,8 +27,8 @@ export const GET = (async ({ fetch }) => {
 							  <pubDate>${new Date(post.fm.date).toUTCString()}</pubDate>
 						  </item>
 					  `
-					)
-					.join('')}
+			)
+			.join('')}
 			</channel>
 		</rss>
 	  `.trim();
