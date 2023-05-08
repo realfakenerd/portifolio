@@ -8,10 +8,11 @@ export const GET = (async ({ fetch }) => {
 	const headers = { 'Content-Type': 'application/xml' };
 
 	const xml = `
+		<?xml version="1.0" encoding="UTF-8" ?>
 		<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 			<channel>
 				<title>if-else</title>
-				<description>personal blog about </description>
+				<description>personal blog about everything cool on the web</description>
 				<link>https://dev-lucasouverney.vercel.app/</link>
 				<language>pt-BR</language>
 				<ttl>${60 * 24}</ttl>
@@ -22,9 +23,18 @@ export const GET = (async ({ fetch }) => {
 						  <item>
 							  <title>${post.fm.title}</title>
 							  <description>${post.fm.description}</description>
+								<image>
+  								<url>${post.fm.image}</url>
+  								<title>${post.fm.title}</title>
+  								<link>https://dev-lucasouverney.vercel.app/blog/${post.slug}</link>
+								</image>
+								<comments>https://dev-lucasouverney.vercel.app/blog/${post.slug}#comments</comments>
 							  <link>https://dev-lucasouverney.vercel.app/blog/${post.slug}</link>
 							  <guid isPermaLink="true">https://dev-lucasouverney.vercel.app/blog/${post.slug}</guid>
 							  <pubDate>${new Date(post.fm.date).toUTCString()}</pubDate>
+								${post.fm.categories.map(cat => {
+					if (cat !== ',') return `<category>${cat}</category>`
+				})}
 						  </item>
 					  `
 			)

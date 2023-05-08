@@ -7,11 +7,11 @@ body > div {
 }
 
 .button {
-	@apply text-label-large rounded-3xl px-6 py-2 transition;
+	@apply text-label-large rounded-3xl px-6 py-2;
 }
 
-.button:hover {
-	@apply shadow-md;
+.button:has(svg) {
+	@apply text-label-large rounded-3xl pl-3 pr-6 py-2 flex flex-row gap-2 items-center;
 }
 
 input,
@@ -49,11 +49,11 @@ input:focus {
 }
 
 .prose ul {
-	@apply flex flex-col py-2;
+	@apply flex flex-col py-2 bg-background rounded-lg max-w-fit;
 }
 
 .prose ul li {
-	@apply py-2 pl-3 pr-6;
+	@apply interactive-bg-background py-2 pl-3 pr-6;
 }
 
 .prose a {
@@ -71,5 +71,5 @@ input:focus {
 }
 
 .prose img {
-	@apply bg-background max-h-48 w-full object-cover object-center;
+	@apply bg-background max-h-40 w-full object-cover object-center;
 }

@@ -6,9 +6,16 @@
 </script>
 
 <svelte:head>
+	<link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github-dark.min.css"
+	/>
 	<title>{meta.title}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={meta.title} />
+	<meta property="og:image" content={meta.image} />
+	<meta property="og:description" content={meta.description} />
+	<meta property="og:site_name" content="Lucas Blog" />
 </svelte:head>
 
 <article class="flex flex-col gap-y-6">

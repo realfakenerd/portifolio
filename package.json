@@ -30,6 +30,7 @@
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"gray-matter": "^4.0.3",
+		"highlight.js": "^11.8.0",
 		"marked": "^4.3.0",
 		"marked-highlight": "^1.0.1",
 		"mdsvex": "^0.10.6",
