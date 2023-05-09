@@ -16,6 +16,7 @@
 	<meta property="og:image" content={meta.image} />
 	<meta property="og:description" content={meta.description} />
 	<meta property="og:site_name" content="Lucas Blog" />
+	<meta name="description" content={meta.description} />
 </svelte:head>
 
 <article class="flex flex-col gap-y-6">
@@ -28,6 +29,7 @@
 		<figure>
 			<img
 				class="max-h-96 w-full rounded-xl object-cover object-center shadow-md"
+				height="380"
 				src={meta.image}
 				alt="poster"
 			/>

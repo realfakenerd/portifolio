@@ -1,7 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import type { Post } from '$lib/lib';
-
 export const GET = (async ({ fetch }) => {
 	try {
 		let posts: Post[] = [];

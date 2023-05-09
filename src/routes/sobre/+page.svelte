@@ -161,9 +161,7 @@
 				</section>
 				<section>
 					<p class="text-body-medium">
-						Eu estou sempre aprendendo novas coisas, melhorando minhas habilidades e meus projetos,
-						um de cada vez. Atualmente estou focando em ser Analista de Sistemas e em melhorar
-						minhas habilidades no backend com Rust e banco de dados com Redis
+Quer saber um pouco mais sobre mim? Sou um(a) entusiasta de tecnologia, apaixonado(a) por aprender e aprimorar minhas habilidades em desenvolvimento de sistemas. Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um(a) especialista em Rust no backend e em aprimorar meu conhecimento em banco de dados, especialmente com Redis. Acredito que sempre há espaço para crescer e me desafio a aprender algo novo a cada dia. Quer se juntar a mim nesta jornada de aprimoramento contínuo? Vamos lá!
 					</p>
 				</section>
 			</div>

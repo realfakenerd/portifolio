@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoadEvent } from './$types';
 import type { SinglePost } from '$lib/lib';
-
 export async function load({ params, fetch }: PageLoadEvent) {
 	try {
 		const res = await fetch(`/api/posts/${params.articleId}`);

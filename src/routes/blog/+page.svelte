@@ -3,8 +3,6 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
-
-	console.log(data);
 </script>
 
 <ul class="flex flex-col gap-2 md:flex-row md:flex-wrap">

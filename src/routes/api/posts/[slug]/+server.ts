@@ -5,7 +5,6 @@ import { marked, Renderer } from 'marked';
 // @ts-expect-error stop complaining about that
 import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
-
 const renderer = {
 	heading(text, level) {
 		const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
