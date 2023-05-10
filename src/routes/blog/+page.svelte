@@ -5,9 +5,9 @@
 	export let data: LayoutData;
 </script>
 
-<ul class="flex flex-col gap-2 md:flex-row md:flex-wrap">
+<ul class="grid gap-2">
 	{#each data.posts as post (post.id)}
-		<li class="interactive-bg-background flex w-[20rem] flex-col gap-y-2 rounded-xl p-4">
+		<li class="interactive-bg-background flex flex-col gap-y-2 rounded-xl p-4">
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
 					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
@@ -39,3 +39,9 @@
 		</li>
 	{/each}
 </ul>
+
+	<style>
+		ul.grid {
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+	}
+	</style>
