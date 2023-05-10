@@ -1,8 +1,7 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-
-const userTheme = browser && (Boolean(localStorage.getItem('color-scheme')));
+const userTheme = browser && Boolean(localStorage.getItem('color-scheme'));
 
 export const theme = writable(userTheme);
 
@@ -14,4 +13,3 @@ export function toggleTheme() {
 		return newTheme;
 	});
 }
-

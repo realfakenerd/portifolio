@@ -40,8 +40,8 @@
 	{/each}
 </ul>
 
-	<style>
-		ul.grid {
-	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+<style>
+	ul.grid {
+		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 	}
-	</style>
+</style>

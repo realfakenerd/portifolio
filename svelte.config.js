@@ -13,7 +13,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			runtime: 'edge'
-		}),
+		})
 	}
 };
 

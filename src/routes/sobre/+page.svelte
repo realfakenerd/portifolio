@@ -1,59 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import '@fontsource/fira-mono';
-	const skills = [
-		{
-			skill: 'javascript',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg'
-		},
-		{
-			skill: 'typescript',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg'
-		},
-		{
-			skill: 'nodejs',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Font_Awesome_5_brands_node-js.svg'
-		},
-		{
-			skill: 'svelte',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg'
-		},
-		{
-			skill: 'vue',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg'
-		},
-		{
-			skill: 'express',
-			img: 'https://cdn.hackersandslackers.com/2020/05/express.png'
-		},
-		{
-			skill: 'rust',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg'
-		},
-		{
-			skill: 'tailwindcss',
-			img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg'
-		},
-		{
-			skill: 'vercel',
-			img: 'https://images.saasworthy.com/tr:w-178,h-0/vercel_7966_logo_1623223240_4aqmr.png'
-		},
-		{
-			skill: 'supabase',
-			img: 'https://res.cloudinary.com/practicaldev/image/fetch/s---1zZlXx3--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/1968/c0dbe341-1d94-4192-a93b-921519678894.png'
-		},
-		{
-			skill: 'redis',
-			img: 'https://logos-download.com/wp-content/uploads/2020/06/Redis_Logo.png'
-		}
-	];
-
-	let init = false;
-
-	onMount(() => {
-		init = true;
-	});
 
 	const editor_terminal = [
 		{
@@ -161,7 +108,13 @@
 				</section>
 				<section>
 					<p class="text-body-medium">
-Quer saber um pouco mais sobre mim? Sou um(a) entusiasta de tecnologia, apaixonado(a) por aprender e aprimorar minhas habilidades em desenvolvimento de sistemas. Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um(a) especialista em Rust no backend e em aprimorar meu conhecimento em banco de dados, especialmente com Redis. Acredito que sempre há espaço para crescer e me desafio a aprender algo novo a cada dia. Quer se juntar a mim nesta jornada de aprimoramento contínuo? Vamos lá!
+						Quer saber um pouco mais sobre mim? Sou um(a) entusiasta de tecnologia, apaixonado(a)
+						por aprender e aprimorar minhas habilidades em desenvolvimento de sistemas. <br />
+						Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um(a) especialista
+						em Rust no backend e em aprimorar meu conhecimento em banco de dados, especialmente com Redis.
+						<br />
+						Acredito que sempre há espaço para crescer e me desafio a aprender algo novo a cada dia.
+						Quer se juntar a mim nesta jornada de aprimoramento contínuo? Vamos lá!
 					</p>
 				</section>
 			</div>

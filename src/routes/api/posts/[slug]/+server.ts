@@ -3,7 +3,7 @@ import type { RequestHandler } from './$types';
 import matter from 'gray-matter';
 import { marked, Renderer } from 'marked';
 // @ts-expect-error stop complaining about that
-import { markedHighlight } from "marked-highlight";
+import { markedHighlight } from 'marked-highlight';
 import hljs from 'highlight.js';
 const renderer = {
 	heading(text, level) {
@@ -26,12 +26,12 @@ const renderer = {
 	},
 	image(href, title, text) {
 		if (href === null) return text;
-		let out = `<img loading="lazy" src='${href}' alt='${text}'`
-		if (title) out += `title='${title}'`
+		let out = `<img loading="lazy" src='${href}' alt='${text}'`;
+		if (title) out += `title='${title}'`;
 
-		out += `/>`
+		out += `/>`;
 		return `<figure>${out}</figure>`;
-	},
+	}
 } satisfies Renderer;
 
 export const GET = (async ({ fetch, params }) => {
@@ -41,20 +41,22 @@ export const GET = (async ({ fetch, params }) => {
 	const data = await res.text();
 	const { content, data: fm } = matter(data);
 
-	marked.use({ renderer })
+	marked.use({ renderer });
 
-	marked.use(markedHighlight({
-		async: true,
-		langPrefix: 'hljs language-',
-		highlight(code: string, lang: string) {
-			const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-			return hljs.highlight(code, { language }).value;
-		}
-	}))
+	marked.use(
+		markedHighlight({
+			async: true,
+			langPrefix: 'hljs language-',
+			highlight(code: string, lang: string) {
+				const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+				return hljs.highlight(code, { language }).value;
+			}
+		})
+	);
 	const mark = await marked(content, {
 		async: true,
 		gfm: true,
-		smartypants: true,
+		smartypants: true
 	});
 
 	return json({

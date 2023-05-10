@@ -22,7 +22,7 @@
 		<h1 class="text-headline-medium">Aqui estão meus projetos</h1>
 	</div>
 	<section class="w-full">
-		<ul class="grid grid-cols-1 gap-2 md:grid-cols-3">
+		<ul class="grid gap-2">
 			{#each repos as repo (repo.id)}
 				<li
 					class="interactive-bg-background text-on-background flex w-full flex-col justify-between gap-2 self-stretch rounded-xl p-4"
@@ -79,3 +79,9 @@
 		</ul>
 	</section>
 </Hero>
+
+<style>
+	ul.grid {
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+</style>
