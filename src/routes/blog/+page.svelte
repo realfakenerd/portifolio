@@ -25,9 +25,9 @@
 				</div>
 				<figure>
 					<img
-						class="h-20 rounded-lg object-cover object-center"
-						height="80"
-						width="80"
+						class="rounded-lg object-cover object-center"
+						height="100"
+						width="100"
 						src={post.fm.image}
 						alt="publication"
 					/>

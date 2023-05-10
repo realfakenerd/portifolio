@@ -146,11 +146,12 @@
 		@apply flex flex-none flex-grow-0;
 		a {
 			@apply order-[0] flex h-20 flex-none flex-grow flex-col items-center justify-center gap-1 px-0 pb-4 pt-3;
+
 			div {
-				@apply flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0 transition-all duration-300;
+				@apply flex h-8 w-16 items-center justify-center rounded-2xl p-0 transition-colors duration-[250ms];
 
 				span {
-					@apply flex h-8 w-16 flex-col items-center justify-center rounded-2xl p-0;
+					@apply flex h-8 items-center justify-center rounded-2xl;
 				}
 			}
 			h3 {

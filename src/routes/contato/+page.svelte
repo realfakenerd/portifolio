@@ -1,22 +1,13 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { backOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-
-	let init = false;
-	onMount(() => {
-		init = true;
-	});
 
 	const inputs = [
 		{
 			id: 'userEmail',
 			label: 'Seu email',
 			input: {
-				type: 'email',
-				placeholder: 'seu@email.com'
+				type: 'email'
 			}
 		},
 		{
@@ -24,7 +15,6 @@
 			label: 'Seu nome',
 			input: {
 				type: 'text',
-				placeholder: 'Jose Silva Sauro',
 				name: 'name'
 			}
 		},
@@ -33,7 +23,6 @@
 			label: 'Qual é o assunto?',
 			input: {
 				type: 'text',
-				placeholder: 'Escreve o assunto aqui ó',
 				name: 'subject'
 			}
 		},
@@ -42,7 +31,6 @@
 			label: 'Qual é a mensagem?',
 			input: {
 				type: 'textarea',
-				placeholder: 'Escreve aqui ó',
 				name: 'message'
 			}
 		}
@@ -138,7 +126,7 @@
 		</section>
 		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
 			<form
-				class="flex flex-col gap-2"
+				class="flex flex-col gap-4"
 				action="https://formsubmit.co/realfakenerd@gmail.com"
 				method="POST"
 			>
@@ -149,33 +137,25 @@
 				{#each inputs as { input, label, id } (id)}
 					<div class="w-full">
 						{#if input.type !== 'textarea'}
-							<label class="space-y-2" for={id}>
-								<span class="text-label-large">{label}</span>
-								<input
-									required
-									{id}
-									name={input.type}
-									type={input.name}
-									placeholder={input.placeholder}
-								/>
-							</label>
+							<fieldset class="text-field">
+								<input required {id} name={input.type} type={input.name} />
+								<label class="bg-background" for={id}>
+									{label}
+								</label>
+							</fieldset>
 						{:else}
-							<label for={id} class="space-y-2">
-								<span class="text-label-large">{label}</span>
-								<textarea
-									name={input.name}
-									{id}
-									placeholder={input.placeholder}
-									cols="30"
-									rows="9"
-								/>
-							</label>
+							<fieldset class="text-field">
+								<label class="input-label" for={id}>
+									{label}
+								</label>
+								<textarea class="input-text" name={input.name} {id} cols="30" rows="9" />
+							</fieldset>
 						{/if}
 					</div>
 				{/each}
-				<button class="button interactive-bg-primary text-on-primary w-full" type="submit"
-					>Enviar</button
-				>
+				<button class="button interactive-bg-primary text-on-primary w-full" type="submit">
+					Enviar
+				</button>
 			</form>
 		</section>
 	</div>
