@@ -6,7 +6,11 @@ export const GET = (async ({ fetch }) => {
 	const posts = (await response.json()) as Post[];
 
 	const headers = { 'Content-Type': 'application/xml' };
-
+	posts.forEach((post) => {
+		post.fm.categories.forEach((cat) => {
+			console.log(cat)
+		})
+	})
 	const xml = `
 		<?xml version="1.0" encoding="UTF-8" ?>
 		<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
@@ -18,8 +22,8 @@ export const GET = (async ({ fetch }) => {
 				<ttl>${60 * 24}</ttl>
 				<atom:link href="https://dev-lucasouverney.vercel.app/api/posts/rss.xml" rel="self" type="application/rss+xml"/>
 				${posts
-					.map(
-						(post) => `
+			.map(
+				(post) => `
 						  <item>
 							  <title>${post.fm.title}</title>
 							  <description>${post.fm.description}</description>
@@ -33,12 +37,12 @@ export const GET = (async ({ fetch }) => {
 							  <guid isPermaLink="true">https://dev-lucasouverney.vercel.app/blog/${post.slug}</guid>
 							  <pubDate>${new Date(post.fm.date).toUTCString()}</pubDate>
 								${post.fm.categories.map((cat) => {
-									if (cat !== ',') return `<category>${cat}</category>`;
-								})}
+					if (cat !== ',') return `<category>${cat}</category>`;
+				})}
 						  </item>
 					  `
-					)
-					.join('')}
+			)
+			.join('')}
 			</channel>
 		</rss>
 	  `.trim();

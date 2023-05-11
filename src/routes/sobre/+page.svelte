@@ -108,9 +108,9 @@
 				</section>
 				<section>
 					<p class="text-body-medium">
-						Quer saber um pouco mais sobre mim? Sou um(a) entusiasta de tecnologia, apaixonado(a)
+						Quer saber um pouco mais sobre mim? Sou um entusiasta de tecnologia, apaixonado
 						por aprender e aprimorar minhas habilidades em desenvolvimento de sistemas. <br />
-						Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um(a) especialista
+						Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um especialista
 						em Rust no backend e em aprimorar meu conhecimento em banco de dados, especialmente com Redis.
 						<br />
 						Acredito que sempre há espaço para crescer e me desafio a aprender algo novo a cada dia.
