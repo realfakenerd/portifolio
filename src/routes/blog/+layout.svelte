@@ -7,7 +7,7 @@
 	<title>Blog</title>
 </svelte:head>
 <section class="flex h-full">
-	<div class="flex w-full flex-col gap-4 p-4">
+	<div class="flex w-full flex-col gap-4 p-4 flex-1">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}
 				<button class="fill-on-surface-variant px-4" on:click={() => window.history.back()}>
@@ -16,12 +16,7 @@
 			{/if}
 			<h1 class="text-display-medium">Blog</h1>
 		</div>
-		<fieldset class="text-field">
-			<input type="text" id="search" />
-			<label class="bg-surface-variant" for="search">
-				<span>Search</span>
-			</label>
-		</fieldset>
+
 		<slot />
 	</div>
 </section>

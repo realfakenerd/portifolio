@@ -1,12 +1,27 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
+	import TextField from '$lib/components/TextField.svelte';
 	import type { LayoutData } from './$types';
-
+	let value: string = '';
 	export let data: LayoutData;
+
+	$: resultado = data.posts;
+	function pesquisa() {
+		resultado = data.posts.filter((val) => {
+			if (value) return val.fm.title.toLowerCase().includes(value.trim().toLowerCase());
+			return val;
+		});
+	}
 </script>
 
+<TextField
+	{value}
+	on:trailingClick={pesquisa}
+	title={'Search'}
+	trailingIcon={`M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z`}
+/>
 <ul class="grid gap-2">
-	{#each data.posts as post (post.id)}
+	{#each resultado as post (post.id)}
 		<li class="interactive-bg-background flex flex-col gap-y-2 rounded-xl p-4">
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">

@@ -1,38 +1,32 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import TextField from '$lib/components/TextField.svelte';
 
 	const inputs = [
 		{
-			id: 'userEmail',
+			id: 'email',
 			label: 'Seu email',
-			input: {
-				type: 'email'
-			}
+			input: 'email',
+			d: `M12 1.95c-5.52 0-10 4.48-10 10s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z`
 		},
 		{
-			id: 'userName',
+			id: 'name',
 			label: 'Seu nome',
-			input: {
-				type: 'text',
-				name: 'name'
-			}
+			input: 'text',
+			d: `M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z`
 		},
 		{
-			id: 'userSubject',
+			id: 'subject',
 			label: 'Qual é o assunto?',
-			input: {
-				type: 'text',
-				name: 'subject'
-			}
+			input: 'text',
+			d: `M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z`
 		},
 		{
-			id: 'userText',
+			id: 'message',
 			label: 'Qual é a mensagem?',
-			input: {
-				type: 'textarea',
-				name: 'message'
-			}
+			input: 'textarea',
+			d: `M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z`
 		}
 	];
 </script>
@@ -126,32 +120,23 @@
 		</section>
 		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
 			<form
-				class="flex flex-col gap-4"
+				class="flex flex-col gap-3 flex-1"
 				action="https://formsubmit.co/realfakenerd@gmail.com"
 				method="POST"
 			>
+				<input
+					type="hidden"
+					name="_next"
+					value={import.meta.env.DEV ? 'http://localhost:5173/success' : 'https://dev-lucasouverney.vercel.app/success'}
+				/>
+				<input type="hidden" name="_subject" value="New submission!" />
 				<input type="hidden" name="_captcha" value="false" />
-				<input type="hidden" name="_template" value="box" />
-				<!-- <input type="hidden" name="_next" value="/redirection" /> -->
-				<input type="hidden" name="_subject" value="New Submission" />
-				{#each inputs as { input, label, id } (id)}
-					<div class="w-full">
-						{#if input.type !== 'textarea'}
-							<fieldset class="text-field">
-								<input required {id} name={input.type} type={input.name} />
-								<label class="bg-background" for={id}>
-									{label}
-								</label>
-							</fieldset>
-						{:else}
-							<fieldset class="text-field">
-								<label class="input-label" for={id}>
-									{label}
-								</label>
-								<textarea class="input-text" name={input.name} {id} cols="30" rows="9" />
-							</fieldset>
-						{/if}
-					</div>
+				{#each inputs as { input, label, id, d } (id)}
+					{#if input !== 'textarea'}
+						<TextField title={label} icon={d} type={input} />
+					{:else}
+						<TextField isTextarea title={label} icon={d} />
+					{/if}
 				{/each}
 				<button class="button interactive-bg-primary text-on-primary w-full" type="submit">
 					Enviar

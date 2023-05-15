@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
 	import '../app.css';
+	import { fly } from 'svelte/transition';
+	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/transitions';
 	import type { LayoutData } from './$types';
 	import Icon from '$lib/components/Icon.svelte';
 	import '@fontsource/roboto/400.css';
@@ -129,8 +130,8 @@
 </header>
 {#key data.currentRoute}
 	<main
-		in:fly={{ y: -5, duration: 250, delay: 250 }}
-		out:fly={{ y: 5, duration: 250 }}
+		in:fly={{ y: -5, duration: 250, delay: 250, easing: easeEmphasizedDecel }}
+		out:fly={{ y: 5, duration: 250, easing: easeEmphasizedAccel }}
 		class="bg-surface-variant text-on-surface-variant col-start-1 col-end-3 rounded-xl shadow-md md:col-start-2"
 	>
 		<slot />

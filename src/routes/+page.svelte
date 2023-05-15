@@ -1,6 +1,6 @@
 <script>
 	import { slide, fade } from 'svelte/transition';
-	import { backOut } from 'svelte/easing';
+	import { easeEmphasizedDecel } from '$lib/transitions';
 	import { onMount } from 'svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	const text = [
@@ -32,7 +32,7 @@
 	<div class="flex flex-col items-start gap-3 font-medium">
 		{#if init}
 			{#each text as t, index (index)}
-				<h1 class={t.c} in:slide={{ delay: 800 * index, easing: backOut }}>
+				<h1 class={t.c} in:slide={{ delay: 800 * index, easing: easeEmphasizedDecel }}>
 					{t.t}
 				</h1>
 			{/each}
@@ -44,7 +44,7 @@
 			alt="hands_show png"
 			height="400"
 			width="245"
-			in:fade={{ delay: 900 }}
+			in:fade={{ delay: 1000 }}
 		/>
 	{/if}
 </Hero>
