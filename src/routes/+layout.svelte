@@ -117,7 +117,7 @@
 			<Toggle />
 		</div>
 		<nav class="custom-navbar bg-background mx-[-1rem] h-20 w-full flex-row px-2 py-0">
-			<ul>
+			<ul class="inline-flex">
 				{#each routes as { path, d, title }, i (i)}
 					<li>
 						<a 
