@@ -54,7 +54,7 @@
 				rows="1"
 				on:input={resize}
 				{...extraInputOptions}
-				aria-label="Enter your input"
+				aria-label="Enter your input {title}"
 				aria-invalid={error ? "true" : "false"}
 			/>
 		{:else}
@@ -74,7 +74,7 @@
 						e.preventDefault();
 				}}
 				{...extraInputOptions}
-				aria-label="Enter your input"
+				aria-label="Enter your input {title}"
 				aria-invalid={error ? "true" : "false"}
 			/>
 		{/if}

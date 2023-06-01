@@ -12,13 +12,15 @@
 	import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm';
 
 	onMount(() => {
-		const color = Math.floor(Math.random() * 16777215).toString(16);
-		updateTheme(
-			{
+		$: {
+			const color = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+			updateTheme(
+				{
 				primary: `#${color}`
-			},
-			'class'
-		);
+				},
+				'class'
+			);
+    	}
 	});
 
 	const dc =
@@ -83,7 +85,8 @@
 				<a
 					class="group flex flex-col items-center gap-y-1"
 					href={path}
-					aria-label={title}
+					aria-label={`Ir para a página ${title}`}
+					aria-current={data.currentRoute === path ? "page" : null}
 					role="tab"
 					tabindex="0"
 				>
@@ -97,9 +100,9 @@
 							<Icon d={data.currentRoute === path ? d.f : d.o} />
 						</span>
 					</div>
-					<h3>
+					<span>
 						{title}
-					</h3>
+					</span>
 				</a>
 			{/each}
 		</nav>
@@ -110,8 +113,15 @@
 			<Toggle />
 		</div>
 		<nav class="custom-navbar bg-background mx-[-1rem] h-20 w-full flex-row px-2 py-0">
-			{#each routes as { path, d, title }, index (index)}
-				<a href={path} class="group">
+			{#each routes as { path, d, title }, i (i)}
+				<a 
+					href={path} 
+					class="group"
+					aria-label={`Ir para a página ${title}`}
+					aria-current={data.currentRoute === path ? "page" : null}
+					role="tab"
+					tabindex="0"
+				>
 					<div
 						class="group-hover:bg-secondary-container-hover"
 						style="background-color:{data.currentRoute === path
@@ -122,7 +132,7 @@
 							<Icon d={data.currentRoute === path ? d.f : d.o} />
 						</span>
 					</div>
-					<h3>{title}</h3>
+					<span>{title}</span>
 				</a>
 			{/each}
 		</nav>
@@ -155,7 +165,7 @@
 					@apply flex h-8 items-center justify-center rounded-2xl;
 				}
 			}
-			h3 {
+			span {
 				@apply text-label-small order-1 h-4 flex-none flex-grow-0 self-stretch text-center;
 			}
 		}
