@@ -25,26 +25,31 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Página Inicial</title>
+	<meta name="description" content="Webapps de alta qualidade desenvolvidos por Lucas. Entre em contato para ter a melhor experiência em seu navegador." />
+	<meta name="keywords" content="webapps, desenvolvimento, navegador, Lucas" />
 </svelte:head>
 
 <Hero>
-	<div class="flex flex-col items-start gap-3 font-medium">
+	<svelte:fragment>
+		<section class="flex flex-col items-start gap-3 font-medium" aria-live={init ? 'polite' : 'off'}>
+			{#if init}
+				{#each text as t, index (index)}
+					<h1 role="heading" aria-level="1" class={t.c} in:slide={{ delay: 800 * index, easing: easeEmphasizedDecel }}>
+						{t.t}
+					</h1>
+				{/each}
+			{/if}
+		</section>
 		{#if init}
-			{#each text as t, index (index)}
-				<h1 class={t.c} in:slide={{ delay: 800 * index, easing: easeEmphasizedDecel }}>
-					{t.t}
-				</h1>
-			{/each}
+			<img
+				alt="Ilustração de mãos mostrando algo"
+				src="hands_show.webp"
+				alt="hands_show png"
+				height="400"
+				width="245"
+				in:fade={{ delay: 1000 }}
+			/>
 		{/if}
-	</div>
-	{#if init}
-		<img
-			src="hands_show.webp"
-			alt="hands_show png"
-			height="400"
-			width="245"
-			in:fade={{ delay: 1000 }}
-		/>
-	{/if}
+	</svelte:fragment>
 </Hero>
