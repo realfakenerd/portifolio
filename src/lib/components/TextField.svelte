@@ -254,7 +254,7 @@
 
 	@supports not selector(::-webkit-calendar-picker-indicator) {
 		.text-field-container.has-trailing-icon.text-field-input[type='date'] {
-			@apply clip-path: inset(0 3.25rem 0 0);
+			clip-path: inset(0 3.25rem 0 0);
 		}
 	}
 
