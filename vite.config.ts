@@ -17,10 +17,20 @@ const config = {
 			}
 		})
 	],
+	server: {
+		compress: true
+	},
 	build: {
 		minify: 'terser',
 		reportCompressedSize: false,
-		target: 'esnext'
+		target: 'esnext',
+		terserOptions: {
+			compress: {
+				keep_infinity: true,
+				pure_getters: true,
+				drop_console: true
+			}
+		}
 	},
 	define: {
 		'process.env': process.env
