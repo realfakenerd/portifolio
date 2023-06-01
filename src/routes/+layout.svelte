@@ -117,32 +117,28 @@
 			<Toggle />
 		</div>
 		<nav class="custom-navbar bg-background mx-[-1rem] h-20 w-full flex-row px-2 py-0">
-			<ul class="inline-flex">
-				{#each routes as { path, d, title }, i (i)}
-					<li>
-						<a 
-							href={path} 
-							class="group"
-							aria-label={`Ir para a página ${title}`}
-							aria-current={data.currentRoute === path ? "page" : null}
-							role="tab"
-							tabindex="0"
-						>
-							<div
-								class="group-hover:bg-secondary-container-hover"
-								style="background-color:{data.currentRoute === path
-									? 'rgb(var(--color-secondary-container))'
-									: ''} "
-							>
-								<span class="fill-on-background group-hover:fill-on-secondary-container">
-									<Icon d={data.currentRoute === path ? d.f : d.o} />
-								</span>
-							</div>
-							<span>{title}</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
+			{#each routes as { path, d, title }, i (i)}
+				<a 
+					href={path} 
+					class="group"
+					aria-label={`Ir para a página ${title}`}
+					aria-current={data.currentRoute === path ? "page" : null}
+					role="tab"
+					tabindex="0"
+				>
+					<div
+						class="group-hover:bg-secondary-container-hover"
+						style="background-color:{data.currentRoute === path
+							? 'rgb(var(--color-secondary-container))'
+							: ''} "
+					>
+						<span class="fill-on-background group-hover:fill-on-secondary-container">
+							<Icon d={data.currentRoute === path ? d.f : d.o} />
+						</span>
+					</div>
+					<span>{title}</span>
+				</a>
+			{/each}
 		</nav>
 	</div>
 </header>
