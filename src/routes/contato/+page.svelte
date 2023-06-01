@@ -33,7 +33,7 @@
 
 <svelte:head>
 	<title>Contato</title>
-	<meta name="description" content="Entre em contato para fazer negócios, falar sobre projetos ou trocar mensagens sobre programação."></meta>
+	<meta name="description" content="Entre em contato para fazer negócios, falar sobre projetos ou trocar mensagens sobre programação.">
 </svelte:head>
 
 <Hero>
