@@ -45,7 +45,6 @@
 			<img
 				alt="Ilustração de mãos mostrando algo"
 				src="hands_show.webp"
-				alt="hands_show png"
 				height="400"
 				width="245"
 				in:fade={{ delay: 1000 }}
