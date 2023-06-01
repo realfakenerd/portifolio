@@ -32,7 +32,8 @@
 </script>
 
 <svelte:head>
-	<title>Contact</title>
+	<title>Contato</title>
+	<meta name="description" content="Entre em contato para fazer negócios, falar sobre projetos ou trocar mensagens sobre programação."></meta>
 </svelte:head>
 
 <Hero>
@@ -104,7 +105,7 @@
 					src="hands_email.webp"
 					height="400"
 					width="364"
-					alt="hand email"
+					alt="Mãos segurando um envelope"
 				/>
 				<img
 					class="
@@ -114,7 +115,7 @@
 					src="hands_email.webp"
 					height="400"
 					width="364"
-					alt="hand email"
+					alt="Mãos segurando um envelope"
 				/>
 			</figure>
 		</section>
