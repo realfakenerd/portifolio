@@ -63,7 +63,7 @@
 				bind:value
 				class:value
 				required
-				type="{isDate ? 'date' : 'text'}"
+				type="text"
 				{id}
 				class="text-field-input"
 				on:click={(e) => {
