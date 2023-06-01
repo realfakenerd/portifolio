@@ -31,7 +31,7 @@
 						</h1>
 					</a>
 
-					<section class="flex gap-x-2">
+					<section class="flex gap-x-2" aria-label="Categories">
 						{#each post.fm.categories as cat}
 							<span class="text-label-small hover:underline">#{cat}</span>
 						{/each}
@@ -44,7 +44,7 @@
 						height="100"
 						width="100"
 						src={post.fm.image}
-						alt="publication"
+						alt="{post.fm.title} - Imagem da publicação"
 					/>
 				</figure>
 			</div>
