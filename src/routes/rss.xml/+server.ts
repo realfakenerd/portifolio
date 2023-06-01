@@ -35,7 +35,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
               .join('')}
           </item>`).join('')}
       </channel>
-    </rss>`;
+    </rss>`.trim();
 
   return new Response(xml, { headers });
 };
