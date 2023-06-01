@@ -200,7 +200,8 @@
 		background-color: rgb(var(--color-on-surface-variant) / 0.12);
 	}
 
-	.text-field-container:hover > :is(label, .text-field-layer) {
+	@media(hover:hover) {
+		.text-field-container:hover > :is(label, .text-field-layer) {
 		color: rgb(var(--error, var(--color-on-surface)));
 	}
 
@@ -210,6 +211,7 @@
 
 	.trailing-button:hover {
 		background-color: rgb(var(--color-on-surface-variant) / 0.08);
+	}
 	}
 
 	.text-field-container:focus-within > :is(label, .text-field-layer) {
@@ -243,7 +245,7 @@
 	}
 
 	.text-field-container.has-trailing-icon.text-field-input[type='date'] {
-		@apply padding-right: 0;
+		padding-right: 0;
 	}
 
 	.text-field-container.has-trailing-icon.text-field-input[type='date']::-webkit-calendar-picker-indicator {
