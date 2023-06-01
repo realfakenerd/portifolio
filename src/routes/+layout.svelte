@@ -81,30 +81,34 @@
 >
 	<div class="hidden h-screen flex-col items-center justify-evenly md:flex">
 		<nav class="custom-navbar flex-col items-center gap-y-3 px-3 py-2">
-			{#each routes as { path, d, title }, i (i)}
-				<a
-					class="group flex flex-col items-center gap-y-1"
-					href={path}
-					aria-label={`Ir para a página ${title}`}
-					aria-current={data.currentRoute === path ? "page" : null}
-					role="tab"
-					tabindex="0"
-				>
-					<div
-						class="button group-hover:bg-secondary-container-hover"
-						style="background-color:{data.currentRoute === path
-							? 'rgb(var(--color-secondary-container))'
-							: ''} "
-					>
-						<span class="fill-on-background group-hover:fill-on-secondary-container">
-							<Icon d={data.currentRoute === path ? d.f : d.o} />
-						</span>
-					</div>
-					<span>
-						{title}
-					</span>
-				</a>
-			{/each}
+			<ul>
+				{#each routes as { path, d, title }, i (i)}
+					<li>
+						<a
+							class="group flex flex-col items-center gap-y-1"
+							href={path}
+							aria-label={`Ir para a página ${title}`}
+							aria-current={data.currentRoute === path ? "page" : null}
+							role="tab"
+							tabindex="0"
+						>
+							<div
+								class="button group-hover:bg-secondary-container-hover"
+								style="background-color:{data.currentRoute === path
+									? 'rgb(var(--color-secondary-container))'
+									: ''} "
+							>
+								<span class="fill-on-background group-hover:fill-on-secondary-container">
+									<Icon d={data.currentRoute === path ? d.f : d.o} />
+								</span>
+							</div>
+							<span>
+								{title}
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
 		</nav>
 		<Toggle />
 	</div>
@@ -113,28 +117,32 @@
 			<Toggle />
 		</div>
 		<nav class="custom-navbar bg-background mx-[-1rem] h-20 w-full flex-row px-2 py-0">
-			{#each routes as { path, d, title }, i (i)}
-				<a 
-					href={path} 
-					class="group"
-					aria-label={`Ir para a página ${title}`}
-					aria-current={data.currentRoute === path ? "page" : null}
-					role="tab"
-					tabindex="0"
-				>
-					<div
-						class="group-hover:bg-secondary-container-hover"
-						style="background-color:{data.currentRoute === path
-							? 'rgb(var(--color-secondary-container))'
-							: ''} "
-					>
-						<span class="fill-on-background group-hover:fill-on-secondary-container">
-							<Icon d={data.currentRoute === path ? d.f : d.o} />
-						</span>
-					</div>
-					<span>{title}</span>
-				</a>
-			{/each}
+			<ul>
+				{#each routes as { path, d, title }, i (i)}
+					<li>
+						<a 
+							href={path} 
+							class="group"
+							aria-label={`Ir para a página ${title}`}
+							aria-current={data.currentRoute === path ? "page" : null}
+							role="tab"
+							tabindex="0"
+						>
+							<div
+								class="group-hover:bg-secondary-container-hover"
+								style="background-color:{data.currentRoute === path
+									? 'rgb(var(--color-secondary-container))'
+									: ''} "
+							>
+								<span class="fill-on-background group-hover:fill-on-secondary-container">
+									<Icon d={data.currentRoute === path ? d.f : d.o} />
+								</span>
+							</div>
+							<span>{title}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
 		</nav>
 	</div>
 </header>
