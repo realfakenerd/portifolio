@@ -131,50 +131,74 @@
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
 				<section class="flex flex-col items-start justify-between gap-y-2 font-mono md:flex-row">
-					<ul class="list text-body-medium bg-surface-variant w-full rounded-lg">
-						<li class="item items-center list-lines-1">
-							<div class="item-body">
-								<h2 class="list-headline">Editor &amp; Terminal</h2>
-							</div>
-						</li>
-						<hr class="divider-list-inset" />
-						{#each editor_terminal as { klass, title, link }, i (i)}
+					<List
+						isUl
+						list={editor_terminal}
+						let:item
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
+					>
+						{@const title = item.title}
+						{@const klass = item.klass}
+						{@const link = item.link}
+						<svelte:fragment slot="list-description">
 							<li class="item items-center list-lines-1">
 								<div class="item-body">
-									<span>{title} =&gt;</span>
-									<a class={klass} href={link.path}>{link.title}</a>
+									<h2 class="list-headline">Editor &amp; Terminal</h2>
 								</div>
 							</li>
-						{/each}
-					</ul>
-					<ul
-						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
+							<hr class="divider-list-inset" />
+						</svelte:fragment>
+						<ListItem extraClassess="hover:bg-surface">
+							<span>{title} =&gt;</span>
+							<a class={klass} href={link.path}>{link.title}</a>
+						</ListItem>
+					</List>
+
+					<List
+						isUl
+						list={frameworks_libs}
+						let:item
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
 					>
-						<li class="item">
-							<h2 class="text-body-large">Frameworks &amp; Libs</h2>
-						</li>
-						{#each frameworks_libs as { title, klass, link }, i (i)}
-							<li class="list">
-								<span>{title} =&gt;</span>
-								<a class={klass} href={link.path}>{link.title}</a>
-								<hr class="border-outline" />
+						{@const title = item.title}
+						{@const klass = item.klass}
+						{@const link = item.link}
+						<svelte:fragment slot="list-description">
+							<li class="item items-center list-lines-1">
+								<div class="item-body">
+									<h2 class="list-headline">Frameworks &amp; Libs</h2>
+								</div>
 							</li>
-						{/each}
-					</ul>
-					<ul
-						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
+							<hr class="divider-list-inset" />
+						</svelte:fragment>
+						<ListItem extraClassess="hover:bg-surface">
+							<span>{title} =&gt;</span>
+							<a class={klass} href={link.path}>{link.title}</a>
+						</ListItem>
+					</List>
+
+					<List
+						isUl
+						list={hosting_co}
+						let:item
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
 					>
-						<li class="item">
-							<h2 class="text-body-large">Hosting &amp; Co.</h2>
-						</li>
-						{#each hosting_co as { title, klass, link }, i (i)}
-							<li class="list">
-								<span>{title} =&gt;</span>
-								<a class={klass} href={link.path}>{link.title}</a>
-								<hr class="border-outline" />
+						{@const title = item.title}
+						{@const klass = item.klass}
+						{@const link = item.link}
+						<svelte:fragment slot="list-description">
+							<li class="item items-center list-lines-1">
+								<div class="item-body">
+									<h2 class="list-headline">Hosting &amp; Co.</h2>
+								</div>
 							</li>
-						{/each}
-					</ul>
+							<hr class="divider-list-inset" />
+						</svelte:fragment>
+						<ListItem extraClassess="hover:bg-surface">
+							<span>{title} =&gt;</span>
+							<a class={klass} href={link.path}>{link.title}</a>
+						</ListItem>
+					</List>
 				</section>
 			</div>
 		</div>
