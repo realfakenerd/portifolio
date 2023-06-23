@@ -13,7 +13,7 @@
 </svelte:head>
 
 
-<section class="flex h-full">
+<section class="flex min-h-[50dvh]">
 	<div class="flex w-full flex-col gap-4 p-4 flex-1">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}

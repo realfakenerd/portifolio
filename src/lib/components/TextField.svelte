@@ -44,6 +44,7 @@
 	>
 		{#if isTextarea}
 			<textarea
+				on:input
 				name={id}
 				bind:value
 				bind:this={textarea}
@@ -59,6 +60,7 @@
 			/>
 		{:else}
 			<input
+				on:input
 				name={id}
 				bind:value
 				class:value
@@ -168,10 +170,14 @@
 		@apply text-label-small;
 	}
 
+	.text-field-input:is(:focus, .value, :required:valid, [type='date']) ~ .leading-icon {
+		@apply fill-primary;
+	}
+
 	.leading-icon,
 	.trailing-icon {
 		fill: rgb(var(--error, var(--color-on-surface)));
-		@apply pointer-events-none inline-flex self-center;
+		@apply transition-all duration-200 pointer-events-none inline-flex self-center;
 	}
 	.leading-icon {
 		@apply ml-4 mr-3;

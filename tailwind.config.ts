@@ -1,10 +1,9 @@
-import type { Config } from 'tailwindcss';
 import { withMaterialColors } from 'tailwind-material-colors';
-import typography from '@tailwindcss/typography';
-
+import tail from 'tail-material-design';
 export default withMaterialColors(
 	{
 		content: ['./src/**/*.{html,js,svelte,ts}'],
+		plugins: [tail],
 		theme: {
 			fontFamily: {
 				sans: 'Roboto',
@@ -47,7 +46,7 @@ export default withMaterialColors(
 				]
 			}
 		}
-	} satisfies Config,
+	},
 	{
 		primary: `#000000`
 	}

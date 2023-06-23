@@ -1,33 +1,33 @@
 <script lang="ts">
-	import '../app.css';
-	import { fly } from 'svelte/transition';
-	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/transitions';
-	import type { LayoutData } from './$types';
 	import Icon from '$lib/components/Icon.svelte';
+	import Toggle from '$lib/components/Toggle.svelte';
+	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/transitions';
 	import '@fontsource/roboto/400.css';
 	import '@fontsource/roboto/500.css';
 	import { onMount } from 'svelte';
-	import Toggle from '$lib/components/Toggle.svelte';
+	import { fly } from 'svelte/transition';
+	import '../app.css';
+	import type { LayoutData } from './$types';
 	// @ts-expect-error this file has no d file
 	import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm';
+	import { handleScroll } from '$lib/utils';
+	import icons from '$lib/icons';
 
+	let navbar: HTMLElement;
+	let fab: HTMLDivElement;
 	onMount(() => {
-		$: {
-			const color = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
-			updateTheme(
-				{
+		handleScroll(navbar, fab);
+		const color = Math.floor(Math.random() * 16777215)
+			.toString(16)
+			.padStart(6, '0');
+		updateTheme(
+			{
 				primary: `#${color}`
-				},
-				'class'
-			);
-    	}
+			},
+			'class'
+		);
 	});
 
-	const dc =
-		'M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z';
-	const di =
-		'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z';
-	const nl = `M22,3l-1.67,1.67L18.67,3L17,4.67L15.33,3l-1.66,1.67L12,3l-1.67,1.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3v16 c0,1.1,0.9,2,2,2l16,0c1.1,0,2-0.9,2-2V3z M11,19H4v-6h7V19z M20,19h-7v-2h7V19z M20,15h-7v-2h7V15z M20,11H4V8h16V11z`;
 	const routes = [
 		{
 			title: 'Home',
@@ -41,16 +41,16 @@
 			title: 'Sobre',
 			path: '/sobre',
 			d: {
-				o: di,
-				f: di
+				o: icons.info,
+				f: icons.info
 			}
 		},
 		{
 			title: 'Contato',
 			path: '/contato',
 			d: {
-				o: dc,
-				f: dc
+				o: icons.contato,
+				f: icons.contato
 			}
 		},
 		{
@@ -65,8 +65,8 @@
 			title: 'Blog',
 			path: '/blog',
 			d: {
-				o: nl,
-				f: nl
+				o: icons.blog,
+				f: icons.blog
 			}
 		}
 	];
@@ -88,18 +88,25 @@
 							class="group flex flex-col items-center gap-y-1"
 							href={path}
 							aria-label={`Ir para a página ${title}`}
-							aria-current={data.currentRoute === path ? "page" : null}
+							aria-current={data.currentRoute === path || data.currentRoute.startsWith(`${path}/`)
+								? 'page'
+								: null}
 							role="tab"
 							tabindex="0"
 						>
 							<div
 								class="button group-hover:bg-secondary-container-hover"
-								style="background-color:{data.currentRoute === path
+								style="background-color:{data.currentRoute === path ||
+								data.currentRoute.startsWith(`${path}/`)
 									? 'rgb(var(--color-secondary-container))'
 									: ''} "
 							>
 								<span class="fill-on-background group-hover:fill-on-secondary-container">
-									<Icon d={data.currentRoute === path ? d.f : d.o} />
+									<Icon
+										d={data.currentRoute === path || data.currentRoute.startsWith(`${path}/`)
+											? d.f
+											: d.o}
+									/>
 								</span>
 							</div>
 							<span>
@@ -112,28 +119,40 @@
 		</nav>
 		<Toggle />
 	</div>
-	<div class="flex w-full flex-col gap-y-2 md:hidden">
-		<div class="self-end pr-8">
+	<div class="w-full flex-col gap-y-2 md:hidden">
+		<div bind:this={fab} class="fixed bottom-24 transition-all right-4 duration-150">
 			<Toggle />
 		</div>
-		<nav class="custom-navbar bg-background mx-[-1rem] h-20 w-full flex-row px-2 py-0">
+		<nav
+			bind:this={navbar}
+			class="custom-navbar transition-all duration-300
+		fixed bottom-0 bg-background mx-[-1rem] 
+		h-20 w-full flex-row px-2 py-0"
+		>
 			{#each routes as { path, d, title }, i (i)}
-				<a 
-					href={path} 
+				<a
+					href={path}
 					class="group"
 					aria-label={`Ir para a página ${title}`}
-					aria-current={data.currentRoute === path ? "page" : null}
+					aria-current={data.currentRoute === path || data.currentRoute.startsWith(`${path}/`)
+						? 'page'
+						: null}
 					role="tab"
 					tabindex="0"
 				>
 					<div
 						class="group-hover:bg-secondary-container-hover"
-						style="background-color:{data.currentRoute === path
+						style="background-color:{data.currentRoute === path ||
+						data.currentRoute.startsWith(`${path}/`)
 							? 'rgb(var(--color-secondary-container))'
 							: ''} "
 					>
 						<span class="fill-on-background group-hover:fill-on-secondary-container">
-							<Icon d={data.currentRoute === path ? d.f : d.o} />
+							<Icon
+								d={data.currentRoute === path || data.currentRoute.startsWith(`${path}/`)
+									? d.f
+									: d.o}
+							/>
 						</span>
 					</div>
 					<span>{title}</span>
@@ -153,8 +172,12 @@
 {/key}
 
 <style lang="scss">
+	:global(:root) {
+		color-scheme: light dark;
+	}
+
 	main {
-		min-block-size: 100%;
+		min-block-size: 100dvh;
 	}
 
 	.custom-navbar {

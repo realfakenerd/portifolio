@@ -23,8 +23,8 @@
 <article class="flex flex-col gap-y-6">
 	<section class="flex flex-col gap-y-3">
 		<hgroup>
-			<h1 class="text-headline-large text-tertiary" tabindex="0" role="heading" aria-level="1">{meta.title}</h1>
-			<h2 class="text-headline-small" tabindex="0" role="heading" aria-level="2">{meta.description}</h2>
+			<h1 class="text-headline-large text-tertiary" aria-level={1}>{meta.title}</h1>
+			<h2 class="text-headline-small" aria-level={2}>{meta.description}</h2>
 		</hgroup>
 
 		<figure>
