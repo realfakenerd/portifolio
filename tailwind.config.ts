@@ -1,13 +1,15 @@
 import { withMaterialColors } from 'tailwind-material-colors';
+import type { Config } from 'tailwindcss';
 import tail from 'tail-material-design';
 export default withMaterialColors(
 	{
 		content: ['./src/**/*.{html,js,svelte,ts}'],
 		plugins: [tail],
 		theme: {
-			fontFamily: {
-				sans: 'Roboto',
-				mono: 'Fira Code'
+			extend: {
+				fontFamily: {
+					sans: 'Roboto'
+				}
 			},
 			fontSize: {
 				'display-large': ['3.5rem', { lineHeight: '4rem' }],
@@ -46,7 +48,7 @@ export default withMaterialColors(
 				]
 			}
 		}
-	},
+	} satisfies Config,
 	{
 		primary: `#000000`
 	}

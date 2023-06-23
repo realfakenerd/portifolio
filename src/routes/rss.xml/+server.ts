@@ -7,7 +7,6 @@ function formatPubDate(str: string) {
 	return `${d} ${months[+m]} ${y} 12:00 +0000`;
 }
 
-export const prerender = true;
 export const GET: RequestHandler = async ({ fetch }) => {
 	const response = await fetch('/api/posts');
 	const posts = (await response.json()) as Post[];
@@ -50,9 +49,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 					)
 					.join('')}
       </channel>
-    </rss>`
-		
-		.trim();
+    </rss>`.trim();
 
 	return new Response(xml, { headers });
 };

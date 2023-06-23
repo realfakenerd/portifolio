@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
+	import icons from '$lib/icons';
 	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/transitions';
+	import { handleScroll } from '$lib/utils';
 	import '@fontsource/roboto/400.css';
 	import '@fontsource/roboto/500.css';
 	import { onMount } from 'svelte';
@@ -10,8 +12,6 @@
 	import type { LayoutData } from './$types';
 	// @ts-expect-error this file has no d file
 	import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm';
-	import { handleScroll } from '$lib/utils';
-	import icons from '$lib/icons';
 
 	let navbar: HTMLElement;
 	let fab: HTMLDivElement;
@@ -33,8 +33,8 @@
 			title: 'Home',
 			path: '/',
 			d: {
-				o: 'M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z',
-				f: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'
+				o: icons.home.o,
+				f: icons.home.f
 			}
 		},
 		{
@@ -57,8 +57,8 @@
 			title: 'Projetos',
 			path: '/projetos',
 			d: {
-				o: 'M19.17,12l-4.58-4.59L16,6l6,6l-3.59,3.59L17,14.17L19.17,12z M1.39,4.22l4.19,4.19L2,12l6,6l1.41-1.41L4.83,12L7,9.83 l12.78,12.78l1.41-1.41L2.81,2.81L1.39,4.22z',
-				f: 'M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'
+				o: icons.projetos.o,
+				f: icons.projetos.f
 			}
 		},
 		{

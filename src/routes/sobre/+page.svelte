@@ -1,6 +1,7 @@
 <script lang="ts">
+	import List from '$lib/components/List.svelte';
+	import ListItem from '$lib/components/ListItem.svelte';
 	import type { PageData } from './$types';
-	import '@fontsource/fira-mono';
 
 	const editor_terminal = [
 		{
@@ -130,24 +131,26 @@
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
 				<section class="flex flex-col items-start justify-between gap-y-2 font-mono md:flex-row">
-					<ul
-						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
-					>
-						<li class="pl-3">
-							<h2 class="text-body-large">Editor &amp; Terminal</h2>
+					<ul class="list text-body-medium bg-surface-variant w-full rounded-lg">
+						<li class="item items-center list-lines-1">
+							<div class="item-body">
+								<h2 class="list-headline">Editor &amp; Terminal</h2>
+							</div>
 						</li>
+						<hr class="divider-list-inset" />
 						{#each editor_terminal as { klass, title, link }, i (i)}
-							<li class="list">
-								<span>{title} =&gt;</span>
-								<a class={klass} href={link.path}>{link.title}</a>
-								<hr class="border-outline" />
+							<li class="item items-center list-lines-1">
+								<div class="item-body">
+									<span>{title} =&gt;</span>
+									<a class={klass} href={link.path}>{link.title}</a>
+								</div>
 							</li>
 						{/each}
 					</ul>
 					<ul
 						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
 					>
-						<li class="pl-3">
+						<li class="item">
 							<h2 class="text-body-large">Frameworks &amp; Libs</h2>
 						</li>
 						{#each frameworks_libs as { title, klass, link }, i (i)}
@@ -161,7 +164,7 @@
 					<ul
 						class="text-body-medium interactive-bg-surface-variant w-full rounded-lg py-2 md:w-fit"
 					>
-						<li class="pl-3">
+						<li class="item">
 							<h2 class="text-body-large">Hosting &amp; Co.</h2>
 						</li>
 						{#each hosting_co as { title, klass, link }, i (i)}
@@ -177,19 +180,3 @@
 		</div>
 	</section>
 </section>
-
-<style lang="postcss">
-	.list {
-		@apply py-2 pl-3 pr-6 transition-colors duration-200;
-	}
-
-	.list a {
-		@apply underline decoration-solid decoration-1;
-	}
-
-	@media (hover: hover) {
-		.list:hover {
-			@apply bg-background-hover text-on-background;
-		}
-	}
-</style>

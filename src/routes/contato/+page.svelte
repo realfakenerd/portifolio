@@ -118,7 +118,7 @@
 				<input type="hidden" name="_captcha" value="false" />
 				{#each inputs as { input, label, id, d } (id)}
 					{#if input !== 'textarea'}
-						<TextField title={label} icon={d} type={input} />
+						<TextField title={label} icon={d}/>
 					{:else}
 						<TextField isTextarea title={label} icon={d} />
 					{/if}

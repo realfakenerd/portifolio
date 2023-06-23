@@ -11,7 +11,6 @@
 	let id = `input-${Date.now()}`;
 
 	export let value = '';
-	export let type = 'text';
 	export let error = false;
 	export let style: 'filled' | 'outlined' = 'outlined';
 	export let icon: string | null = null;
