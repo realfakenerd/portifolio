@@ -54,12 +54,12 @@
 						<p class="text-body-medium">{repo.description}</p>
 					</section>
 					<div class="flex flex-row gap-2">
-						<Button isRoute={false} isLink icon={icons.github} href={repo.html_url}>
+						<Button isRoute={false} isLink icon={icons.github} href={repo.html_url} class="interactive-bg-primary fill-on-primary">
 							<span>git repo</span>
 						</Button>
 
 						{#if repo.homepage}
-							<Button isRoute={false} isLink icon={icons.browser} color="secondary" href={repo.homepage}> 
+							<Button isRoute={false} isLink icon={icons.browser} class="interactive-bg-secondary fill-on-secondary" href={repo.homepage}> 
 								<span>site</span>
 							</Button>
 							

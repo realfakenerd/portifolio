@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import lightningCSS from 'vite-plugin-lightningcss';
 // @ts-expect-error complaining about not having a type;
 import removeConsole from 'vite-plugin-remove-console';
 import viteCompression from 'vite-plugin-compression';
@@ -7,6 +8,9 @@ import type { UserConfig } from 'vite';
 const config = {
 	plugins: [
 		sveltekit(),
+		lightningCSS({
+			browserslist: '> 1%'
+		}),
 		removeConsole(),
 		viteCompression({
 			algorithm: 'brotliCompress',
@@ -17,9 +21,6 @@ const config = {
 			}
 		})
 	],
-	server: {
-		compress: true
-	},
 	build: {
 		minify: 'terser',
 		reportCompressedSize: false,

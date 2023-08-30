@@ -5,7 +5,6 @@
     export let isBlock = false;
 	export let isRoute = true;
 	export let icon: string | null = null;
-	export let color: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	export let href: string | null = null;
 	let element = isLink ? 'a' : 'button';
 
@@ -19,7 +18,7 @@
 <svelte:element
 	this={element}
 	{...isLink ? a : {}}
-	class="btn text-label-large fill-on-{color} interactive-bg-{color}"
+	class="btn text-label-large {$$props.class??""}"
 	class:icon-left={icon}
     class:w-full={isBlock}
 >

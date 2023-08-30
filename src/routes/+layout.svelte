@@ -1,9 +1,10 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
-	import icons from '$lib/icons';
+	import routes from '$lib/routes';
 	import { easeEmphasizedAccel, easeEmphasizedDecel } from '$lib/transitions';
 	import { handleScroll } from '$lib/utils';
+
 	import '@fontsource/roboto/400.css';
 	import '@fontsource/roboto/500.css';
 	import { onMount } from 'svelte';
@@ -27,49 +28,6 @@
 			'class'
 		);
 	});
-
-	const routes = [
-		{
-			title: 'Home',
-			path: '/',
-			d: {
-				o: icons.home.o,
-				f: icons.home.f
-			}
-		},
-		{
-			title: 'Sobre',
-			path: '/sobre',
-			d: {
-				o: icons.info,
-				f: icons.info
-			}
-		},
-		{
-			title: 'Contato',
-			path: '/contato',
-			d: {
-				o: icons.contato,
-				f: icons.contato
-			}
-		},
-		{
-			title: 'Projetos',
-			path: '/projetos',
-			d: {
-				o: icons.projetos.o,
-				f: icons.projetos.f
-			}
-		},
-		{
-			title: 'Blog',
-			path: '/blog',
-			d: {
-				o: icons.blog,
-				f: icons.blog
-			}
-		}
-	];
 
 	export let data: LayoutData;
 </script>
@@ -174,10 +132,6 @@
 <style lang="scss">
 	:global(:root) {
 		color-scheme: light dark;
-	}
-
-	main {
-		min-block-size: 100dvh;
 	}
 
 	.custom-navbar {

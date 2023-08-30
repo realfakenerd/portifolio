@@ -2,7 +2,6 @@
 	import Button from '$lib/components/Button.svelte';
 	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import Icon from '$lib/components/Icon.svelte';
 	import TextField from '$lib/components/TextField.svelte';
 	import icons from '$lib/icons';
 
@@ -123,7 +122,7 @@
 						<TextField isTextarea title={label} icon={d} />
 					{/if}
 				{/each}
-				<Button color="primary" isBlock>Enviar</Button>
+				<Button class="interactive-bg-primary" isBlock>Enviar</Button>
 			</form>
 		</section>
 	</div>

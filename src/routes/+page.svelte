@@ -19,9 +19,7 @@
 	];
 
 	let init = false;
-	onMount(() => {
-		init = true;
-	});
+	onMount(() => (init = true));
 </script>
 
 <svelte:head>
