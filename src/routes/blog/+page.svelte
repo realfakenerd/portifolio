@@ -28,7 +28,7 @@
 		>
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
-					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
+					<a style="view-transition-name: postname;" class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
 						<h1 class="text-title-medium ">
 							{post.fm.title}
 						</h1>

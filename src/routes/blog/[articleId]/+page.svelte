@@ -23,7 +23,7 @@
 <article class="flex flex-col gap-y-6">
 	<section class="flex flex-col gap-y-3">
 		<hgroup>
-			<h1 class="text-headline-large text-tertiary" aria-level={1}>{meta.title}</h1>
+			<h1 style="view-transition-name: postname;" class="text-headline-large text-tertiary" aria-level={1}>{meta.title}</h1>
 			<h2 class="text-headline-small" aria-level={2}>{meta.description}</h2>
 		</hgroup>
 

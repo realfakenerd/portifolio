@@ -5,19 +5,32 @@ export function formatDate(date: string, dateStyle: DateStyle = 'medium', locale
 	return formatter.format(new Date(date));
 }
 
-export function handleScroll(navbar: HTMLElement, fab: HTMLDivElement) {
+export function handleScroll(nav: HTMLElement) {
 	let lastScrollTop = 0;
+	let ticking = false;
 
-	window.addEventListener('scroll', () => {
-		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	const animationTimingFunction = 'cubic-bezier(0.291, 0.281, 0, 1.2)';
+	const initialBottomValue = '0px 0px';
+	const scrolledDownBottomValue = '0px 80px';
+
+	const navbar = nav;
+	navbar.style.animationTimingFunction = animationTimingFunction;
+	function updateScroll() {
+		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		const isScrollingDown = scrollTop > lastScrollTop;
 
-		navbar.style.animationTimingFunction = 'cubic-bezier(0.291, 0.281, 0, 1.2)';
-		fab.style.animationTimingFunction = 'cubic-bezier(0.291, 0.281, 0, 1.2)';
-
-		navbar.style.bottom = isScrollingDown ? '-80px' : '0';
-		fab.style.bottom = isScrollingDown ? '1rem' : '6rem';
+		navbar.style.translate = isScrollingDown ? scrolledDownBottomValue : initialBottomValue;
 
 		lastScrollTop = scrollTop;
-	});
+		ticking = false;
+	}
+
+	function requestTick() {
+		if (!ticking) {
+			requestAnimationFrame(updateScroll);
+			ticking = true;
+		}
+	}
+
+	window.addEventListener('scroll', requestTick);
 }

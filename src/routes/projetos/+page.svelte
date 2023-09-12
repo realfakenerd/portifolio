@@ -1,20 +1,17 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import icons from '$lib/icons';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import Hero from '$lib/components/Hero.svelte';
-	import Icon from '$lib/components/Icon.svelte';
-	import Button from '$lib/components/Button.svelte';
-	import icons from '$lib/icons';
-	import { browser } from '$app/environment';
+	import Chips from '$lib/components/Chips.svelte';
 
 	let init = false;
-	onMount(() => {
-		init = true;
-	});
+	onMount(() => (init = true));
 
 	export let data: PageData;
 	const filteredRepos = data.repos.filter(
-		(e) => e.name !== 'portifolio' && e.name !== 'realfakenerd'
+		(e) => e.name !== 'portifolio' && e.name !== 'realfakenerd' && e.description
 	);
 </script>
 
@@ -44,25 +41,34 @@
 						</h2>
 						{#if repo.language}
 							<div class="flex flex-row gap-2">
-								<span
-									class="ring-outline text-label-small inline-flex place-items-center rounded-md px-4 ring-1"
-								>
+								<Chips>
 									{repo.language}
-								</span>
+								</Chips>
 							</div>
 						{/if}
 						<p class="text-body-medium">{repo.description}</p>
 					</section>
 					<div class="flex flex-row gap-2">
-						<Button isRoute={false} isLink icon={icons.github} href={repo.html_url} class="interactive-bg-primary fill-on-primary">
+						<Button
+							isRoute={false}
+							isLink
+							icon={icons.github}
+							href={repo.html_url}
+							class="interactive-bg-primary fill-on-primary"
+						>
 							<span>git repo</span>
 						</Button>
 
 						{#if repo.homepage}
-							<Button isRoute={false} isLink icon={icons.browser} class="interactive-bg-secondary fill-on-secondary" href={repo.homepage}> 
+							<Button
+								isRoute={false}
+								isLink
+								icon={icons.browser}
+								class="interactive-bg-secondary fill-on-secondary"
+								href={repo.homepage}
+							>
 								<span>site</span>
 							</Button>
-							
 						{/if}
 					</div>
 				</li>

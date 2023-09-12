@@ -46,11 +46,11 @@
 		<section class="flex flex-col gap-2 text-left">
 			<div class="w-full">
 				<h1 class="text-headline-medium">Olha a Mensagem! 📜</h1>
-				<p class="text-body-medium py-6">
+				<p class="text-body-medium py-2">
 					Se estiver interessado em fazer negócios, quer falar sobre
-					<a class="decoration-primary underline decoration-solid" href="/projetos"
-						>algum projeto meu</a
-					>
+					<a class="decoration-on-surface underline decoration-solid" href="/projetos">
+						algum projeto meu
+					</a>
 					ou só quer trocar mensagens sobre programação, é só mandar uma mensagem, responderei com um
 					sorriso no rosto 😁
 				</p>
@@ -80,7 +80,7 @@
 					</ul>
 				</section>
 			</div>
-			<figure class="group relative self-center [&>img]:rounded-lg">
+			<figure class="group relative self-center">
 				<img
 					class="relative z-10"
 					src="hands_email.webp"
@@ -102,26 +102,28 @@
 		</section>
 		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
 			<form
-				class="flex flex-col gap-3"
+				class="flex flex-col h-full justify-between"
 				action="https://formsubmit.co/realfakenerd@gmail.com"
 				method="POST"
 			>
-				<input
-					type="hidden"
-					name="_next"
-					value={import.meta.env.DEV
-						? 'http://localhost:5173/success'
-						: 'https://dev-lucasouverney.vercel.app/success'}
-				/>
-				<input type="hidden" name="_subject" value="New submission!" />
-				<input type="hidden" name="_captcha" value="false" />
-				{#each inputs as { input, label, id, d } (id)}
-					{#if input !== 'textarea'}
-						<TextField title={label} icon={d}/>
-					{:else}
-						<TextField isTextarea title={label} icon={d} />
-					{/if}
-				{/each}
+				<fieldset class="flex flex-col gap-3 ">
+					<input
+						type="hidden"
+						name="_next"
+						value={import.meta.env.DEV
+							? 'http://localhost:5173/success'
+							: 'https://dev-lucasouverney.vercel.app/success'}
+					/>
+					<input type="hidden" name="_subject" value="New submission!" />
+					<input type="hidden" name="_captcha" value="false" />
+					{#each inputs as { input, label, id, d } (id)}
+						{#if input !== 'textarea'}
+							<TextField title={label} icon={d} />
+						{:else}
+							<TextField isTextarea title={label} icon={d} />
+						{/if}
+					{/each}
+				</fieldset>
 				<Button class="interactive-bg-primary" isBlock>Enviar</Button>
 			</form>
 		</section>

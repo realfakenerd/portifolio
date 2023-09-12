@@ -5,7 +5,7 @@
 	export let icon: null | string = null;
 </script>
 
-<svelte:element this={tag} class:fill-on-surface-variant={icon} class="chips items-center">
+<svelte:element this={tag} class:fill-on-surface-variant={icon} class="chips items-center {$$props.class??''}">
 	<div class="chips-layer" />
 	<div class="chips-content inline-flex {icon ? 'pl-2 pr-4' : ''}">
 		{#if icon}

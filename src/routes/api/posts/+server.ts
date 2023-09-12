@@ -4,6 +4,11 @@ import type { Post } from '$lib/lib';
 export const GET = (async ({ fetch }) => {
 	try {
 		let posts: Post[] = [];
+
+		const resg = await fetch('https://cdn.jsdelivr.net/gh/realfakenerd/blog@master/posts/');
+
+		console.log(await resg.text());
+
 		const res = await fetch(
 			'https://raw.githubusercontent.com/realfakenerd/blog/main/articles.json'
 		);

@@ -1,44 +1,27 @@
-import icons from "./icons";
-
 export default [
 	{
-		title: 'Home',
+		name: 'Home',
 		path: '/',
-		d: {
-			o: icons.home.o,
-			f: icons.home.f
-		}
+		icon: 'mdi:home'
 	},
 	{
-		title: 'Sobre',
+		name: 'Sobre',
 		path: '/sobre',
-		d: {
-			o: icons.info,
-			f: icons.info
-		}
+		icon: 'mdi:info'
 	},
 	{
-		title: 'Contato',
+		name: 'Contato',
 		path: '/contato',
-		d: {
-			o: icons.contato,
-			f: icons.contato
-		}
+		icon: 'mdi:cellphone'
 	},
 	{
-		title: 'Projetos',
+		name: 'Projetos',
 		path: '/projetos',
-		d: {
-			o: icons.projetos.o,
-			f: icons.projetos.f
-		}
+		icon: 'mdi:xml'
 	},
 	{
-		title: 'Blog',
+		name: 'Blog',
 		path: '/blog',
-		d: {
-			o: icons.blog,
-			f: icons.blog
-		}
+		icon: 'mdi:post-outline'
 	}
 ];
