@@ -40,33 +40,13 @@
 
 <Header currentRoute={data.currentRoute} />
 
-<main
-	class="bg-surface-variant text-on-surface-variant col-start-1 col-end-3 rounded-xl shadow-md md:col-start-2"
->
+<main class="flex-1 p-2">
 	<slot />
 </main>
 
 <style lang="scss">
 	:global(:root) {
 		color-scheme: light dark;
-	}
-
-	.custom-navbar {
-		@apply flex flex-none flex-grow-0;
-		a {
-			@apply order-[0] flex h-20 flex-none flex-grow flex-col items-center justify-center gap-1 px-0 pb-4 pt-3;
-
-			div {
-				@apply flex h-8 w-16 items-center justify-center rounded-2xl p-0 transition-colors duration-[250ms];
-
-				span {
-					@apply flex h-8 items-center justify-center rounded-2xl;
-				}
-			}
-			span {
-				@apply text-label-small order-1 h-4 flex-none flex-grow-0 self-stretch text-center;
-			}
-		}
 	}
 
 	@keyframes fade-in {
@@ -93,12 +73,12 @@
 		}
 	}
 
-	:root::view-transition-old(root) {
+	:root::view-transition-old(card) {
 		animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
 			300ms cubic-bezier(0.291, 0.281, 0, 1.2) both slide-to-left;
 	}
 
-	:root::view-transition-new(root) {
+	:root::view-transition-new(card) {
 		animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
 			300ms cubic-bezier(0.291, 0.281, 0, 1.2) both slide-from-right;
 	}

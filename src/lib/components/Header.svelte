@@ -2,6 +2,7 @@
 	import { handleScroll } from '$lib/utils';
 	import routes from '$lib/routes';
 	import Icon from '@iconify/svelte';
+	import Toggle from './Toggle.svelte';
 
 	export let currentRoute = '';
 </script>
@@ -40,9 +41,11 @@
 					</li>
 				{/each}
 			</ul>
+
+			<Toggle />
 		</nav>
 	</div>
-	<div class="w-full flex-col gap-y-2 md:hidden">
+	<div class="w-full md:hidden">
 		<nav
 			use:handleScroll
 			class="custom-navbar transition-all duration-300

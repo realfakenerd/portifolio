@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Hero from '$lib/components/Hero.svelte';
 	import List from '$lib/components/List.svelte';
 	import ListItem from '$lib/components/ListItem.svelte';
 	import type { PageData } from './$types';
@@ -100,13 +101,13 @@
 	/>
 </svelte:head>
 
-<section class="p-3">
+<Hero>
 	<section class="flex flex-col items-center justify-center gap-2">
 		<div
 			role="presentation"
 			class="bg-background flex flex-col items-center justify-center gap-2 rounded-xl p-4 md:flex-row"
 		>
-			<img class="w-32 rounded-full" src={user.avatar_url} alt="Minha foto de perfil do github" />
+			<img width="128" height="128" class="w-32 rounded-full" src={user.avatar_url} alt="Minha foto de perfil do github" />
 			<div class="flex flex-col gap-2">
 				<section>
 					<h1 class="text-title-medium">{user.name}</h1>
@@ -203,4 +204,4 @@
 			</div>
 		</div>
 	</section>
-</section>
+</Hero>

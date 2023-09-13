@@ -3,6 +3,9 @@
 	export let data: PageData;
 
 	const { content, meta } = data;
+
+	
+	const title = meta.title.replaceAll(' ', '').replace('/','');
 </script>
 
 <svelte:head>
@@ -23,7 +26,13 @@
 <article class="flex flex-col gap-y-6">
 	<section class="flex flex-col gap-y-3">
 		<hgroup>
-			<h1 style="view-transition-name: postname;" class="text-headline-large text-tertiary" aria-level={1}>{meta.title}</h1>
+			<h1
+				style:--title="title-{title}"
+				class="text-headline-large text-tertiary"
+				aria-level={1}
+			>
+				{meta.title}
+			</h1>
 			<h2 class="text-headline-small" aria-level={2}>{meta.description}</h2>
 		</hgroup>
 
@@ -32,7 +41,8 @@
 				class="max-h-96 w-full rounded-xl object-cover object-center shadow-md"
 				height="380"
 				src={meta.image}
-				alt="poster"
+				alt="poster de {meta.title}"
+				style:--post="image-{title}"
 			/>
 		</figure>
 	</section>
@@ -44,5 +54,13 @@
 <style>
 	section::-webkit-scrollbar-thumb {
 		display: hidden;
+	}
+
+	hgroup h1 {
+		view-transition-name: var(--title);
+	}
+
+	img {
+		view-transition-name: var(--post);
 	}
 </style>

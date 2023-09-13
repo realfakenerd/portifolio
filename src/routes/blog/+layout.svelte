@@ -1,19 +1,25 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { goto } from '$app/navigation';
+	import Hero from '$lib/components/Hero.svelte';
 	export let data;
 </script>
 
 <svelte:head>
 	<title>Blog de Tecnologia e Tutoriais</title>
-	<meta name="description" content="Encontre os melhores artigos, tutoriais e análises sobre tecnologia no nosso blog. Aprenda sobre programação, desenvolvimento web, inteligência artificial e muito mais." />
+	<meta
+		name="description"
+		content="Encontre os melhores artigos, tutoriais e análises sobre tecnologia no nosso blog. Aprenda sobre programação, desenvolvimento web, inteligência artificial e muito mais."
+	/>
 	<meta property="og:title" content="Blog de Tecnologia e Tutoriais" />
-	<meta property="og:description" content="Encontre os melhores artigos, tutoriais e análises sobre tecnologia no nosso blog. Aprenda sobre programação, desenvolvimento web, inteligência artificial e muito mais." />
+	<meta
+		property="og:description"
+		content="Encontre os melhores artigos, tutoriais e análises sobre tecnologia no nosso blog. Aprenda sobre programação, desenvolvimento web, inteligência artificial e muito mais."
+	/>
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-
-<section class="flex min-h-[50dvh]">
+<Hero>
 	<div class="flex w-full flex-col gap-4 p-4 flex-1">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}
@@ -26,4 +32,4 @@
 
 		<slot />
 	</div>
-</section>
+</Hero>

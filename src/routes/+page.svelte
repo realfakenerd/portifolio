@@ -31,7 +31,7 @@
 	<meta name="keywords" content="webapps, desenvolvimento, navegador, Lucas" />
 </svelte:head>
 
-<Hero>
+<Hero class="h-full">
 	<section class="flex flex-col items-start gap-3 font-medium" aria-live={init ? 'polite' : 'off'}>
 		{#if init}
 			{#each text as t, index (index)}

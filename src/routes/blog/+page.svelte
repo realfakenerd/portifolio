@@ -22,14 +22,15 @@
 />
 <ul class="grid gap-2">
 	{#each data.posts.filter(pesquisa) as post (post.id)}
+	{@const title = post.fm.title.replaceAll(' ', '').replace('/','')}
 		<li
 			transition:slide={{ easing: easeEmphasized }}
 			class="interactive-bg-background flex flex-col gap-y-2 rounded-xl p-4"
 		>
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
-					<a style="view-transition-name: postname;" class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
-						<h1 class="text-title-medium ">
+					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
+						<h1 style:--title="title-{title}" class="text-title-medium ">
 							{post.fm.title}
 						</h1>
 					</a>
@@ -48,6 +49,7 @@
 						width="100"
 						src={post.fm.image}
 						alt="{post.fm.title} - Imagem da publicação"
+						style:--post="image-{title}"
 					/>
 				</figure>
 			</div>
@@ -61,5 +63,13 @@
 <style>
 	ul.grid {
 		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+	}
+
+	h1 {
+		view-transition-name: var(--title);
+	}
+
+	img {
+		view-transition-name: var(--post);
 	}
 </style>

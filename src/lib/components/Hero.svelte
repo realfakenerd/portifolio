@@ -1,7 +1,7 @@
-<section>
-	<div
-		class="flex w-full flex-row flex-wrap items-center justify-center gap-4 p-4 md:justify-between"
-	>
-		<slot />
-	</div>
+<section
+	style="view-transition-name: card;"
+	class="flex w-full flex-row flex-wrap items-center justify-center card card-filled md:justify-between {$$props.class??''}"
+>
+	<slot />
 </section>
+
