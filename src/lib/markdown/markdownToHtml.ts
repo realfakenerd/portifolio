@@ -18,7 +18,7 @@ import searchAndReplace from './searchAndReplace';
 
 interface ContentType {
 	content: string;
-	frontmatter: Fm;
+	fm: Fm;
 }
 
 async function markdownToHTML(markdown: string): Promise<ContentType> {
@@ -71,7 +71,7 @@ async function markdownToHTML(markdown: string): Promise<ContentType> {
 
 	return {
 		content: processedMarkdown as string,
-		frontmatter: data as Fm
+		fm: data as Fm
 	};
 }
 

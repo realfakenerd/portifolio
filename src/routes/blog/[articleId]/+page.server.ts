@@ -5,7 +5,8 @@ export const load = (async ({ params }) => {
 	try {
 		const post = await getPost(params.articleId);
 		return {
-			post
+			content: post.content,
+			fm: post.fm
 		};
 	} catch (e) {
 		throw error(404, `Could not find ${params.articleId}`);
