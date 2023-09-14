@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon.svelte';
+	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import Hero from '$lib/components/Hero.svelte';
 	export let data;
@@ -20,11 +20,11 @@
 </svelte:head>
 
 <Hero>
-	<div class="flex w-full flex-col gap-4 p-4 flex-1">
+	<div class="flex w-full flex-col gap-4">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}
 				<button class="fill-on-surface-variant px-4" on:click={() => goto('/blog')}>
-					<Icon d={`M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z`} />
+					<Icon icon="mdi:arrow-left" width="24" />
 				</button>
 			{/if}
 			<h1 class="text-display-medium">Blog</h1>

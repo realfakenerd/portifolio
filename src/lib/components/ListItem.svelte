@@ -11,7 +11,7 @@
 	class:list-lines-2={lines === 2}
 	class:list-lines-3={lines === 3}
 >
-	<div class="item-body ">
+	<div class="item-body">
 		{#if heading}
 			<h2 class="list-heading">{heading}</h2>
 		{/if}

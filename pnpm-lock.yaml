@@ -10,6 +10,9 @@ dependencies:
     version: 1.1.2(tailwindcss@3.3.3)
 
 devDependencies:
+  '@fontsource-variable/noto-sans-display':
+    specifier: ^5.0.13
+    version: 5.0.13
   '@fontsource/fira-mono':
     specifier: ^4.5.10
     version: 4.5.10
@@ -587,6 +590,10 @@ packages:
   /@eslint/js@8.49.0:
     resolution: {integrity: sha512-1S8uAY/MTJqVx0SC4epBq+N2yhuwtNwLbJYNZyhL2pO1ZVKn5HFXav5T41Ryzy9K9V7ZId2JB2oy/W4aCd9/2w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@fontsource-variable/noto-sans-display@5.0.13:
+    resolution: {integrity: sha512-tEwiysLBjhK9jafufX3OdrOcM/syM6F9p5KrwBUbCJtkoi8drsuZgpLakiNRIPvth1/NfQJrx6TepXkRJ0SjLw==}
     dev: true
 
   /@fontsource/fira-mono@4.5.10:

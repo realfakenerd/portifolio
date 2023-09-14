@@ -10,25 +10,25 @@
 			id: 'email',
 			label: 'Seu email',
 			input: 'email',
-			d: `M12 1.95c-5.52 0-10 4.48-10 10s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z`
+			d: `mdi:at`
 		},
 		{
 			id: 'name',
 			label: 'Seu nome',
 			input: 'text',
-			d: `M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z`
+			d: `mdi:person`
 		},
 		{
 			id: 'subject',
 			label: 'Qual é o assunto?',
 			input: 'text',
-			d: `M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z`
+			d: `mdi:text-long`
 		},
 		{
 			id: 'message',
 			label: 'Qual é a mensagem?',
 			input: 'textarea',
-			d: `M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z`
+			d: `mdi:message`
 		}
 	];
 </script>
@@ -57,7 +57,7 @@
 				<section class="flex flex-col gap-1">
 					<p class="text-body-small">Pode checar minhas redes sociais também 😉</p>
 					<ul class="text-label-large text-primary flex flex-row gap-2">
-						<Chips tag="li" icon={icons.github}>
+						<Chips tag="li" icon="mdi:github">
 							<a
 								href="https://github.com/realfakenerd"
 								rel="noreferrer"
@@ -67,7 +67,7 @@
 								github
 							</a>
 						</Chips>
-						<Chips tag="li" icon={icons.linkedin}>
+						<Chips tag="li" icon="mdi:linkedin">
 							<a
 								href="https://www.linkedin.com/in/dev-lucas-ouverney/"
 								rel="noreferrer"
@@ -124,7 +124,7 @@
 						{/if}
 					{/each}
 				</fieldset>
-				<Button class="interactive-bg-primary" isBlock>Enviar</Button>
+				<Button class="interactive-bg-primary" isBlock  icon="mdi:send">Enviar</Button>
 			</form>
 		</section>
 	</div>

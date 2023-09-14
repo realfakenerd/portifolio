@@ -5,6 +5,9 @@
 	import Toggle from './Toggle.svelte';
 
 	export let currentRoute = '';
+
+	$: isCurrentRoute = (path: string) =>
+		currentRoute === path || currentRoute.startsWith(`${path}/`);
 </script>
 
 <header class="bottom-0 md:w-[80px] z-[999] md:left-0 md:top-0">
@@ -17,16 +20,13 @@
 							class="group flex flex-col items-center gap-y-1"
 							href={path}
 							aria-label={`Ir para a página ${name}`}
-							aria-current={currentRoute === path || currentRoute.startsWith(`${path}/`)
-								? 'page'
-								: null}
+							aria-current={isCurrentRoute(path) ? 'page' : null}
 							role="tab"
 							tabindex="0"
 						>
 							<div
 								class="button group-hover:bg-secondary-container-hover"
-								style="background-color:{currentRoute === path ||
-								currentRoute.startsWith(`${path}/`)
+								style="background-color:{isCurrentRoute(path)
 									? 'rgb(var(--color-secondary-container))'
 									: ''} "
 							>
@@ -34,7 +34,7 @@
 									<Icon width="24" {icon} />
 								</span>
 							</div>
-							<span>
+							<span style:font-variation-settings={isCurrentRoute(path) ? `"wght" 600` : `"wght" 400`}>
 								{name}
 							</span>
 						</a>

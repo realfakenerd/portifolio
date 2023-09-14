@@ -18,14 +18,14 @@
 	bind:value
 	style="filled"
 	title={'Search'}
-	trailingIcon={`M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z`}
+	trailingIcon="mdi:search"
 />
 <ul class="grid gap-2">
 	{#each data.posts.filter(pesquisa) as post (post.id)}
 	{@const title = post.fm.title.replaceAll(' ', '').replace('/','')}
 		<li
 			transition:slide={{ easing: easeEmphasized }}
-			class="interactive-bg-background flex flex-col gap-y-2 rounded-xl p-4"
+			class="gap-y-2 card"
 		>
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
@@ -45,8 +45,8 @@
 				<figure>
 					<img
 						class="rounded-lg object-cover object-center"
-						height="100"
-						width="100"
+						height="144"
+						width="144"
 						src={post.fm.image}
 						alt="{post.fm.title} - Imagem da publicação"
 						style:--post="image-{title}"
@@ -62,7 +62,7 @@
 
 <style>
 	ul.grid {
-		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
 	}
 
 	h1 {

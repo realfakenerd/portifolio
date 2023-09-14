@@ -105,7 +105,7 @@
 	<section class="flex flex-col items-center justify-center gap-2">
 		<div
 			role="presentation"
-			class="bg-background flex flex-col items-center justify-center gap-2 rounded-xl p-4 md:flex-row"
+			class="card flex flex-col items-center gap-2 rounded-lg md:flex-row"
 		>
 			<img width="128" height="128" class="w-32 rounded-full" src={user.avatar_url} alt="Minha foto de perfil do github" />
 			<div class="flex flex-col gap-2">
@@ -128,7 +128,7 @@
 		</div>
 
 		<div class="w-full">
-			<div class="bg-background flex flex-col gap-2 rounded-xl p-4">
+			<div class="card rounded-lg gap-2">
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
 				<section class="flex flex-col items-start justify-between gap-y-2 font-mono md:flex-row">
@@ -136,7 +136,7 @@
 						isUl
 						list={editor_terminal}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}
@@ -159,7 +159,7 @@
 						isUl
 						list={frameworks_libs}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}
@@ -182,7 +182,7 @@
 						isUl
 						list={hosting_co}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-lg md:w-fit"
+						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}

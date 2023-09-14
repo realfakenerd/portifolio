@@ -41,7 +41,7 @@
 						</h2>
 						{#if repo.language}
 							<div class="flex flex-row gap-2">
-								<Chips>
+								<Chips icon="logos:{repo.language.toLowerCase()}-icon">
 									{repo.language}
 								</Chips>
 							</div>
@@ -52,7 +52,7 @@
 						<Button
 							isRoute={false}
 							isLink
-							icon={icons.github}
+							icon="mdi:github"
 							href={repo.html_url}
 							class="interactive-bg-primary fill-on-primary"
 						>
@@ -63,7 +63,7 @@
 							<Button
 								isRoute={false}
 								isLink
-								icon={icons.browser}
+								icon="mdi:web"
 								class="interactive-bg-secondary fill-on-secondary"
 								href={repo.homepage}
 							>

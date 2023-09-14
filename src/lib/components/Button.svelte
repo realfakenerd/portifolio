@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from './Icon.svelte';
+	import Icon from '@iconify/svelte';
 
 	export let isLink = false;
     export let isBlock = false;
@@ -23,7 +23,7 @@
     class:w-full={isBlock}
 >
 	{#if icon}
-		<Icon width={18} d={icon} />
+		<Icon width={18} icon={icon} />
 	{/if}
 	<slot />
 </svelte:element>

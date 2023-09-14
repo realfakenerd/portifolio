@@ -4,11 +4,11 @@
 		HTMLInputAttributes,
 		HTMLTextareaAttributes
 	} from 'svelte/elements';
-	import Icon from '$lib/components/Icon.svelte';
+	import Icon from '@iconify/svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	let wrapper: HTMLDivElement, textarea: HTMLTextAreaElement;
-	let id = `input-${Date.now()}`;
+	let id = `input-${crypto.randomUUID()}`;
 
 	export let value = '';
 	export let error = false;
@@ -81,17 +81,17 @@
 		{/if}
 		{#if icon}
 			<span class="leading-icon">
-				<Icon d={icon} />
+				<Icon icon={icon} />
 			</span>
 		{/if}
 		{#if error}
 			<span class="trailing-icon">
-				<Icon d={iconError ?? ''} />
+				<Icon icon={iconError ?? ''} />
 			</span>
 		{/if}
 		{#if trailingIcon}
 			<button class="trailing-button" on:click={() => dispatch('trailingClick')}>
-				<Icon d={trailingIcon} />
+				<Icon icon={trailingIcon} />
 			</button>
 		{/if}
 		<div class="text-field-layer" />

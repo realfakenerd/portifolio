@@ -12,6 +12,7 @@
 		"format": "prettier --cache --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@fontsource-variable/noto-sans-display": "^5.0.13",
 		"@fontsource/fira-mono": "^4.5.10",
 		"@fontsource/roboto": "^4.5.8",
 		"@iconify/svelte": "^3.1.4",

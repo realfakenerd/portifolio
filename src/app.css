@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	height: -webkit-fill-available;
-	width: -webkit-fill-available;
-}
-
-#svelte {
-	height: 100%;
-}
-
-.button {
-	@apply text-label-large rounded-3xl px-6 py-2;
+body {
+	font-family: 'Noto Sans Display Variable', sans-serif;
+	font-display: swap;
 }
 
 .prose {

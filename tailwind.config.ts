@@ -6,11 +6,6 @@ export default withMaterialColors(
 		content: ['./src/**/*.{html,js,svelte,ts}'],
 		plugins: [tail],
 		theme: {
-			extend: {
-				fontFamily: {
-					sans: 'Roboto'
-				}
-			},
 			fontSize: {
 				'display-large': ['3.5rem', { lineHeight: '4rem' }],
 				'display-medium': ['2.8rem', { lineHeight: '3.25rem' }],

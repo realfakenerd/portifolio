@@ -2,10 +2,9 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import matter from 'gray-matter';
 import { marked, Renderer } from 'marked';
-// @ts-expect-error stop complaining about that
 import { markedHighlight } from 'marked-highlight';
 import hljs from 'highlight.js';
-const renderer = {
+const renderer: Partial<Renderer> = {
 	heading(text, level) {
 		const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 		return `
@@ -32,7 +31,7 @@ const renderer = {
 		out += `/>`;
 		return `<figure>${out}</figure>`;
 	}
-} satisfies Renderer;
+};
 
 export const GET = (async ({ fetch, params }) => {
 	const res = await fetch(
