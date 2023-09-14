@@ -6,8 +6,8 @@
 
 	export let currentRoute = '';
 
-	$: isCurrentRoute = (path: string) =>
-		currentRoute === path || currentRoute.startsWith(`${path}/`);
+	$: isCurrentRoute = <T, P>(path: string, firstClass: T, secondClass?: P) =>
+		currentRoute === path || currentRoute.startsWith(`${path}/`) ? firstClass : secondClass;
 </script>
 
 <header class="bottom-0 md:w-[80px] z-[999] md:left-0 md:top-0">
@@ -20,21 +20,20 @@
 							class="group flex flex-col items-center gap-y-1"
 							href={path}
 							aria-label={`Ir para a página ${name}`}
-							aria-current={isCurrentRoute(path) ? 'page' : null}
 							role="tab"
 							tabindex="0"
 						>
 							<div
+								aria-current={isCurrentRoute(path, 'page', undefined)}
 								class="button group-hover:bg-secondary-container-hover"
-								style="background-color:{isCurrentRoute(path)
-									? 'rgb(var(--color-secondary-container))'
-									: ''} "
 							>
 								<span class="fill-on-background group-hover:fill-on-secondary-container">
 									<Icon width="24" {icon} />
 								</span>
 							</div>
-							<span style:font-variation-settings={isCurrentRoute(path) ? `"wght" 600` : `"wght" 400`}>
+							<span
+								style:font-variation-settings={isCurrentRoute(path, `"wght" 600`, `"wght" 400`)}
+							>
 								{name}
 							</span>
 						</a>
@@ -56,23 +55,20 @@
 					href={path}
 					class="group"
 					aria-label={`Ir para a página ${name}`}
-					aria-current={currentRoute === path || currentRoute.startsWith(`${path}/`)
-						? 'page'
-						: null}
 					role="tab"
 					tabindex="0"
 				>
 					<div
 						class="group-hover:bg-secondary-container-hover"
-						style="background-color:{currentRoute === path || currentRoute.startsWith(`${path}/`)
-							? 'rgb(var(--color-secondary-container))'
-							: ''} "
+						style:background-color={isCurrentRoute(path, 'rgb(var(--color-secondary-container))')}
 					>
 						<span class="fill-on-background group-hover:fill-on-secondary-container">
 							<Icon width="24" {icon} />
 						</span>
 					</div>
-					<span>{name}</span>
+					<span style:font-variation-settings={isCurrentRoute(path, `"wght" 600`, `"wght" 400`)}
+						>{name}</span
+					>
 				</a>
 			{/each}
 		</nav>
@@ -98,6 +94,10 @@
 
 	.custom-navbar span {
 		@apply text-label-small order-1 h-4 flex-none flex-grow-0 self-stretch text-center;
+	}
+
+	div[aria-current='page'] {
+		background-color: rgb(var(--color-secondary-container));
 	}
 
 	nav {

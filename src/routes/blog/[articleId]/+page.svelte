@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	export let data: PageData;
+	import type { PageServerData } from './$types';
+	export let data: PageServerData;
 
-	const { content, meta } = data;
+	const { post } = data;
+	const {} = post
 
-	
-	const title = meta.title.replaceAll(' ', '').replace('/','');
+	const title = meta.title.replaceAll(' ', '').replace('/', '');
 </script>
 
 <svelte:head>
@@ -26,11 +26,7 @@
 <article class="flex flex-col gap-y-6">
 	<section class="flex flex-col gap-y-3">
 		<hgroup>
-			<h1
-				style:--title="title-{title}"
-				class="text-headline-large text-tertiary"
-				aria-level={1}
-			>
+			<h1 style:--title="title-{title}" class="text-headline-large text-tertiary" aria-level={1}>
 				{meta.title}
 			</h1>
 			<h2 class="text-headline-small" aria-level={2}>{meta.description}</h2>

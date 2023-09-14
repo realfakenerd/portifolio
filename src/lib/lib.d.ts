@@ -1,27 +1,27 @@
-export interface SinglePost {
+interface SinglePost {
 	content: string;
 	fm: Fm;
 }
 
-export interface Post {
-	fm: Fm;
-	relativePath: string;
-	relativeDir: string;
-	filename: string;
-	slug: string;
-	id: string;
+interface Post {
+	title: string
+	description: string
+	slug: string
+	published: string
+	category: string | string[]
+	series?: string
+	draft?: string
 }
 
-export interface Fm {
+interface Fm {
 	title: string;
 	description: string;
-	image: string;
-	date: string;
-	categories: string[];
-	published: boolean;
-}
+	slug: string;
+	published: string;
+	category: string;
+};
 
-export interface GitUser {
+interface GitUser {
 	login: string;
 	id: number;
 	node_id: string;
@@ -56,7 +56,7 @@ export interface GitUser {
 	updated_at: Date;
 }
 
-export interface Repo {
+interface Repo {
 	id: number;
 	node_id: string;
 	name: string;
@@ -138,20 +138,20 @@ export interface Repo {
 	default_branch: DefaultBranch;
 }
 
-export enum DefaultBranch {
+enum DefaultBranch {
 	Develop = 'develop',
 	Main = 'main',
 	Master = 'master'
 }
 
-export enum Language {
+enum Language {
 	JavaScript = 'JavaScript',
 	Shell = 'Shell',
 	Svelte = 'Svelte',
 	TypeScript = 'TypeScript'
 }
 
-export interface License {
+interface License {
 	key: string;
 	name: string;
 	spdx_id: string;
@@ -159,7 +159,7 @@ export interface License {
 	node_id: string;
 }
 
-export interface Owner {
+interface Owner {
 	login: Login;
 	id: number;
 	node_id: NodeID;
@@ -180,34 +180,34 @@ export interface Owner {
 	site_admin: boolean;
 }
 
-export enum EventsURL {
+enum EventsURL {
 	HTTPSAPIGithubCOMUsersRealfakenerdEventsPrivacy = 'https://api.github.com/users/realfakenerd/events{/privacy}'
 }
 
-export enum FollowingURL {
+enum FollowingURL {
 	HTTPSAPIGithubCOMUsersRealfakenerdFollowingOtherUser = 'https://api.github.com/users/realfakenerd/following{/other_user}'
 }
 
-export enum GistsURL {
+enum GistsURL {
 	HTTPSAPIGithubCOMUsersRealfakenerdGistsGistID = 'https://api.github.com/users/realfakenerd/gists{/gist_id}'
 }
 
-export enum Login {
+enum Login {
 	Realfakenerd = 'realfakenerd'
 }
 
-export enum NodeID {
+enum NodeID {
 	MDQ6VXNlcjE2NjY4MTA5 = 'MDQ6VXNlcjE2NjY4MTA5'
 }
 
-export enum StarredURL {
+enum StarredURL {
 	HTTPSAPIGithubCOMUsersRealfakenerdStarredOwnerRepo = 'https://api.github.com/users/realfakenerd/starred{/owner}{/repo}'
 }
 
-export enum Type {
+enum Type {
 	User = 'User'
 }
 
-export enum Visibility {
+enum Visibility {
 	Public = 'public'
 }

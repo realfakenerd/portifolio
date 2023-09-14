@@ -8,7 +8,7 @@ body {
 }
 
 .prose {
-	@apply flex flex-col gap-y-2;
+	@apply flex flex-col gap-y-2 max-w-2xl mx-auto;
 }
 
 .prose :is(h1, h2, h3, h4, h5) {
