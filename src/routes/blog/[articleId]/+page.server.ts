@@ -1,5 +1,4 @@
 import type { PageServerLoad } from './$types';
-import { getPost } from '$lib/markdown/posts';
 import { error } from '@sveltejs/kit';
 export const load = (async ({ fetch, params }) => {
 	try {
