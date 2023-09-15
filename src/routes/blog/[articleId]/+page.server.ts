@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 export const load = (async ({ fetch, params }) => {
 	try {
-		const res = await fetchJSON<Post[]>(`/api/posts/${params.articleID}`, fetch);
+		const post = await fetchJSON<Post[]>(`/api/posts/${params.articleID}`, fetch);
 		return {
 			content: post.content,
 			meta: post.fm
