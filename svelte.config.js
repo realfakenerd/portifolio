@@ -11,10 +11,7 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter({
-			runtime: 'edge',
-			regions: 'all'
-		})
+		adapter: adapter()
 	}
 };
 
