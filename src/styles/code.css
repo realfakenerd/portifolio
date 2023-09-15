@@ -1,0 +1,136 @@
+.prose code[class*='language-'],
+.prose pre[class*='language-'] {
+	@apply text-label-large rounded-b-sm bg-surface;
+	tab-size: 2;
+}
+
+.prose pre {
+	@apply py-4;
+	line-height: 34px;
+	overflow-x: auto;
+}
+
+.prose pre .code-line {
+	@apply pl-6;
+}
+
+.prose pre .line-number {
+	padding: 0;
+}
+
+.prose pre > code {
+	counter-reset: step;
+	counter-increment: step 0;
+}
+
+.prose code:not(pre > code) {
+	@apply bg-surface text-label-small rounded-sm px-2 py-1;
+	font-family: 'Noto Sans Mono Variable', sans-serif;
+    font-display: swap;
+}
+
+.prose blockquote code:not(pre > code) {
+	@apply bg-surface-variant;
+}
+
+.prose kbd,
+.prose code {
+    font-family: 'Noto Sans Mono Variable', sans-serif;
+    font-display: swap;
+}
+/* 
+html[data-font='dyslexic'] .prose kbd,
+html[data-font='dyslexic'] .prose code {
+	font-family: var(--font-dyslexic-mono);
+} */
+
+/* .prose kbd {
+    @apply p-1;
+	color: var(--clr-code-inline-txt);
+	background-color: var(--clr-code-inline-bg);
+	border: 1px solid var(--clr-primary);
+	border-width: 1px 1px 3px;
+	border-radius: var(--rounded-4);
+} */
+
+.prose .rehype-code-title {
+    @apply w-full text-primary bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
+	z-index: 1;
+}
+
+.prose .rehype-code-title button {
+	@apply btn;
+}
+.prose .rehype-code-title button:hover {
+	@apply btn-outlined;
+}
+
+.prose .line-number::before {
+    @apply w-4 inline-block mr-4 px-4 text-primary text-right;
+	content: counter(step);
+	counter-increment: step;
+}
+
+.prose .highlight-line {
+    @apply text-tertiary block bg-surface-variant/20;
+}
+
+.prose .code-line.inserted {
+	display: block;
+	background-color: hsl(160 84% 39% / 20%);
+}
+
+.prose .code-line.deleted {
+	display: block;
+	background-color: hsl(0 84% 60% / 20%);
+}
+
+.prose .token.regex,
+.prose .token.important,
+.prose .token.variable,
+.prose .token.function,
+.prose .token.class-name,
+.prose .language-css .token.rule {
+	@apply text-primary;
+}
+
+.prose .token.keyword,
+.prose .language-css .token.variable,
+.prose .language-css .token.selector,
+.prose .language-css .token.pseudo-element {
+    @apply text-secondary;
+}
+
+.prose .token.tag,
+.prose .token.boolean,
+.prose .token.constant,
+.prose .token.symbol,
+.prose .token.deleted,
+.prose .token.entity,
+.prose .token.url,
+.prose .style .token.string {
+	@apply text-on-tertiary-container;
+}
+
+.prose .token.operator,
+.prose .token.punctuation,
+.prose .literal-property.property,
+.prose .token.property,
+.prose .token.attr-name,
+.prose .token.string,
+.prose .token.char,
+.prose .token.builtin,
+.prose .token.inserted,
+.prose .language-css .unit,
+.prose .language-css .token.function,
+.prose .token.atrule .token.property,
+.prose .token.atrule .token.rule {
+	@apply text-tertiary;
+}
+
+.prose .token.comment,
+.prose .token.prolog,
+.prose .token.doctype,
+.prose .token.cdata {
+	@apply text-on-surface/50;
+}

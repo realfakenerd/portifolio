@@ -6,9 +6,11 @@ export const load = (async ({ params }) => {
 		const post = await getPost(params.articleId);
 		return {
 			content: post.content,
-			fm: post.fm
+			meta: post.fm
 		};
 	} catch (e) {
+		console.log(e);
+		
 		throw error(404, `Could not find ${params.articleId}`);
 	}
 }) as PageServerLoad;

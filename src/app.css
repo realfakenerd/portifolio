@@ -1,3 +1,6 @@
+@import url('styles/post.css');
+@import url('styles/code.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,50 +8,4 @@
 body {
 	font-family: 'Noto Sans Display Variable', sans-serif;
 	font-display: swap;
-}
-
-.prose {
-	@apply flex flex-col gap-y-2 max-w-2xl mx-auto;
-}
-
-.prose :is(h1, h2, h3, h4, h5) {
-	@apply text-primary;
-}
-
-.prose :is(h1) {
-	@apply text-title-large;
-}
-
-.prose h2 {
-	@apply text-title-medium;
-}
-
-.props h3 {
-	@apply text-title-small;
-}
-
-.prose ul {
-	@apply bg-background flex max-w-fit flex-col rounded-lg py-2;
-}
-
-.prose ul li {
-	@apply interactive-bg-background py-2 pl-3 pr-6;
-}
-
-.prose a {
-	@apply text-tertiary underline;
-}
-
-.prose pre {
-	max-inline-size: 100%;
-	tab-size: 2;
-	@apply bg-background text-body-small overflow-x-scroll rounded-xl p-2 font-mono;
-}
-
-.prose p {
-	@apply text-body-medium;
-}
-
-.prose img {
-	@apply bg-background max-h-40 w-full object-cover object-center;
 }

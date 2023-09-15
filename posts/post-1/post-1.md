@@ -1,7 +1,7 @@
 ---
-title: Create Amazing User Interfaces Using Animation With Svelte
+title: Post 1
 description: Learn how to create amazing user interfaces with Svelte.
-slug: animation-with-svelte
+slug: post-1
 published: '2022-9-22'
 category: 
     - svelte
@@ -40,6 +40,7 @@ You can use the same intro and outro transition with `transition:fade` but if yo
 <script lang="ts">
   import { fade } from 'svelte/transition'
 
+  /** @const {boolean} */
   let animate = false
 </script>
 

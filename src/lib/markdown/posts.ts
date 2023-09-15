@@ -7,7 +7,7 @@ type Fetch = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>
 export async function fetchJSON<T>(url: string, fetchFn: Fetch = fetch) {
 	const response = await fetchFn(url);
 	if (!response.ok) throw new Error(`Error fetching JSON from ${response.url}`);
-	return await response.json() as Promise<T>;
+	return (await response.json()) as Promise<T>;
 }
 
 async function parseMarkdownFiles() {
@@ -36,6 +36,8 @@ async function parseMarkdownFile(slug: string) {
 		const markdownContent = await readFile(postPath, 'utf-8');
 		return markdownToHTML(markdownContent);
 	} catch (e) {
+		console.log(e);
+
 		throw new Error(`Could not parse ${slug}.md`);
 	}
 }

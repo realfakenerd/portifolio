@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import Hero from '$lib/components/Hero.svelte';
+	import '@fontsource-variable/noto-sans-mono';
 	export let data;
 </script>
 

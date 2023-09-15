@@ -2,8 +2,7 @@
 	import type { PageServerData } from './$types';
 	export let data: PageServerData;
 
-	const { post } = data;
-	const {} = post
+	const { meta, content } = data;
 
 	const title = meta.title.replaceAll(' ', '').replace('/', '');
 </script>
@@ -23,16 +22,16 @@
 	<meta name="robots" content="index, follow" />
 </svelte:head>
 
-<article class="flex flex-col gap-y-6">
-	<section class="flex flex-col gap-y-3">
-		<hgroup>
-			<h1 style:--title="title-{title}" class="text-headline-large text-tertiary" aria-level={1}>
+<section class="flex flex-col gap-y-6">
+	<article class="prose">
+		<header>
+			<h1 style:--title="title-{title}" aria-level={1}>
 				{meta.title}
 			</h1>
-			<h2 class="text-headline-small" aria-level={2}>{meta.description}</h2>
-		</hgroup>
+			<p aria-level={2}>{meta.description}</p>
+		</header>
 
-		<figure>
+		<!-- <figure>
 			<img
 				class="max-h-96 w-full rounded-xl object-cover object-center shadow-md"
 				height="380"
@@ -40,23 +39,17 @@
 				alt="poster de {meta.title}"
 				style:--post="image-{title}"
 			/>
-		</figure>
-	</section>
-	<section class="prose text-on-surface-variant">
+		</figure> -->
 		{@html content}
-	</section>
-</article>
+	</article>
+</section>
 
 <style>
-	section::-webkit-scrollbar-thumb {
-		display: hidden;
-	}
-
-	hgroup h1 {
+	header h1 {
 		view-transition-name: var(--title);
 	}
 
-	img {
+	/* img {
 		view-transition-name: var(--post);
-	}
+	} */
 </style>

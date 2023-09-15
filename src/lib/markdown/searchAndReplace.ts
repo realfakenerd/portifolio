@@ -1,43 +1,59 @@
-function searchAndReplace(content: string, slug: string): string {
-	const embed = /{% embed src="(.*?)" title="(.*?)" %}/g;
-	const video = /{% video src="(.*?)" %}/g;
-	const image = /{% img src="(.*?)" alt="(.*?)" %}/g;
-	const youtube = /{% youtube id="(.*?)" title="(.*?)" %}/g;
+type Replacement = (_: string, src: string, title: string) => string;
 
-	return content
-		.replace(embed, (_, src, title) => {
-			return `
-        <iframe
-          title="${title}"
-          src="${src}"
-          loading="lazy"
-        ></iframe>
-      `.trim();
-		})
-		.replace(video, (_, src) => {
-			return `
-        <video controls>
-          <source
+interface Pattern {
+	regex: RegExp;
+	replacement: Replacement;
+}
+
+function searchAndReplace(content: string, slug: string): string {
+	const patterns: Pattern[] = [
+		{
+			regex: /{% embed src="(.*?)" title="(.*?)" %}/g,
+			replacement: (_, src, title) =>
+				`
+          <iframe
+            title="${title}"
+            src="${src}"
+            loading="lazy"
+          ></iframe>
+        `.trim()
+		},
+		{
+			regex: /{% video src="(.*?)" %}/g,
+			replacement: (_, src) =>
+				`
+          <video class="card p-0" controls>
+            <source
+              src="https://raw.githubusercontent.com/realfakenerd/portifolio/main/posts/${slug}/images/${src}"
+              type="video/mp4"
+            />
+          </video>
+        `.trim()
+		},
+		{
+			regex: /{% img src="(.*?)" alt="(.*?)" %}/g,
+			replacement: (_, src, alt) =>
+				`
+          <img
+			class="card p-0"
             src="https://raw.githubusercontent.com/realfakenerd/portifolio/main/posts/${slug}/images/${src}"
-            type="video/mp4"
+            alt="${alt}"
+            loading="lazy"
           />
-        </video>
-      `.trim();
-		})
-		.replace(image, (_, src, alt) => {
-			return `
-      <img
-        src="https://raw.githubusercontent.com/realfakenerd/portifolio/main/posts/${slug}/images/${src}"
-        alt="${alt}"
-        loading="lazy"
-      />
-  `.trim();
-		})
-		.replace(youtube, (_, id, title) => {
-			return `
-				<lite-youtube videoid="${id}" playlabel="${title}"></lite-youtube>
-			`.trim();
-		});
+        `.trim()
+		},
+		{
+			regex: /{% youtube id="(.*?)" title="(.*?)" %}/g,
+			replacement: (_, id, title) =>
+				`
+          <lite-youtube videoid="${id}" playlabel="${title}"></lite-youtube>
+        `.trim()
+		}
+	];
+
+	return patterns.reduce((result, { regex, replacement }) => {
+		return result.replace(regex, replacement);
+	}, content);
 }
 
 export default searchAndReplace;
