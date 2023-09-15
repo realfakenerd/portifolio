@@ -1,5 +1,4 @@
 import type { GitUser } from '$lib/lib';
-import type { PageLoad } from './$types';
 
 export const prerender = true;
 
@@ -10,4 +9,4 @@ export const load = (async ({ fetch }) => {
 	return {
 		user: data as GitUser
 	};
-}) satisfies PageLoad;
+});
