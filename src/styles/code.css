@@ -5,9 +5,8 @@
 }
 
 .prose pre {
-	@apply py-4;
+	@apply py-4 overflow-auto;
 	line-height: 34px;
-	overflow-x: auto;
 }
 
 .prose pre .code-line {
@@ -54,7 +53,7 @@ html[data-font='dyslexic'] .prose code {
 } */
 
 .prose .rehype-code-title {
-    @apply w-full text-primary bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
+    @apply w-full max-w-prose text-primary bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
 	z-index: 1;
 }
 

@@ -41,7 +41,7 @@
 	<slot />
 </main>
 
-<style lang="scss">
+<style>
 	:global(:root) {
 		color-scheme: light dark;
 	}
@@ -71,7 +71,7 @@
 	}
 
 	:root::view-transition-old(card) {
-		animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+		animation: 110ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
 			250ms cubic-bezier(0.291, 0.281, 0, 1.2) both slide-to-left;
 	}
 

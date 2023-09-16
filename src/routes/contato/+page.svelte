@@ -3,7 +3,6 @@
 	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import TextField from '$lib/components/TextField.svelte';
-	import icons from '$lib/icons';
 
 	const inputs = [
 		{
@@ -102,7 +101,7 @@
 		</section>
 		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
 			<form
-				class="flex flex-col h-full justify-between"
+				class="flex flex-col h-full justify-between gap-y-2"
 				action="https://formsubmit.co/realfakenerd@gmail.com"
 				method="POST"
 			>

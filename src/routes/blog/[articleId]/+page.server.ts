@@ -1,8 +1,9 @@
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
+import { fetchJSON } from '$lib/markdown/posts';
 export const load = (async ({ fetch, params }) => {
 	try {
-		const post = await fetchJSON<Post[]>(`/api/posts/${params.articleID}`, fetch);
+		const post = await fetchJSON(`/api/posts/${params.articleId}`, fetch);
 		return {
 			content: post.content,
 			meta: post.fm

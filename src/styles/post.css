@@ -89,11 +89,11 @@
 }
 
 .prose details summary {
-	margin-bottom: var(--spacing-8);
+	color: red;
 	font-weight: 700;
 }
 
 .prose {
-    @apply max-w-4xl mx-auto;
+    @apply mx-auto max-w-prose w-[40ch];
 }
 

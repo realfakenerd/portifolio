@@ -2,7 +2,6 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import List from '$lib/components/List.svelte';
 	import ListItem from '$lib/components/ListItem.svelte';
-	import type { PageData } from './$types';
 
 	const editor_terminal = [
 		{
@@ -89,8 +88,6 @@
 			link: { path: 'https://workspace.google.com/', title: 'GSuit' }
 		}
 	];
-	export let data: PageData;
-	const { user } = data;
 </script>
 
 <svelte:head>
@@ -107,10 +104,10 @@
 			role="presentation"
 			class="card flex flex-col items-center gap-2 rounded-lg md:flex-row"
 		>
-			<img width="128" height="128" class="w-32 rounded-full" src={user.avatar_url} alt="Minha foto de perfil do github" />
+			<img width="128" height="128" class="w-32 rounded-full" src="https://avatars.githubusercontent.com/u/16668109?v=4" alt="Minha foto de perfil do github" />
 			<div class="flex flex-col gap-2">
 				<section>
-					<h1 class="text-title-medium">{user.name}</h1>
+					<h1 class="text-title-medium">Lucas A. Ouverney</h1>
 					<h2 class="text-body-medium">Olá! <span>🙂</span></h2>
 				</section>
 				<section>
