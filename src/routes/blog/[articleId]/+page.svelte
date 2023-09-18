@@ -22,7 +22,7 @@
 	<meta name="robots" content="index, follow" />
 </svelte:head>
 
-<article class="prose">
+<article class="prose w-[40ch] md:w-full max-w-prose">
 	<header>
 		<h1 style:--title="title-{title}" aria-level={1}>
 			{meta.title}

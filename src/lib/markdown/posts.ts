@@ -13,17 +13,20 @@ export async function fetchJSON<T>(url: string, fetchFn: Fetch = fetch) {
 async function parseMarkdownFiles() {
 	try {
 		const posts: Post[] = [];
-		const postsPath = resolve('posts');
-		const folders = await readdir(postsPath);
-
+		const postsPath = resolve('src/posts');
+		
+		const folders = await readdir(postsPath, {
+			encoding: 'utf-8'
+		});
+		
 		for (const folder of folders) {
 			const markdownFilePath = join(postsPath, folder, `${folder}.md`);
 			const markdownContent = await readFile(markdownFilePath, 'utf-8');
 			const { data } = matter(markdownContent);
-
+			
 			posts.push(data as Post);
 		}
-
+		
 		return posts;
 	} catch (e) {
 		throw new Error('Could not parse Markdown files');
@@ -32,7 +35,7 @@ async function parseMarkdownFiles() {
 
 async function parseMarkdownFile(slug: string) {
 	try {
-		const postPath = resolve(`posts/${slug}/${slug}.md`);
+		const postPath = resolve(`src/posts/${slug}/${slug}.md`);
 		const markdownContent = await readFile(postPath, 'utf-8');
 		return markdownToHTML(markdownContent);
 	} catch (e) {

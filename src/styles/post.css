@@ -94,6 +94,6 @@
 }
 
 .prose {
-    @apply mx-auto max-w-prose w-[40ch];
+    @apply mx-auto;
 }
 
