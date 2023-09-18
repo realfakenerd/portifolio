@@ -14,7 +14,6 @@
 	"devDependencies": {
 		"@fontsource-variable/noto-sans-display": "^5.0.13",
 		"@fontsource-variable/noto-sans-mono": "^5.0.12",
-		"@fontsource/fira-mono": "^4.5.10",
 		"@iconify/svelte": "^3.1.4",
 		"@playwright/test": "^1.38.0",
 		"@sveltejs/adapter-vercel": "^3.0.3",

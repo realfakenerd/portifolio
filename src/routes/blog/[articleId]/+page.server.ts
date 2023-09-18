@@ -7,6 +7,11 @@ interface ContentType {
 	fm: Fm;
 }
 
+export const config = {
+	isr: {
+		expiration: 60
+	}
+}
 
 export const load = (async ({ fetch, params }) => {
 	try {

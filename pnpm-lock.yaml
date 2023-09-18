@@ -16,9 +16,6 @@ devDependencies:
   '@fontsource-variable/noto-sans-mono':
     specifier: ^5.0.12
     version: 5.0.12
-  '@fontsource/fira-mono':
-    specifier: ^4.5.10
-    version: 4.5.10
   '@iconify/svelte':
     specifier: ^3.1.4
     version: 3.1.4(svelte@4.2.0)
@@ -454,10 +451,6 @@ packages:
 
   /@fontsource-variable/noto-sans-mono@5.0.12:
     resolution: {integrity: sha512-OMDL6elwLMSEOdmWyRkA4ETGLyXv84LAtFPoZFj+N1pUy0L1om9Qz5f7DzwxdRA0HbciuJKRBa7XQGkMLjQZUg==}
-    dev: true
-
-  /@fontsource/fira-mono@4.5.10:
-    resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.11:
