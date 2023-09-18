@@ -12,8 +12,9 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			runtime: 'edge',
-			split: true
+			runtime: 'nodejs18.x',
+			split: true,
+			regions: ['gru1']
 		})
 	}
 };
