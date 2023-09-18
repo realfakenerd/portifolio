@@ -1,5 +1,4 @@
 import type { PageLoad } from './$types';
-import type { Repo } from '$lib/lib';
 
 export const load = (async ({ fetch }) => {
 	const res = await fetch('/api/git/repo');

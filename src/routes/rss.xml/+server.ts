@@ -1,4 +1,3 @@
-import type { Post } from '$lib/lib';
 import type { RequestHandler } from './$types';
 
 function formatPubDate(str: string) {
@@ -30,18 +29,13 @@ export const GET: RequestHandler = async ({ fetch }) => {
 					.map(
 						(post) => `
           <item>
-            <title>${post.fm.title}</title>
-            <description>${post.fm.description}</description>
-            <image>
-              <url>${post.fm.image}</url>
-              <title>${post.fm.title}</title>
-              <link>https://dev-lucasouverney.vercel.app/blog/${post.slug}</link>
-            </image>
+            <title>${post.title}</title>
+            <description>${post.description}</description>
             <comments>https://dev-lucasouverney.vercel.app/blog/${post.slug}#comments</comments>
             <link>https://dev-lucasouverney.vercel.app/blog/${post.slug}</link>
             <guid isPermaLink="true">https://dev-lucasouverney.vercel.app/blog/${post.slug}</guid>
-            <pubDate>${formatPubDate(post.fm.date)}</pubDate>
-            ${post.fm.categories
+            <pubDate>${formatPubDate(post.published)}</pubDate>
+            ${(post.category as string[])
 							.filter((cat) => cat !== ',')
 							.map((cat) => `<category>${cat}</category>`)
 							.join('')}

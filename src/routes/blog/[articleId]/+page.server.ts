@@ -7,13 +7,6 @@ interface ContentType {
 	fm: Fm;
 }
 
-export const prerender = false;
-export const config = {
-	isr: {
-		expiration: 60
-	}
-}
-
 export const load = (async ({ fetch, params }) => {
 	try {
 		const post = await fetchJSON<ContentType>(`/api/posts/${params.articleId}`, fetch);
