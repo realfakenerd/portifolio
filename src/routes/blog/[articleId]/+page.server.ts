@@ -7,6 +7,7 @@ interface ContentType {
 	fm: Fm;
 }
 
+export const prerender = false;
 export const config = {
 	isr: {
 		expiration: 60
@@ -21,8 +22,6 @@ export const load = (async ({ fetch, params }) => {
 			meta: post.fm
 		};
 	} catch (e) {
-		console.log(e);
-		
 		throw error(404, `Could not find ${params.articleId}`);
 	}
 }) as PageServerLoad;
