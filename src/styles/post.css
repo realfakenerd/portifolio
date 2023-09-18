@@ -1,5 +1,5 @@
 .prose header {
-	@apply mb-16 mt-32 text-center;
+	@apply my-32 text-center flex flex-col gap-4;
 }
 
 .prose h1 {
@@ -26,6 +26,10 @@
 	@apply text-body-medium block;
 }
 
+.prose hr {
+	@apply divider-middle my-2;
+}
+
 .prose iframe,
 .prose video,
 .prose pre,
@@ -36,6 +40,10 @@
 .prose img {
 	justify-self: center;
 	grid-column: gutter-start / gutter-end;
+}
+
+.prose ul li:has(a) {
+	@apply inline-flex items-center;
 }
 
 .prose img,

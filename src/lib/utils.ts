@@ -13,13 +13,12 @@ export function handleScroll(nav: HTMLElement) {
 	const initialBottomValue = '0px 0px';
 	const scrolledDownBottomValue = '0px 80px';
 
-	const navbar = nav;
-	navbar.style.animationTimingFunction = animationTimingFunction;
+	nav.style.animationTimingFunction = animationTimingFunction;
 	function updateScroll() {
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		const isScrollingDown = scrollTop > lastScrollTop;
 
-		navbar.style.translate = isScrollingDown ? scrolledDownBottomValue : initialBottomValue;
+		nav.style.translate = isScrollingDown ? scrolledDownBottomValue : initialBottomValue;
 
 		lastScrollTop = scrollTop;
 		ticking = false;
@@ -31,6 +30,5 @@ export function handleScroll(nav: HTMLElement) {
 			ticking = true;
 		}
 	}
-
 	window.addEventListener('scroll', requestTick);
 }

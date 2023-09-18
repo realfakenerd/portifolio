@@ -53,12 +53,12 @@ html[data-font='dyslexic'] .prose code {
 } */
 
 .prose .rehype-code-title {
-    @apply w-full max-w-prose text-primary bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
+    @apply w-full max-w-4xl text-primary capitalize bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
 	z-index: 1;
 }
 
 .prose .rehype-code-title button {
-	@apply btn;
+	background-image: url(/clipboard.svg);
 }
 .prose .rehype-code-title button:hover {
 	@apply btn-outlined;

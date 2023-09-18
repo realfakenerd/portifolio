@@ -1,10 +1,9 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import icons from '$lib/icons';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import Chips from '$lib/components/Chips.svelte';
 
 	let init = false;
 	onMount(() => (init = true));
