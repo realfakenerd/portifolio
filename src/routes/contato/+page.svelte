@@ -118,6 +118,10 @@
 					/>
 					<input type="hidden" name="_subject" value="New submission!" />
 					<input type="hidden" name="_captcha" value="false" /> -->
+					<input type="hidden" name="_url" value={import.meta.env.DEV
+						? 'http://localhost:5173/success'
+						: 'https://dev-lucasouverney.vercel.app/success'}>
+
 					{#each inputs as { input, label, id, icon, name } (id)}
 						{#if input !== 'textarea'}
 							<TextField title={label} {icon} {name} />
