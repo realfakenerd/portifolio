@@ -107,8 +107,10 @@
 			<form
 				class="flex flex-col h-full justify-between gap-y-2"
 				method="POST"
+				action="https://formsubmit.co/realfakenerd@gmail.com"
 			>
 				<fieldset class="flex flex-col gap-3 ">
+
 					<input
 						type="hidden"
 						name="_next"
