@@ -1,6 +1,7 @@
 import { getPost } from '$lib/markdown/posts';
 import { error } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
+
 export const GET = (async ({ params }) => {
 	try {
 		const post = await getPost(params.slug);
@@ -8,6 +9,6 @@ export const GET = (async ({ params }) => {
 	} catch (e) {
 		console.log(e);
 		
-		throw error(404, `Could not find ${params.articleId}`);
+		throw error(404, `Could not find ${params.slug}`);
 	}
 });
