@@ -29,7 +29,9 @@
 		</h1>
 		<p aria-level={2}>{meta.description}</p>
 	</header>
-	{@html content}
+	<main class="text-body-small md:text-body-medium">
+		{@html content}
+	</main>
 </article>
 
 <style>

@@ -1,11 +1,11 @@
 .prose code[class*='language-'],
 .prose pre[class*='language-'] {
-	@apply text-label-large rounded-b-sm bg-surface;
+	@apply text-label-small rounded-b-sm bg-surface;
 	tab-size: 2;
 }
 
 .prose pre {
-	@apply py-4 overflow-auto;
+	@apply py-4 overflow-auto border-t border-surface-variant;
 	line-height: 34px;
 }
 
@@ -53,12 +53,13 @@ html[data-font='dyslexic'] .prose code {
 } */
 
 .prose .rehype-code-title {
-    @apply w-full max-w-4xl text-primary capitalize bg-surface inline-flex justify-between pt-4 px-6 text-body-large rounded-t-sm;
+    @apply w-full max-w-4xl text-primary bg-surface inline-flex justify-between pt-4 px-6 text-label-large rounded-t-sm;
 	z-index: 1;
 }
 
 .prose .rehype-code-title button {
-	background-image: url(/clipboard.svg);
+	@apply hidden;
+	/* background-image: url(/clipboard.svg); */
 }
 .prose .rehype-code-title button:hover {
 	@apply btn-outlined;

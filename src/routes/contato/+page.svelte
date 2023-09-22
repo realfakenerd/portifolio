@@ -3,6 +3,7 @@
 	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import TextField from '$lib/components/TextField.svelte';
+	import {marked} from 'marked'
 
 	const inputs = [
 		{
@@ -34,6 +35,14 @@
 			icon: `mdi:message`
 		}
 	];
+
+	let value = ''
+	async function parse() {
+		const md = await marked(value, {
+			async: true
+		});
+		console.log(md);
+	}
 </script>
 
 <svelte:head>
@@ -124,7 +133,7 @@
 						{#if input !== 'textarea'}
 							<TextField title={label} {icon} {name} />
 						{:else}
-							<TextField isTextarea title={label} {icon} {name} />
+							<TextField bind:value on:input={parse} isTextarea title={label} {icon} {name} supportingText="use Markdown aqui!"/>
 						{/if}
 					{/each}
 				</fieldset>

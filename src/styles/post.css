@@ -23,7 +23,7 @@
 
 .prose p,
 .prose li {
-	@apply text-body-medium block;
+	@apply block;
 }
 
 .prose hr {
