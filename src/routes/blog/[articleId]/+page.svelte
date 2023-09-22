@@ -22,20 +22,20 @@
 	<meta name="robots" content="index, follow" />
 </svelte:head>
 
+<hgroup class="my-32 text-center flex flex-col gap-4">
+	<h1 style:--title="title-{title}" aria-level={1} class="text-primary text-display-medium">
+		{meta.title}
+	</h1>
+	<p aria-level={2} class="text-body-large">{meta.description}</p>
+</hgroup>
 <article class="prose w-[40ch] md:w-full max-w-4xl">
-	<header>
-		<h1 style:--title="title-{title}" aria-level={1}>
-			{meta.title}
-		</h1>
-		<p aria-level={2}>{meta.description}</p>
-	</header>
 	<main class="text-body-small md:text-body-medium">
 		{@html content}
 	</main>
 </article>
 
 <style>
-	header h1 {
+	hgroup h1 {
 		view-transition-name: var(--title);
 	}
 </style>
