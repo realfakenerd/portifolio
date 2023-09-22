@@ -20,7 +20,7 @@ async function parseMarkdownFiles() {
 		});
 		
 		for (const folder of folders) {
-			const markdownFilePath = join(postsPath, folder, `${folder}.md`);
+			const markdownFilePath = join(postsPath, folder, `index.md`);
 			const markdownContent = await readFile(markdownFilePath, 'utf-8');
 			const { data } = matter(markdownContent);
 			
@@ -35,13 +35,13 @@ async function parseMarkdownFiles() {
 
 async function parseMarkdownFile(slug: string) {
 	try {
-		const postPath = resolve(`src/posts/${slug}/${slug}.md`);
+		const postPath = resolve(`src/posts/${slug}/index.md`);
 		const markdownContent = await readFile(postPath, 'utf-8');
 		return markdownToHTML(markdownContent);
 	} catch (e) {
 		console.log(e);
 
-		throw new Error(`Could not parse ${slug}.md`);
+		throw new Error(`Could not parse ${slug} article post`);
 	}
 }
 

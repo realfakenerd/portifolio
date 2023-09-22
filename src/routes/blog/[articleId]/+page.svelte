@@ -36,8 +36,4 @@
 	header h1 {
 		view-transition-name: var(--title);
 	}
-
-	/* img {
-		view-transition-name: var(--post);
-	} */
 </style>

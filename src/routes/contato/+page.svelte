@@ -8,26 +8,30 @@
 		{
 			id: 'email',
 			label: 'Seu email',
+			name: 'email',
 			input: 'email',
-			d: `mdi:at`
+			icon: `mdi:at`
 		},
 		{
 			id: 'name',
 			label: 'Seu nome',
+			name: 'nome',
 			input: 'text',
-			d: `mdi:person`
+			icon: `mdi:person`
 		},
 		{
 			id: 'subject',
 			label: 'Qual é o assunto?',
+			name: 'assunto',
 			input: 'text',
-			d: `mdi:text-long`
+			icon: `mdi:text-long`
 		},
 		{
 			id: 'message',
 			label: 'Qual é a mensagem?',
+			name: 'mensagem',
 			input: 'textarea',
-			d: `mdi:message`
+			icon: `mdi:message`
 		}
 	];
 </script>
@@ -102,11 +106,10 @@
 		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
 			<form
 				class="flex flex-col h-full justify-between gap-y-2"
-				action="https://formsubmit.co/realfakenerd@gmail.com"
 				method="POST"
 			>
 				<fieldset class="flex flex-col gap-3 ">
-					<input
+					<!-- <input
 						type="hidden"
 						name="_next"
 						value={import.meta.env.DEV
@@ -114,12 +117,12 @@
 							: 'https://dev-lucasouverney.vercel.app/success'}
 					/>
 					<input type="hidden" name="_subject" value="New submission!" />
-					<input type="hidden" name="_captcha" value="false" />
-					{#each inputs as { input, label, id, d } (id)}
+					<input type="hidden" name="_captcha" value="false" /> -->
+					{#each inputs as { input, label, id, icon, name } (id)}
 						{#if input !== 'textarea'}
-							<TextField title={label} icon={d} />
+							<TextField title={label} {icon} {name} />
 						{:else}
-							<TextField isTextarea title={label} icon={d} />
+							<TextField isTextarea title={label} {icon} {name} />
 						{/if}
 					{/each}
 				</fieldset>

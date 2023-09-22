@@ -8,17 +8,17 @@
 	import { createEventDispatcher } from 'svelte';
 
 	let wrapper: HTMLDivElement, textarea: HTMLTextAreaElement;
-	let id = `input-${crypto.randomUUID()}`;
-
+	
 	export let value = '';
 	export let error = false;
 	export let style: 'filled' | 'outlined' = 'outlined';
 	export let icon: string | null = null;
 	export let trailingIcon: string | null = null;
 	export let iconError: string | null = '';
-	export let title = '';
+	export let title: string |null = null;
+	export let name: string | null = null ?? title;
+	let id = title ?? `input-${crypto.randomUUID()}`;
 	export let display = 'inline-flex';
-	export let isDate = false;
 	export let isTextarea = false;
 	export let supportingText: null | string = null;
 	const dispatch = createEventDispatcher();
@@ -44,7 +44,7 @@
 		{#if isTextarea}
 			<textarea
 				on:input
-				name={id}
+				{name}
 				bind:value
 				bind:this={textarea}
 				{id}
@@ -60,21 +60,13 @@
 		{:else}
 			<input
 				on:input
-				name={id}
+				{name}
 				bind:value
 				class:value
 				required
 				type="text"
 				{id}
 				class="text-field-input"
-				on:click={(e) => {
-					if (
-						isDate &&
-						!window.matchMedia('(orientation: portrait) or (forced-colors: active)').matches
-					)
-						e.preventDefault();
-				}}
-				{...extraInputOptions}
 				aria-label="Enter your input {title}"
 				aria-invalid={error ? "true" : "false"}
 			/>
