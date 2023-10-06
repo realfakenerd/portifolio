@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
-	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
+	import RepoCard from '$lib/components/RepoCard.svelte';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
@@ -9,9 +8,6 @@
 	onMount(() => (init = true));
 
 	export let data: PageData;
-	const filteredRepos = data.repos.filter(
-		(e) => e.name !== 'portifolio' && e.name !== 'realfakenerd' && e.description
-	);
 </script>
 
 <svelte:head>
@@ -30,48 +26,14 @@
 	</div>
 	<section class="w-full">
 		<ul class="grid gap-2">
-			{#each filteredRepos as repo (repo.id)}
-				<li
-					class="interactive-bg-background text-on-background flex w-full flex-col justify-between gap-2 self-stretch rounded-xl p-4"
-				>
-					<section class="flex flex-col gap-y-2">
-						<h2 class="text-title-large capitalize" aria-label="Nome do repositório: {repo.name}">
-							<span>{repo.name}</span>
-						</h2>
-						{#if repo.language}
-							<div class="flex flex-row gap-2">
-								<Chips icon="logos:{repo.language.toLowerCase()}-icon">
-									{repo.language}
-								</Chips>
-							</div>
-						{/if}
-						<p class="text-body-medium">{repo.description}</p>
-					</section>
-					<div class="flex flex-row gap-2">
-						<Button
-							isRoute={false}
-							isLink
-							icon="mdi:github"
-							href={repo.html_url}
-							class="interactive-bg-primary fill-on-primary"
-						>
-							<span>git repo</span>
-						</Button>
-
-						{#if repo.homepage}
-							<Button
-								isRoute={false}
-								isLink
-								icon="mdi:web"
-								class="interactive-bg-secondary fill-on-secondary"
-								href={repo.homepage}
-							>
-								<span>site</span>
-							</Button>
-						{/if}
-					</div>
-				</li>
+			{#each data.repos as repo (repo.id)}
+				<RepoCard {repo} />
 			{/each}
+			{#await data.streamed.org then repos}
+				{#each repos as repo}
+					<RepoCard {repo} />
+				{/each}
+			{/await}
 		</ul>
 	</section>
 </Hero>

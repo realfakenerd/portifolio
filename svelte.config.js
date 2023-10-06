@@ -4,9 +4,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: [
-		vitePreprocess()
-	],
+	preprocess: [vitePreprocess()],
 
 	kit: {
 		adapter: adapter({

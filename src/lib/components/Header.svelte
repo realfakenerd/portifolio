@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { handleScroll } from '$lib/utils';
 	import routes from '$lib/routes';
 	import Icon from '@iconify/svelte';
+	import { navdown } from 'navdown';
 	import Toggle from './Toggle.svelte';
 
 	export let currentRoute = '';
@@ -46,9 +46,10 @@
 	</div>
 	<div class="w-full md:hidden">
 		<nav
-			use:handleScroll
-			class="custom-navbar transition-all duration-300
-		fixed bottom-0 bg-background h-20 w-full flex-row px-2 py-0"
+			use:navdown={{
+				transition: { transitionDuration: '250ms'}
+			}}
+			class="custom-navbar fixed bottom-0 bg-background h-20 w-full flex-row px-2 py-0"
 		>
 			{#each routes as { path, icon, name }, i (i)}
 				<a

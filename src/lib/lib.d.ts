@@ -4,24 +4,24 @@ interface SinglePost {
 }
 
 /**
- * The `interface Post` is defining the structure of an object that represents a blog post. 
+ * The `interface Post` is defining the structure of an object that represents a blog post.
  * It has the following properties
  */
 interface Post {
 	/** blog post title */
-	title: string
+	title: string;
 	/** blog post description */
-	description: string
+	description: string;
 	/** blog post slug for using on `<a/>` */
-	slug: string
+	slug: string;
 	/** blog post publish date */
-	published: string
+	published: string;
 	/** blog post categories */
-	category: string | string[]
+	category: string | string[];
 	/** series of posts */
-	series?: string
+	series?: string;
 	/** is published or not */
-	draft?: string
+	draft?: string;
 }
 
 interface Fm {
@@ -30,7 +30,7 @@ interface Fm {
 	slug: string;
 	published: string;
 	category: string;
-};
+}
 
 interface GitUser {
 	login: string;

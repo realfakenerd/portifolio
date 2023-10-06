@@ -1,9 +1,9 @@
 import type { LayoutLoad } from './$types';
-import {_api} from '@iconify/svelte'
+import { _api } from '@iconify/svelte';
 export const prerender = true;
 export const load = (async ({ fetch, url }) => {
-	_api.setFetch(fetch)
-	
+	_api.setFetch(fetch);
+
 	return {
 		currentRoute: url.pathname
 	};

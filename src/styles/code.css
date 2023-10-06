@@ -1,11 +1,11 @@
 .prose code[class*='language-'],
 .prose pre[class*='language-'] {
-	@apply text-label-small rounded-b-sm bg-surface;
+	@apply bg-surface rounded-b-sm text-label-small;
 	tab-size: 2;
 }
 
 .prose pre {
-	@apply py-4 overflow-auto border-t border-surface-variant;
+	@apply overflow-auto border-t border-surface-variant py-4;
 	line-height: 34px;
 }
 
@@ -23,9 +23,9 @@
 }
 
 .prose code:not(pre > code) {
-	@apply bg-surface text-label-small rounded-sm px-2 py-1;
+	@apply bg-surface rounded-sm px-2 py-1 text-label-small;
 	font-family: 'Noto Sans Mono Variable', sans-serif;
-    font-display: swap;
+	font-display: swap;
 }
 
 .prose blockquote code:not(pre > code) {
@@ -34,8 +34,8 @@
 
 .prose kbd,
 .prose code {
-    font-family: 'Noto Sans Mono Variable', sans-serif;
-    font-display: swap;
+	font-family: 'Noto Sans Mono Variable', sans-serif;
+	font-display: swap;
 }
 /* 
 html[data-font='dyslexic'] .prose kbd,
@@ -53,7 +53,7 @@ html[data-font='dyslexic'] .prose code {
 } */
 
 .prose .rehype-code-title {
-    @apply w-full max-w-4xl text-primary bg-surface inline-flex justify-between pt-4 px-6 text-label-large rounded-t-sm;
+	@apply bg-surface inline-flex w-full max-w-4xl justify-between rounded-t-sm px-6 pt-4 text-label-large text-primary;
 	z-index: 1;
 }
 
@@ -66,13 +66,13 @@ html[data-font='dyslexic'] .prose code {
 }
 
 .prose .line-number::before {
-    @apply w-4 inline-block mr-4 px-4 text-primary text-right;
+	@apply mr-4 inline-block w-4 px-4 text-right text-primary;
 	content: counter(step);
 	counter-increment: step;
 }
 
 .prose .highlight-line {
-    @apply text-tertiary block bg-surface-variant/20;
+	@apply block bg-surface-variant/20 text-tertiary;
 }
 
 .prose .code-line.inserted {
@@ -98,7 +98,7 @@ html[data-font='dyslexic'] .prose code {
 .prose .language-css .token.variable,
 .prose .language-css .token.selector,
 .prose .language-css .token.pseudo-element {
-    @apply text-secondary;
+	@apply text-secondary;
 }
 
 .prose .token.tag,

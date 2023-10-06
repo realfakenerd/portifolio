@@ -1,9 +1,9 @@
 .prose h1 {
-	@apply text-primary text-display-medium;
+	@apply text-display-medium text-primary;
 }
 
 .prose h2 {
-	@apply text-primary mb-6 mt-16 text-title-large;
+	@apply mb-6 mt-16 text-title-large text-primary;
 }
 
 /* no one has to know 🤫 */
@@ -59,7 +59,7 @@
 
 .prose ul,
 .prose ol {
-	@apply flex flex-col list-inside list-none gap-y-4 my-2;
+	@apply my-2 flex list-inside list-none flex-col gap-y-4;
 }
 
 .prose ul li::before {
@@ -98,6 +98,5 @@
 }
 
 .prose {
-    @apply mx-auto;
+	@apply mx-auto;
 }
-
