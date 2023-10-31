@@ -6,6 +6,17 @@ export default withMaterialColors(
 		content: ['./src/**/*.{html,js,svelte,ts}'],
 		plugins: [tail],
 		theme: {
+			extend: {
+				animation: {
+					blink: 'blink 2s ease-in-out infinite',
+				},
+				keyframes: {
+					blink: {
+						from: {opacity: '0'},
+						to: {opacity: '1'}
+					}
+				}
+			},
 			fontSize: {
 				'display-large': ['3.5rem', { lineHeight: '4rem' }],
 				'display-medium': ['2.8rem', { lineHeight: '3.25rem' }],

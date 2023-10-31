@@ -66,17 +66,19 @@
 	});
 </script>
 
-{#if init}
-	<button
-		in:fly={{ easing: easeEmphasized, y: 150, duration: 300 }}
-		on:click={toggle}
-		class="interactive-bg-tertiary fill-on-tertiary fab fab-normal"
-		aria-label="theme toggler"
-	>
-		{#if $theme.current === 'dark'}
-			<Icon width="24" icon="mdi:lightbulb-on" />
-		{:else}
-			<Icon width="24" icon="mdi:lightbulb" />
-		{/if}
-	</button>
-{/if}
+<div class="h-6">
+	{#if init}
+		<button
+			in:fly={{ easing: easeEmphasized, y: 150, duration: 300 }}
+			on:click={toggle}
+			class="interactive-bg-tertiary fill-on-tertiary fab fab-normal"
+			aria-label="theme toggler"
+		>
+			{#if $theme.current === 'dark'}
+				<Icon width="24" icon="mdi:lightbulb-on" />
+			{:else}
+				<Icon width="24" icon="mdi:lightbulb" />
+			{/if}
+		</button>
+	{/if}
+</div>

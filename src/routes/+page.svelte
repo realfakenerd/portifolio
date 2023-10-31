@@ -1,25 +1,21 @@
-<script>
+<script lang="ts">
+	import Hands from '$lib/components/Hands.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import { easeEmphasizedDecel } from '$lib/transitions';
-	import { onMount } from 'svelte';
-	import { fade, slide } from 'svelte/transition';
-	const text = [
-		{
-			t: 'Olá! 👋',
-			c: 'text-title-medium animate-bounce'
-		},
-		{
-			t: 'Lucas aqui',
-			c: 'text-display-large text-primary'
-		},
-		{
-			t: 'Eu faço os melhores webapps para o seu navegador',
-			c: 'text-title-large'
-		}
-	];
+	import { animate, stagger } from 'motion';
 
-	let init = false;
-	onMount(() => (init = true));
+	function animateText(node: HTMLElement) {
+		animate(
+			[...node.children],
+			{
+				y: [24, 0],
+				opacity: [0, 0, 1]
+			},
+			{
+				duration: 1,
+				delay: stagger(0.05, { easing: 'ease-in-out' })
+			}
+		);
+	}
 </script>
 
 <svelte:head>
@@ -32,22 +28,10 @@
 </svelte:head>
 
 <Hero class="h-full">
-	<section class="flex flex-col items-start gap-3 font-medium" aria-live={init ? 'polite' : 'off'}>
-		{#if init}
-			{#each text as t, index (index)}
-				<h1 class={t.c} in:slide={{ delay: 800 * index, easing: easeEmphasizedDecel }}>
-					{t.t}
-				</h1>
-			{/each}
-		{/if}
+	<section use:animateText class="flex flex-col items-start gap-3 font-medium">
+		<h1 class="text-title-medium">Ola! 👋</h1>
+		<h1 class="text-display-large text-primary">Lucas aqui</h1>
+		<h1 class="text-title-large">Faço os melhores webapps para o seu navegador</h1>
 	</section>
-	{#if init}
-		<img
-			alt="Ilustração de mãos mostrando algo"
-			src="hands_show.webp"
-			height="400"
-			width="245"
-			in:fade={{ delay: 1000 }}
-		/>
-	{/if}
+	<Hands />
 </Hero>

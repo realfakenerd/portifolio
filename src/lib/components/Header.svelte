@@ -41,7 +41,7 @@
 				{/each}
 			</ul>
 
-			<Toggle />
+			<!-- <Toggle /> -->
 		</nav>
 	</div>
 	<div class="w-full md:hidden">
