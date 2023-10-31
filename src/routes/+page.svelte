@@ -12,7 +12,7 @@
 			},
 			{
 				duration: 1,
-				delay: stagger(0.05, { easing: 'ease-in-out' })
+				delay: stagger(0.05, { easing: [0.17,0.55,0.55, 1] })
 			}
 		);
 	}
