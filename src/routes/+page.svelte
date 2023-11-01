@@ -4,6 +4,7 @@
 	import { animate, stagger } from 'motion';
 
 	function animateText(node: HTMLElement) {
+
 		animate(
 			[...node.children],
 			{
@@ -12,9 +13,20 @@
 			},
 			{
 				duration: 1,
-				delay: stagger(0.05, { easing: [0.17,0.55,0.55, 1] })
+				delay: stagger(0.05, { easing: [0.4, 0, 1, 1] })
 			}
-		);
+		).finished.then(() => {
+			animate(
+				'#ola',
+				{ y: [0, 24] },
+				{
+					easing: 'ease-in-out',
+					duration: 1,
+					repeat: Infinity,
+					direction: 'alternate'
+				}
+			);
+		});
 	}
 </script>
 
@@ -29,7 +41,7 @@
 
 <Hero class="h-full">
 	<section use:animateText class="flex flex-col items-start gap-3 font-medium">
-		<h1 class="text-title-medium">Ola! 👋</h1>
+		<h1 id="ola" class="text-title-medium">Ola! 👋</h1>
 		<h1 class="text-display-large text-primary">Lucas aqui</h1>
 		<h1 class="text-title-large">Faço os melhores webapps para o seu navegador</h1>
 	</section>
