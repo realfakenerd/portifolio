@@ -41,9 +41,9 @@
 
 <Hero class="h-full">
 	<section use:animateText class="flex flex-col items-start gap-1 font-medium">
-		<h1 id="ola" class="text-title-medium">Ola! 👋</h1>
-		<h1 class="text-display-large text-primary">Lucas aqui</h1>
-		<h1 class="text-title-large">Faço os melhores webapps para o seu navegador</h1>
+		<h1 id="ola" class="opacity-0 text-title-medium">Ola! 👋</h1>
+		<h1 class="opacity-0 text-display-large text-primary">Lucas aqui</h1>
+		<h1 class="opacity-0 text-title-large">Faço os melhores webapps para o seu navegador</h1>
 	</section>
 	<Hands />
 </Hero>
