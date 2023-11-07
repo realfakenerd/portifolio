@@ -56,6 +56,6 @@ export default withMaterialColors(
 		}
 	} satisfies Config,
 	{
-		primary: `#000000`
+		primary: `#FFF00B`
 	}
 );
