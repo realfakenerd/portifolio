@@ -52,5 +52,6 @@
 	],
 	"theme_color": "#fff00b",
 	"background_color": "#000",
-	"display": "fullscreen"
+	"display": "fullscreen",
+    "display_override": ["window-controls-overlay"]
 }
