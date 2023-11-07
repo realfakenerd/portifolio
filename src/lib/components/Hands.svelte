@@ -25,6 +25,7 @@
 			},
 			{
 				repeat: Infinity,
+				allowWebkitAcceleration: true,
 				duration: node.children.length * 0.8,
 				delay: stagger(0.8, {easing: 'ease-in-out'})
 			}
