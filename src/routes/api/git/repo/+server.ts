@@ -8,10 +8,10 @@ export const GET = (async ({ fetch, setHeaders }) => {
 		Authorization: `Bearer ${PRIVATE_GIT_TOKEN}`
 	});
 	const res = await fetch('https://api.github.com/users/realfakenerd/repos');
-	const data = await res.json() as Repo[];
+	const data = (await res.json()) as Repo[];
 	const filteredData = data.filter(
 		(e) => e.name !== 'portifolio' && e.name !== 'realfakenerd' && e.description
-	)
+	);
 
 	return json(filteredData);
 }) satisfies RequestHandler;

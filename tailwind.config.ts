@@ -8,12 +8,12 @@ export default withMaterialColors(
 		theme: {
 			extend: {
 				animation: {
-					blink: 'blink 2s ease-in-out infinite',
+					blink: 'blink 2s ease-in-out infinite'
 				},
 				keyframes: {
 					blink: {
-						from: {opacity: '0'},
-						to: {opacity: '1'}
+						from: { opacity: '0' },
+						to: { opacity: '1' }
 					}
 				}
 			},

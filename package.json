@@ -8,8 +8,8 @@
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --cache --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --cache --plugin-search-dir . --write ."
+		"lint": "prettier --cache --check . && eslint .",
+		"format": "prettier --cache --write ."
 	},
 	"devDependencies": {
 		"@fontsource-variable/noto-sans-display": "^5.0.18",

@@ -1,4 +1,4 @@
-(function (s, i, u, o, c, w, d, t, n, x, e, p, a, b) {
+export default (function (s, i, u, o, c, w, d, t, n, x, e, p, a, b) {
 	w[o] = w[o] || {};
 	w[o][s] = w[o][s] || [];
 	w[o][s].push(i);
@@ -16,7 +16,7 @@
 		animations: [
 			{
 				elements: {
-					blackhole: {
+					blackholes: {
 						transform: {
 							data: { o: { x: 103, y: 311.5, type: 'corner' }, t: { x: -103, y: -311.5 } },
 							keys: {

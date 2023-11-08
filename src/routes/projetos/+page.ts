@@ -7,7 +7,7 @@ export const load = (async ({ fetch }) => {
 	return {
 		repos: data,
 		streamed: {
-			org: fetch('/api/git/org').then(r=>r.json()) as Promise<Repo[]>
+			org: fetch('/api/git/org').then((r) => r.json()) as Promise<Repo[]>
 		}
 	};
 }) satisfies PageLoad;

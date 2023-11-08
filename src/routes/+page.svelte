@@ -39,7 +39,7 @@
 	<meta name="keywords" content="webapps, desenvolvimento, navegador, Lucas" />
 </svelte:head>
 
-<Hero class="h-full">
+<Hero class="h-full gap-4 md:gap-0">
 	<section use:animateText class="flex flex-col items-start gap-1 font-medium">
 		<h2 id="ola" class="text-title-medium">Ola! 👋</h2>
 		<h1 class="text-display-large text-primary">Lucas aqui</h1>
