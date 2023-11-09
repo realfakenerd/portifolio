@@ -8,12 +8,21 @@ export default withMaterialColors(
 		theme: {
 			extend: {
 				animation: {
-					blink: 'blink 2s ease-in-out infinite'
+					slit: 'slit-vertically 500ms linear 0s 1 normal none'
 				},
 				keyframes: {
-					blink: {
-						from: { opacity: '0' },
-						to: { opacity: '1' }
+					'slit-vertically': {
+						'0%': {
+							transform: 'translateZ(-800px) rotateY(90deg)',
+							opacity: '0'
+						},
+						'50%': {
+							transform: 'translateZ(-160px) rotateY(87deg)',
+							opacity: '1'
+						},
+						'100%': {
+							transform: 'translateZ(0) rotateY(0)'
+						}
 					}
 				}
 			},

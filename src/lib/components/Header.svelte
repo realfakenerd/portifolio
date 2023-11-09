@@ -2,7 +2,6 @@
 	import routes from '$lib/routes';
 	import Icon from '@iconify/svelte';
 	import { navdown } from 'navdown';
-	import Toggle from './Toggle.svelte';
 
 	export let currentRoute = '';
 
@@ -25,7 +24,7 @@
 						>
 							<div
 								aria-current={isCurrentRoute(path, 'page', undefined)}
-								class="button group-hover:bg-secondary-container-hover"
+								class="relative button group-hover:bg-secondary-container-hover"
 							>
 								<span class="fill-on-background group-hover:fill-on-secondary-container">
 									<Icon width="24" {icon} />
