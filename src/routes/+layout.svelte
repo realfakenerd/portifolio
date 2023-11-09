@@ -2,25 +2,22 @@
 	import { onNavigate } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
 	import '@fontsource-variable/noto-sans-display';
-	import { onMount } from 'svelte';
 	import '../app.css';
 	import type { LayoutData } from './$types';
-	// @ts-expect-error this file has no d file
-	import { updateTheme } from 'tailwind-material-colors/lib/updateTheme.esm';
 	import { enableCache } from '@iconify/svelte';
 
 	enableCache('local');
-	onMount(() => {
-		const color = Math.floor(Math.random() * 16777215)
-			.toString(16)
-			.padStart(6, '0');
-		updateTheme(
-			{
-				primary: `#${color}`
-			},
-			'class'
-		);
-	});
+	// onMount(() => {
+	// 	const color = Math.floor(Math.random() * 16777215)
+	// 		.toString(16)
+	// 		.padStart(6, '0');
+	// 	updateTheme(
+	// 		{
+	// 			primary: `#${color}`
+	// 		},
+	// 		'class'
+	// 	);
+	// });
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;

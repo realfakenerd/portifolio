@@ -1,16 +1,5 @@
 <script lang="ts">
-	import { spring, timeline } from 'motion';
-
-	function move(t: number) {
-		return {
-			x: [0, 100 * Math.cosh(t)],
-			y: [0, 100 * Math.sinh(t)]
-		};
-		// return {
-		// 	x: [0, -76 * progress],
-		// 	y: [0, 62 * progress]
-		// };
-	}
+	import { animate, spring, timeline } from 'motion';
 
 	function animation(_: Element) {
 		timeline(
@@ -21,7 +10,7 @@
 						offsetDistance: ['0%', '25.891651%', null, '100%']
 					},
 					{
-						easing: [.25, 1, .25, 1],
+						easing: [[.25, 1, .25, 1], [.4, 0, .2, 1]],
 						offset: [0, .16, .2, .83, 1],
 						duration: 3
 					}
@@ -63,25 +52,26 @@
 							easing: [[0.4, 0, 0.2, 1.2]]
 						}
 					}
-				]
+				],
 			],
 			{
 				defaultOptions: { allowWebkitAcceleration: true },
 			}
 		);
 
-		// animate(
-		// 	'#browser',
-		// 	{
-		// 		y: [0, -15, 0]
-		// 	},
-		// 	{
-		// 		duration: 2,
-		// 		delay: 0.1,
-		// 		easing: 'ease-in-out',
-		// 		repeat: Infinity
-		// 	}
-		// );
+		animate(
+			'#browser',
+			{
+				y: [10,-10]
+			},
+			{
+				duration: 2,
+				delay: 0.1,
+				easing: [0.85, 0, 0.15, 1],
+				direction: 'alternate',
+				repeat: Infinity
+			}
+		);
 	}
 </script>
 
@@ -93,140 +83,6 @@
 		fill="none"
 		shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
 	>
-		<!-- <g id="stars">
-			<g class="yellowstar">
-				<path
-					stroke="#FFCE02"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M132.001 2v4"
-					class="Line 1"
-				/>
-				<path
-					stroke="#FFCE02"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M133 6.04h3"
-					class="Line 4"
-				/>
-				<path
-					stroke="#FFCE02"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M128 6.04h3"
-					class="Line 5"
-				/>
-				<path
-					stroke="#FFCE02"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M132.001 7v3"
-					class="Line 2"
-				/>
-			</g>
-			<g class="rightwhitestar">
-				<path
-					stroke="#F0F0F0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M176.001 7v4"
-					class="Line 1"
-				/>
-				<path
-					stroke="#F0F0F0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M179 14h4"
-					class="Line 4"
-				/>
-				<path
-					stroke="#F0F0F0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M169 14.04h4"
-					class="Line 5"
-				/>
-				<path
-					stroke="#F0F0F0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M176.001 17v4"
-					class="Line 2"
-				/>
-			</g>
-			<g class="pinkstar">
-				<path
-					stroke="#F497A4"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M188.001 30v4"
-					class="Line 1"
-				/>
-				<path
-					stroke="#F497A4"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M189 34.04h3"
-					class="Line 4"
-				/>
-				<path
-					stroke="#F497A4"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M184 34.04h3"
-					class="Line 5"
-				/>
-				<path
-					stroke="#F497A4"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M188.001 35v3"
-					class="Line 2"
-				/>
-			</g>
-			<g class="bluestar">
-				<path stroke="#EDF0EF" stroke-linecap="round" stroke-width="3" d="M6 31v4" class="Line 1" />
-				<path
-					stroke="#EDF0EF"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M7 35.04h3"
-					class="Line 4"
-				/>
-				<path
-					stroke="#EDF0EF"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M2 35.04h3"
-					class="Line 5"
-				/>
-				<path stroke="#EDF0EF" stroke-linecap="round" stroke-width="3" d="M6 36v3" class="Line 2" />
-			</g>
-			<g class="leftwhitestar">
-				<path stroke="#94DAE0" stroke-linecap="round" stroke-width="3" d="M30 8v4" class="Line 1" />
-				<path
-					stroke="#94DAE0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M33 15.04h4"
-					class="Line 4"
-				/>
-				<path
-					stroke="#94DAE0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M23 15.04h4"
-					class="Line 5"
-				/>
-				<path
-					stroke="#94DAE0"
-					stroke-linecap="round"
-					stroke-width="3"
-					d="M30 18v4"
-					class="Line 2"
-				/>
-			</g>
-		</g> -->
 		<g class="phone">
 			<path
 				fill="#D9D9D9"
@@ -346,6 +202,140 @@
 				class="Rectangle 1"
 			/>
 		</g>
+		<!-- <g id="stars">
+			<g class="yellowstar">
+				<path
+					stroke="#FFCE02"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M132.001 2v4"
+					class="Line 1"
+				/>
+				<path
+					stroke="#FFCE02"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M133 6.04h3"
+					class="Line 4"
+				/>
+				<path
+					stroke="#FFCE02"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M128 6.04h3"
+					class="Line 5"
+				/>
+				<path
+					stroke="#FFCE02"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M132.001 7v3"
+					class="Line 2"
+				/>
+			</g>
+			<g class="rightwhitestar">
+				<path
+					stroke="#F0F0F0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M176.001 7v4"
+					class="Line 1"
+				/>
+				<path
+					stroke="#F0F0F0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M179 14h4"
+					class="Line 4"
+				/>
+				<path
+					stroke="#F0F0F0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M169 14.04h4"
+					class="Line 5"
+				/>
+				<path
+					stroke="#F0F0F0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M176.001 17v4"
+					class="Line 2"
+				/>
+			</g>
+			<g class="pinkstar" style="translate:-160px 70px;offset-path: path('M87.506963,43.494087C112.265537,27.057285,162.369014,24.248067,188.001002,34');">
+				<path
+					stroke="#F497A4"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M188.001 30v4"
+					class="Line 1"
+				/>
+				<path
+					stroke="#F497A4"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M189 34.04h3"
+					class="Line 4"
+				/>
+				<path
+					stroke="#F497A4"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M184 34.04h3"
+					class="Line 5"
+				/>
+				<path
+					stroke="#F497A4"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M188.001 35v3"
+					class="Line 2"
+				/>
+			</g>
+			<g class="bluestar">
+				<path stroke="#EDF0EF" stroke-linecap="round" stroke-width="3" d="M6 31v4" class="Line 1" />
+				<path
+					stroke="#EDF0EF"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M7 35.04h3"
+					class="Line 4"
+				/>
+				<path
+					stroke="#EDF0EF"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M2 35.04h3"
+					class="Line 5"
+				/>
+				<path stroke="#EDF0EF" stroke-linecap="round" stroke-width="3" d="M6 36v3" class="Line 2" />
+			</g>
+			<g class="leftwhitestar">
+				<path stroke="#94DAE0" stroke-linecap="round" stroke-width="3" d="M30 8v4" class="Line 1" />
+				<path
+					stroke="#94DAE0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M33 15.04h4"
+					class="Line 4"
+				/>
+				<path
+					stroke="#94DAE0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M23 15.04h4"
+					class="Line 5"
+				/>
+				<path
+					stroke="#94DAE0"
+					stroke-linecap="round"
+					stroke-width="3"
+					d="M30 18v4"
+					class="Line 2"
+				/>
+			</g>
+		</g> -->
 		<defs>
 			<clipPath id="a" class="a">
 				<rect
