@@ -18,21 +18,18 @@
 				[
 					'#arrow',
 					{
-						x: ['0px', '-74px', '-74px', '-29px'],
-						y: ['0px', '61px', '61.0px', '-150px']
+						x: ['0px', '-74px'],
+						y: ['0px', '61px'],
 					},
 					{
 						x: {
-							easing: [
-								[0.14, 0.79, 0.44, 1.02],
-								[0.16, 1, 0.3, 1]
-							]
+							easing: 
+								[0, 0.55, 0.45, 1],							
 						},
 						y: {
-							easing: [0.56, 0.16, 0.86, 0.38]
+							easing: [0.33, 1, 0.68, 1]
 						},
-						offset: [0, 0.3333333333333333, 0.7666666666666667, 1],
-						duration: 3
+						duration: .6
 					}
 				],
 				[
@@ -46,6 +43,21 @@
 					}
 				],
 				[
+					'#arrow',
+					{
+						y: [null, 0,-90,-150],
+						x: [null,0,-90,-32]
+					},
+					{
+						duration: 1,
+						x: {
+							easing:[0.76, 0, 0.24, 1] 
+						},
+						easing: [0.37, 0, 0.63, 1],
+						at: '+.05'
+					}
+				],
+				[
 					'#hand',
 					{
 						opacity: [0, 1],
@@ -53,6 +65,7 @@
 					},
 					{
 						duration: 1,
+						at: '<',
 						easing: spring({ mass: 0.5 })
 					}
 				],
@@ -64,6 +77,7 @@
 					},
 					{
 						duration: 1,
+						at: '<',
 						easing: [[0.4, 0, 0.2, 1]],
 						scale: {
 							easing: [[0.4, 0, 0.2, 1.2]]
@@ -73,7 +87,6 @@
 			],
 			{
 				defaultOptions: { allowWebkitAcceleration: true },
-				duration: 3
 			}
 		);
 

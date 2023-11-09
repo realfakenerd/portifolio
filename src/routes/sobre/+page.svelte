@@ -96,6 +96,7 @@
 		name="description"
 		content="Conheça mais sobre mim, um entusiasta de tecnologia focado em desenvolvimento de sistemas. Saiba quais ferramentas e tecnologias eu uso atualmente."
 	/>
+	<link rel="preload" as="image" type="image/webp" href="/profile_lowres.webp">
 </svelte:head>
 
 <Hero>
@@ -104,7 +105,7 @@
 			role="presentation"
 			class="card flex flex-col items-center gap-2 rounded-lg md:flex-row"
 		>
-			<img width="128" height="128" class="w-32 rounded-full" src="https://avatars.githubusercontent.com/u/16668109?v=4" alt="Minha foto de perfil do github" />
+			<img width="164" height="164" class="rounded-full" src="/profile.webp" style="background-image: url(/profile_lowres.webp); min-width: 164px;" alt="Minha foto de perfil do github" />
 			<div class="flex flex-col gap-2">
 				<section>
 					<h1 class="text-title-medium">Lucas A. Ouverney</h1>
