@@ -18,18 +18,12 @@
 				[
 					'#arrow',
 					{
-						x: ['0px', '-74px'],
-						y: ['0px', '61px'],
+						offsetDistance: ['0%', '25.891651%', null, '100%']
 					},
 					{
-						x: {
-							easing: 
-								[0, 0.55, 0.45, 1],							
-						},
-						y: {
-							easing: [0.33, 1, 0.68, 1]
-						},
-						duration: .6
+						easing: [.25, 1, .25, 1],
+						offset: [0, .16, .2, .83, 1],
+						duration: 3
 					}
 				],
 				[
@@ -39,22 +33,8 @@
 					},
 					{
 						duration: 1,
+						at: .5,
 						easing: spring({ mass: 0.8 })
-					}
-				],
-				[
-					'#arrow',
-					{
-						y: [null, 0,-90,-150],
-						x: [null,0,-90,-32]
-					},
-					{
-						duration: 1,
-						x: {
-							easing:[0.76, 0, 0.24, 1] 
-						},
-						easing: [0.37, 0, 0.63, 1],
-						at: '+.05'
 					}
 				],
 				[
@@ -111,7 +91,7 @@
 		width="212"
 		height="361"
 		fill="none"
-		shape-rendering="geometricPrecision"
+		shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
 	>
 		<!-- <g id="stars">
 			<g class="yellowstar">
@@ -351,7 +331,10 @@
 				/>
 			</g>
 		</g>
-		<g id="arrow">
+		<g 
+			id="arrow"
+			style="translate: -182px -260px;offset-path:path('M 176.006 258.789 C 148.447 248.485 103.432 355.9 103 311.5 C 103.001 311.499 103 311.5 103 311.5 C 69.4401 193.07 274.691 295.512 135.414 98.8221');offset-rotate:0deg"
+		>
 			<path
 				fill="#030003"
 				d="M179.652 248.167c-.178-.902.853-1.546 1.585-.991l6.23 4.722a1 1 0 0 1-.074 1.645l-4.717 2.947a1 1 0 0 1-1.511-.654l-1.513-7.669Z"
