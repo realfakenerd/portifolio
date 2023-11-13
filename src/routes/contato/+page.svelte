@@ -3,7 +3,7 @@
 	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import TextField from '$lib/components/TextField.svelte';
-	import {marked} from 'marked'
+	import { marked } from 'marked';
 
 	const inputs = [
 		{
@@ -36,7 +36,7 @@
 		}
 	];
 
-	let value = ''
+	let value = '';
 	async function parse() {
 		const md = await marked(value, {
 			async: true
@@ -58,9 +58,9 @@
 		<section class="flex flex-col gap-2 text-left">
 			<div class="w-full">
 				<h1 class="text-headline-medium">Olha a Mensagem! 📜</h1>
-				<p class="text-body-medium py-2">
+				<p class="py-2 text-body-medium">
 					Se estiver interessado em fazer negócios, quer falar sobre
-					<a class="decoration-on-surface underline decoration-solid" href="/projetos">
+					<a class="underline decoration-on-surface decoration-solid" href="/projetos">
 						algum projeto meu
 					</a>
 					ou só quer trocar mensagens sobre programação, é só mandar uma mensagem, responderei com um
@@ -68,7 +68,7 @@
 				</p>
 				<section class="flex flex-col gap-1">
 					<p class="text-body-small">Pode checar minhas redes sociais também 😉</p>
-					<ul class="text-label-large text-primary flex flex-row gap-2">
+					<ul class="flex flex-row gap-2 text-label-large text-primary">
 						<Chips tag="li" icon="mdi:github">
 							<a
 								href="https://github.com/realfakenerd"
@@ -112,14 +112,13 @@
 				/>
 			</figure>
 		</section>
-		<section class="bg-background text-on-background w-full rounded-xl p-4 shadow-xl">
+		<section class="bg-background w-full rounded-xl p-4 text-on-background shadow-xl">
 			<form
-				class="flex flex-col h-full justify-between gap-y-2"
+				class="flex h-full flex-col justify-between gap-y-2"
 				method="POST"
 				action="https://formsubmit.co/realfakenerd@gmail.com"
 			>
-				<fieldset class="flex flex-col gap-3 ">
-
+				<fieldset class="flex flex-col gap-3">
 					<input
 						type="hidden"
 						name="_next"
@@ -133,11 +132,19 @@
 						{#if input !== 'textarea'}
 							<TextField title={label} {icon} {name} />
 						{:else}
-							<TextField bind:value on:input={parse} isTextarea title={label} {icon} {name} supportingText="use Markdown aqui!"/>
+							<TextField
+								bind:value
+								on:input={parse}
+								isTextarea
+								title={label}
+								{icon}
+								{name}
+								supportingText="use Markdown aqui!"
+							/>
 						{/if}
 					{/each}
 				</fieldset>
-				<Button class="interactive-bg-primary" isBlock  icon="mdi:send">Enviar</Button>
+				<Button class="interactive-bg-primary" isBlock icon="mdi:send">Enviar</Button>
 			</form>
 		</section>
 	</div>

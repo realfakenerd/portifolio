@@ -13,23 +13,15 @@
 	};
 </script>
 
-<TextField
-	bind:value
-	style="filled"
-	title={'Search'}
-	trailingIcon="mdi:search"
-/>
+<TextField bind:value style="filled" title={'Search'} trailingIcon="mdi:search" />
 <ul class="grid gap-2">
 	{#each data.posts.filter(pesquisa) as post, i (i)}
-	{@const title = post.title.replaceAll(' ', '').replace('/','')}
-		<li
-			transition:slide={{ easing: easeEmphasized }}
-			class="gap-y-2 card w-full"
-		>
+		{@const title = post.title.replaceAll(' ', '').replace('/', '')}
+		<li transition:slide={{ easing: easeEmphasized }} class="card w-full gap-y-2">
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
 					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
-						<h1 style:--title="title-{title}" class="text-title-medium ">
+						<h1 style:--title="title-{title}" class="text-title-medium">
 							{post.title}
 						</h1>
 					</a>

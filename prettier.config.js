@@ -5,6 +5,6 @@ export default {
 	trailingComma: 'none',
 	semi: true,
 	printWidth: 100,
-	plugins: ['prettier-plugin-tailwindcss'],
+	plugins: ['prettier-plugin-svelte', 'prettier-plugin-tailwindcss'],
 	overrides: [{ files: '*.svelte', options: { parser: 'svelte' } }]
 };

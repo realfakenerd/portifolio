@@ -9,7 +9,7 @@
 		currentRoute === path || currentRoute.startsWith(`${path}/`) ? firstClass : secondClass;
 </script>
 
-<header class="bottom-0 md:w-[80px] z-[999] md:left-0 md:top-0">
+<header class="bottom-0 z-[999] md:left-0 md:top-0 md:w-[80px]">
 	<div class="hidden h-screen flex-col items-center justify-evenly md:flex">
 		<nav class="custom-navbar flex-col items-center gap-y-3 px-3 py-2">
 			<ul>
@@ -24,7 +24,7 @@
 						>
 							<div
 								aria-current={isCurrentRoute(path, 'page', undefined)}
-								class="relative button group-hover:bg-secondary-container-hover"
+								class="button relative group-hover:bg-secondary-container-hover"
 							>
 								<span class="fill-on-background group-hover:fill-on-secondary-container">
 									<Icon width="24" {icon} />
@@ -46,9 +46,9 @@
 	<div class="w-full md:hidden">
 		<nav
 			use:navdown={{
-				transition: { transitionDuration: '250ms'}
+				transition: { transitionDuration: '250ms' }
 			}}
-			class="custom-navbar fixed bottom-0 bg-background h-20 w-full flex-row px-2 py-0"
+			class="custom-navbar bg-background fixed bottom-0 h-20 w-full flex-row px-2 py-0"
 		>
 			{#each routes as { path, icon, name }, i (i)}
 				<a
@@ -93,7 +93,7 @@
 	}
 
 	.custom-navbar span {
-		@apply text-label-small order-1 h-4 flex-none flex-grow-0 self-stretch text-center;
+		@apply order-1 h-4 flex-none flex-grow-0 self-stretch text-center text-label-small;
 	}
 
 	div[aria-current='page'] {

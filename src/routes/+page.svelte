@@ -4,7 +4,6 @@
 	import { animate, stagger } from 'motion';
 
 	function animateText(node: HTMLElement) {
-
 		animate(
 			[...node.children],
 			{
@@ -13,14 +12,17 @@
 			},
 			{
 				duration: 1,
-				delay: stagger(.25, { easing: [0, 0, 0.2, 1] })
+				delay: stagger(0.25, { easing: [0, 0, 0.2, 1] })
 			}
 		).finished.then(() => {
 			animate(
 				'#ola',
 				{ y: [0, 16] },
 				{
-					easing: [[0.8, 0, 1, 1],[0, 0, 0.2, 1]],
+					easing: [
+						[0.8, 0, 1, 1],
+						[0, 0, 0.2, 1]
+					],
 					duration: 1,
 					repeat: Infinity,
 					direction: 'alternate'
@@ -39,7 +41,7 @@
 	<meta name="keywords" content="webapps, desenvolvimento, navegador, Lucas" />
 </svelte:head>
 
-<Hero class="h-full gap-4 md:gap-0">
+<Hero class="h-full gap-12 md:gap-0">
 	<section use:animateText class="flex flex-col items-start gap-1 font-medium">
 		<h2 id="ola" class="text-title-medium">Ola! 👋</h2>
 		<h1 class="text-display-large text-primary">Lucas aqui</h1>
@@ -50,8 +52,8 @@
 
 <style>
 	section * {
-		transform:rotateX(-100deg);
-transform-origin:top;
-opacity:0;
+		transform: rotateX(-100deg);
+		transform-origin: top;
+		opacity: 0;
 	}
 </style>

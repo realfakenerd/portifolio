@@ -71,7 +71,7 @@
 		<button
 			in:fly={{ easing: easeEmphasized, y: 150, duration: 300 }}
 			on:click={toggle}
-			class="interactive-bg-tertiary fill-on-tertiary fab fab-normal"
+			class="fab fab-normal interactive-bg-tertiary fill-on-tertiary"
 			aria-label="theme toggler"
 		>
 			{#if $theme.current === 'dark'}

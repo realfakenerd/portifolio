@@ -8,14 +8,14 @@
 	import { createEventDispatcher } from 'svelte';
 
 	let wrapper: HTMLDivElement, textarea: HTMLTextAreaElement;
-	
+
 	export let value = '';
 	export let error = false;
 	export let style: 'filled' | 'outlined' = 'outlined';
 	export let icon: string | null = null;
 	export let trailingIcon: string | null = null;
 	export let iconError: string | null = '';
-	export let title: string |null = null;
+	export let title: string | null = null;
 	export let name: string | null = null ?? title;
 	let id = title ?? `input-${crypto.randomUUID()}`;
 	export let display = 'inline-flex';
@@ -55,7 +55,7 @@
 				on:input={resize}
 				{...extraInputOptions}
 				aria-label="Enter your input {title}"
-				aria-invalid={error ? "true" : "false"}
+				aria-invalid={error ? 'true' : 'false'}
 			/>
 		{:else}
 			<input
@@ -68,12 +68,12 @@
 				{id}
 				class="text-field-input"
 				aria-label="Enter your input {title}"
-				aria-invalid={error ? "true" : "false"}
+				aria-invalid={error ? 'true' : 'false'}
 			/>
 		{/if}
 		{#if icon}
 			<span class="leading-icon">
-				<Icon icon={icon} />
+				<Icon {icon} />
 			</span>
 		{/if}
 		{#if error}
@@ -98,13 +98,13 @@
 
 <style lang="postcss">
 	.text-field-container {
-		@apply text-on-surface-variant relative h-14 w-full min-w-[15rem];
+		@apply relative h-14 w-full min-w-[15rem] text-on-surface-variant;
 	}
 	.text-field-container :global(svg) {
 		@apply h-6 w-6;
 	}
 	.text-field-input {
-		@apply text-on-surface absolute inset-0 h-full w-full border-none bg-transparent px-4 outline-none;
+		@apply absolute inset-0 h-full w-full border-none bg-transparent px-4 text-on-surface outline-none;
 	}
 	textarea {
 		@apply resize-none;
@@ -113,7 +113,9 @@
 		@apply pointer-events-none absolute inset-0 rounded-[inherit] transition-all;
 	}
 	label {
-		transition: all 250ms, font 500ms;
+		transition:
+			all 250ms,
+			font 500ms;
 		transition-timing-function: cubic-bezier(0.254, 0.029, 0, 1.2);
 		color: rgb(var(--error, currentColor));
 		@apply pointer-events-none absolute left-4 top-4 ease-in-out;
@@ -122,7 +124,7 @@
 		--error: var(--color-error);
 	}
 	.supporting {
-		@apply text-on-surface-variant text-label-small mt-1 px-4;
+		@apply mt-1 px-4 text-label-small text-on-surface-variant;
 	}
 	.supporting.error {
 		@apply text-error;
@@ -168,7 +170,7 @@
 	.leading-icon,
 	.trailing-icon {
 		fill: rgb(var(--error, var(--color-on-surface)));
-		@apply transition-all duration-200 pointer-events-none inline-flex self-center;
+		@apply pointer-events-none inline-flex self-center transition-all duration-200;
 	}
 	.leading-icon {
 		@apply ml-4 mr-3;
@@ -179,8 +181,8 @@
 	}
 	.trailing-button {
 		fill: rgb(var(--error, var(--color-primary)));
-		@apply text-on-surface-variant absolute bottom-0 right-0 top-0 inline-flex w-[3.25rem] cursor-pointer items-center 
-		justify-center border-none bg-transparent transition-all duration-200;
+		@apply absolute bottom-0 right-0 top-0 inline-flex w-[3.25rem] cursor-pointer items-center justify-center 
+		border-none bg-transparent text-on-surface-variant transition-all duration-200;
 	}
 	.trailing-button:is(:focus-visible, :active) {
 		background-color: rgb(var(--color-on-surface-variant) / 0.12);
@@ -214,7 +216,7 @@
 	}
 
 	.text-field-container:focus-within > :is(.text-field-layer) {
-		@apply ring-primary ring-2;
+		@apply ring-2 ring-primary;
 	}
 
 	.text-field-input[type='date'] {

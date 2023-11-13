@@ -96,16 +96,20 @@
 		name="description"
 		content="Conheça mais sobre mim, um entusiasta de tecnologia focado em desenvolvimento de sistemas. Saiba quais ferramentas e tecnologias eu uso atualmente."
 	/>
-	<link rel="preload" as="image" type="image/webp" href="/profile_lowres.webp">
+	<link rel="preload" as="image" type="image/webp" href="/profile_lowres.webp" />
 </svelte:head>
 
 <Hero>
 	<section class="flex flex-col items-center justify-center gap-2">
-		<div
-			role="presentation"
-			class="card flex flex-col items-center gap-2 rounded-lg md:flex-row"
-		>
-			<img width="164" height="164" class="rounded-full" src="/profile.webp" style="background-image: url(/profile_lowres.webp); min-width: 164px;" alt="Minha foto de perfil do github" />
+		<div role="presentation" class="card flex flex-col items-center gap-2 rounded-lg md:flex-row">
+			<img
+				width="164"
+				height="164"
+				class="rounded-full"
+				src="/profile.webp"
+				style="background-image: url(/profile_lowres.webp); min-width: 164px;"
+				alt="Minha foto de perfil do github"
+			/>
 			<div class="flex flex-col gap-2">
 				<section>
 					<h1 class="text-title-medium">Lucas A. Ouverney</h1>
@@ -126,7 +130,7 @@
 		</div>
 
 		<div class="w-full">
-			<div class="card rounded-lg gap-2">
+			<div class="card gap-2 rounded-lg">
 				<h1 class="text-title-large">O que eu uso Atualmente:</h1>
 
 				<section class="flex flex-col items-start justify-between gap-y-2 font-mono md:flex-row">
@@ -140,7 +144,7 @@
 						{@const klass = item.klass}
 						{@const link = item.link}
 						<svelte:fragment slot="list-description">
-							<li class="item items-center list-lines-1">
+							<li class="item list-lines-1 items-center">
 								<div class="item-body">
 									<h2 class="list-headline">Editor &amp; Terminal</h2>
 								</div>
@@ -163,7 +167,7 @@
 						{@const klass = item.klass}
 						{@const link = item.link}
 						<svelte:fragment slot="list-description">
-							<li class="item items-center list-lines-1">
+							<li class="item list-lines-1 items-center">
 								<div class="item-body">
 									<h2 class="list-headline">Frameworks &amp; Libs</h2>
 								</div>
@@ -186,7 +190,7 @@
 						{@const klass = item.klass}
 						{@const link = item.link}
 						<svelte:fragment slot="list-description">
-							<li class="item items-center list-lines-1">
+							<li class="item list-lines-1 items-center">
 								<div class="item-body">
 									<h2 class="list-headline">Hosting &amp; Co.</h2>
 								</div>
