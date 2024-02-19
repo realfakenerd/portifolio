@@ -1,13 +1,27 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import type { Snippet } from 'svelte';
 
-	export let isLink = false;
-	export let isBlock = false;
-	export let isRoute = true;
-	export let icon: string | null = null;
-	export let href: string | null = null;
+	let {
+		isLink = false,
+		isBlock = false,
+		isRoute = true,
+		icon = null,
+		href = null,
+		class: className,
+		children,
+		...attributes
+	} = $props<{
+		isLink?: boolean;
+		isBlock?: boolean;
+		isRoute?: boolean;
+		icon?: string;
+		href?: string;
+		class?: string;
+		children: Snippet;
+	}>();
+
 	let element = isLink ? 'a' : 'button';
-
 	const a = {
 		href,
 		rel: 'noreferrer',
@@ -17,13 +31,14 @@
 
 <svelte:element
 	this={element}
+	{...attributes}
 	{...isLink ? a : {}}
-	class="btn text-label-large {$$props.class ?? ''}"
+	class="btn text-label-large {className}"
 	class:icon-left={icon}
 	class:w-full={isBlock}
 >
 	{#if icon}
 		<Icon width={18} {icon} />
 	{/if}
-	<slot />
+	{@render children()}
 </svelte:element>

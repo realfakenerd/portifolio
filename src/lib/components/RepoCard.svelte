@@ -3,7 +3,7 @@
 	import Card from './Card.svelte';
 	import Chips from './Chips.svelte';
 
-	export let repo: Partial<Repo> = {};
+	let {repo = {}} = $props<{repo?: Partial<Repo>}>();
 </script>
 
 <Card tag="li" class="interactive-bg-background justify-between gap-2">

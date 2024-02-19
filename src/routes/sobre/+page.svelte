@@ -138,7 +138,7 @@
 						isUl
 						list={editor_terminal}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
+						class="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}
@@ -151,7 +151,7 @@
 							</li>
 							<hr class="divider-list-inset" />
 						</svelte:fragment>
-						<ListItem extraClassess="hover:bg-surface">
+						<ListItem class="hover:bg-surface">
 							<span>{title} =&gt;</span>
 							<a class={klass} href={link.path}>{link.title}</a>
 						</ListItem>
@@ -161,7 +161,7 @@
 						isUl
 						list={frameworks_libs}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
+						class="bg-surface-variant w-full rounded-md text-body-medium md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}
@@ -174,7 +174,7 @@
 							</li>
 							<hr class="divider-list-inset" />
 						</svelte:fragment>
-						<ListItem extraClassess="hover:bg-surface">
+						<ListItem class="hover:bg-surface">
 							<span>{title} =&gt;</span>
 							<a class={klass} href={link.path}>{link.title}</a>
 						</ListItem>
@@ -184,7 +184,7 @@
 						isUl
 						list={hosting_co}
 						let:item
-						extraClassess="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
+						class="bg-surface-variant w-full rounded-md text-body-medium md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}
@@ -197,7 +197,7 @@
 							</li>
 							<hr class="divider-list-inset" />
 						</svelte:fragment>
-						<ListItem extraClassess="hover:bg-surface">
+						<ListItem class="hover:bg-surface">
 							<span>{title} =&gt;</span>
 							<a class={klass} href={link.path}>{link.title}</a>
 						</ListItem>

@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let src: string;
-	export let alt: string;
+	let { src = '', alt = '' } = $props();
 </script>
 
 <img {src} {alt} loading="lazy" />

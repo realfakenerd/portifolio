@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Hero from '$lib/components/Hero.svelte';
-	console.log($page);
 </script>
 
 <Hero class="bg-error-container h-full flex-col">

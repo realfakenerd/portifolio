@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Hands from '$lib/components/Hands.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import { timeline, animate, spring } from 'motion';
+	import { animate, timeline } from 'motion';
 
 	function animateText(node: HTMLElement) {
 		const children = node.children;

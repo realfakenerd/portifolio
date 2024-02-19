@@ -1,15 +1,18 @@
-<script lang="ts">
-	import type { HTMLOlAttributes } from 'svelte/elements';
-	export let isUl = true;
+<script lang="ts" generics="T">
+	let {
+		class:className,
+		list = [],
+		isUl = true,
+	} = $props<{
+		class?: string;
+		list?: T[];
+		isUl?: boolean
+	}>()
 
-	type T = $$Generic;
-	export let list: T[] = [];
 	let tag = isUl ? 'ul' : 'ol';
-
-	export let extraClassess = '';
 </script>
 
-<svelte:element this={tag} class="list {extraClassess}">
+<svelte:element this={tag} class="list {className}">
 	<slot name="list-description" />
 	{#each list as item, i (i)}
 		<slot {item} />

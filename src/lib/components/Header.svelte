@@ -3,10 +3,11 @@
 	import Icon from '@iconify/svelte';
 	import { navdown } from 'navdown';
 
-	export let currentRoute = '';
+	let { currentRoute = '' } = $props();
 
-	$: isCurrentRoute = <T, P>(path: string, firstClass: T, secondClass?: P) =>
-		currentRoute === path || currentRoute.startsWith(`${path}/`) ? firstClass : secondClass;
+	const isCurrentRoute = $derived((path: string, firstClass: string, secondClass?: string) =>
+		currentRoute === path || currentRoute.startsWith(`${path}/`) ? firstClass : secondClass
+	);
 </script>
 
 <header class="bottom-0 z-[999] md:left-0 md:top-0 md:w-[80px]">
@@ -22,10 +23,7 @@
 							role="tab"
 							tabindex="0"
 						>
-							<div
-								aria-current={isCurrentRoute(path, 'page', undefined)}
-								class="button relative group-hover:bg-secondary-container-hover"
-							>
+							<div class="button relative group-hover:bg-secondary-container-hover">
 								<span class="fill-on-background group-hover:fill-on-secondary-container">
 									<Icon width="24" {icon} />
 								</span>

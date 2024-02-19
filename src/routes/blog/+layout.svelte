@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import Hero from '$lib/components/Hero.svelte';
 	import '@fontsource-variable/noto-sans-mono';
-	export let data;
+	import Icon from '@iconify/svelte';
+	let {data, children} = $props();
 </script>
 
 <svelte:head>
@@ -31,6 +31,6 @@
 			<h1 class="text-display-medium">Blog</h1>
 		</div>
 
-		<slot />
+		{@render children()}
 	</div>
 </Hero>

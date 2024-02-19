@@ -3,14 +3,14 @@
 	import { easeEmphasized } from '$lib/transitions';
 	import { formatDate } from '$lib/utils';
 	import { slide } from 'svelte/transition';
-	import type { LayoutServerData } from './$types';
-	let value: string = '';
-	export let data: LayoutServerData;
+	let value = $state('');
 
-	$: pesquisa = (val: Post) => {
+	let { data } = $props();
+
+	const pesquisa = $derived((val: Post) => {
 		if (value) return val.title.toLowerCase().includes(value.trim().toLowerCase());
 		return val;
-	};
+	});
 </script>
 
 <TextField bind:value style="filled" title={'Search'} trailingIcon="mdi:search" />

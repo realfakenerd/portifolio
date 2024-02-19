@@ -1,7 +1,13 @@
-<script lant="ts">
-	export let tag = 'section';
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+
+	let { tag = 'section', class: className, children, ...atributtes } = $props<{
+		tag?: string;
+		class?: string;
+		children: Snippet;
+	}>();
 </script>
 
-<svelte:element this={tag} class="card {$$props.class ?? ''}">
-	<slot />
+<svelte:element {...atributtes} this={tag} class="card {className}">
+	{@render children()}
 </svelte:element>

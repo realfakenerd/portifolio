@@ -1,14 +1,26 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import type { Snippet } from 'svelte';
 
-	export let tag = 'div';
-	export let icon: null | string = null;
+	let {
+		tag = 'div',
+		icon = null,
+		class: className,
+		children,
+		...attributes
+	} = $props<{
+		tag?: 'div' | string;
+		icon?: string;
+		class?: string;
+		children: Snippet
+	}>();
 </script>
 
 <svelte:element
 	this={tag}
+	{...attributes}
 	class:fill-on-surface-variant={icon}
-	class="chips items-center {$$props.class ?? ''}"
+	class="chips items-center {className}"
 >
 	<div class="chips-layer" />
 	<div class="chips-content inline-flex items-center text-label-medium {icon ? 'pl-2 pr-4' : ''}">

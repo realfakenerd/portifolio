@@ -36,12 +36,11 @@
 		}
 	];
 
-	let value = '';
+	let value = $state('');
 	async function parse() {
 		const md = await marked(value, {
 			async: true
 		});
-		console.log(md);
 	}
 </script>
 

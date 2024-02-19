@@ -2,7 +2,6 @@
 	import { browser } from '$app/environment';
 	import { easeEmphasized } from '$lib/transitions';
 	import Icon from '@iconify/svelte';
-	import { onMount } from 'svelte';
 	import { persisted } from 'svelte-local-storage-store';
 	import { fly } from 'svelte/transition';
 
@@ -48,8 +47,9 @@
 
 	let query: MediaQueryList;
 
-	$: {
-		if (!browser) break $;
+	let init = $state(false);
+	$effect(() => {
+		if (!browser) return;
 
 		query?.removeEventListener('change', cb);
 
@@ -57,10 +57,6 @@
 			query = window.matchMedia('(prefers-color-scheme: dark)');
 			query.addEventListener('change', cb);
 		}
-	}
-
-	let init = false;
-	onMount(() => {
 		init = !init;
 		return () => query?.removeEventListener('change', cb);
 	});

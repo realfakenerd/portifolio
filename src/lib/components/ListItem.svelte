@@ -1,12 +1,19 @@
 <script lang="ts">
-	export let extraClassess = '';
-	export let lines: 1 | 2 | 3 = 1;
-	export let heading: string | null = null;
-	export let description: string | null = null;
+	let {
+		class: className = '',
+		lines = 1,
+		heading = null,
+		description = null
+	} = $props<{
+		class?: string;
+		lines?: 1 | 2 | 3;
+		heading?: string;
+		description?: string;
+	}>();
 </script>
 
 <li
-	class="item items-center {extraClassess}"
+	class="item items-center {className}"
 	class:list-lines-1={lines === 1}
 	class:list-lines-2={lines === 2}
 	class:list-lines-3={lines === 3}

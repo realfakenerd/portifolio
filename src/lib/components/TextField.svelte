@@ -1,36 +1,46 @@
 <script lang="ts">
-	import type {
-		HTMLAttributes,
-		HTMLInputAttributes,
-		HTMLTextareaAttributes
-	} from 'svelte/elements';
 	import Icon from '@iconify/svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	let wrapper: HTMLDivElement, textarea: HTMLTextAreaElement;
+	let wrapper = $state<HTMLDivElement|null>(null), textarea = $state<HTMLTextAreaElement|null>(null);
 
-	export let value = '';
-	export let error = false;
-	export let style: 'filled' | 'outlined' = 'outlined';
-	export let icon: string | null = null;
-	export let trailingIcon: string | null = null;
-	export let iconError: string | null = '';
-	export let title: string | null = null;
-	export let name: string | null = null ?? title;
+	interface Props {
+		value?: string;
+		error?: boolean;
+		style?: 'filled' | 'outlined';
+		icon?: string;
+		trailingIcon?: string;
+		iconError?: string;
+		title?: string;
+		name?: string;
+		display?: string;
+		isTextarea?: boolean;
+		supportingText?: string;
+	}
+
+	let {
+		value = '',
+		error = false,
+		style = 'outlined',
+		icon,
+		trailingIcon,
+		iconError,
+		title,
+		name = null ?? title,
+		display = 'inline-flex',
+		isTextarea = false,
+		supportingText
+	} = $props<Props>();
+
 	let id = title ?? `input-${crypto.randomUUID()}`;
-	export let display = 'inline-flex';
-	export let isTextarea = false;
-	export let supportingText: null | string = null;
 	const dispatch = createEventDispatcher();
-	export let extraWrapperOptions = {} satisfies HTMLAttributes<HTMLDivElement>;
-	export let extraInputOptions = {} satisfies HTMLInputAttributes & HTMLTextareaAttributes;
 
 	function resize() {
-		textarea.style.height = 'unset';
-		wrapper.style.height = 'unset';
-		const height = textarea.scrollHeight + 'px';
-		textarea.style.height = height;
-		wrapper.style.height = height;
+		textarea!.style.height = 'unset';
+		wrapper!.style.height = 'unset';
+		const height = textarea!.scrollHeight + 'px';
+		textarea!.style.height = height;
+		wrapper!.style.height = height;
 	}
 </script>
 
@@ -38,7 +48,6 @@
 	<div
 		class="text-field-container style-{style} {error ? 'error' : ''} {icon ? 'has-icon' : ''}"
 		bind:this={wrapper}
-		{...extraWrapperOptions}
 		style="display: {display}"
 	>
 		{#if isTextarea}
@@ -53,7 +62,6 @@
 				required
 				rows="1"
 				on:input={resize}
-				{...extraInputOptions}
 				aria-label="Enter your input {title}"
 				aria-invalid={error ? 'true' : 'false'}
 			/>
@@ -82,7 +90,7 @@
 			</span>
 		{/if}
 		{#if trailingIcon}
-			<button class="trailing-button" on:click={() => dispatch('trailingClick')}>
+			<button class="trailing-button" onclick={() => dispatch('trailingClick')}>
 				<Icon icon={trailingIcon} />
 			</button>
 		{/if}

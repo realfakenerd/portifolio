@@ -4,10 +4,12 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
-	let init = false;
-	onMount(() => (init = true));
+	let init = $state(false);
+	$effect(() => {
+		init = true;
+	});
 
-	export let data: PageData;
+	let {data} = $props();
 </script>
 
 <svelte:head>
