@@ -1,12 +1,20 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
 
-	let { class: className = undefined, ...restProps } = $props<{ class?: string;}>();
+	let {
+		class: className = undefined,
+		children,
+		...restProps
+	} = $props<{ class?: string; children: Snippet }>();
 </script>
 
 <blockquote
-	class={cn('mt-6 border-l-2 border-primary bg-surface-variant/20 pl-6 pr-4 py-1 italic', className)}
+	class={cn(
+		'my-10 rounded-md border-l-2 border-primary bg-surface/20 py-1 pl-6 pr-4 italic',
+		className
+	)}
 	{...restProps}
 >
-	<slot />
+	{@render children()}
 </blockquote>

@@ -1,8 +1,13 @@
 <script lang="ts">
-	import { cn } from '$lib/utils'
-	let { class: className = undefined, ...restProps } = $props<{ class?: string; }>();
+	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
+	let {
+		class: className = undefined,
+		children,
+		...restProps
+	} = $props<{ class?: string; children: Snippet }>();
 </script>
 
-<h1 class={cn('mt-2 scroll-m-20 text-4xl font-bold', className)} {...restProps}>
-	<slot />
+<h1 class={cn('mt-2 scroll-m-20 text-title-large font-bold', className)} {...restProps}>
+	{@render children()}
 </h1>

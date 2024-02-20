@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
 
-	let { class: className = undefined, restProps } = $props<{ class?: string; restProps: any[] }>();
+	let {
+		class: className = undefined,
+		children,
+		...restProps
+	} = $props<{ class?: string; children: Snippet }>();
 </script>
 
-<p class={cn('leading-7 [&:not(:first-child)]:mt-6', className)} {...restProps}>
-	<slot />
+<p class={cn('[&:not(:first-child)]:my-3', className)} {...restProps}>
+	{@render children()}
 </p>

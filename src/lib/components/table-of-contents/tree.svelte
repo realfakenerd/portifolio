@@ -1,42 +1,52 @@
 <script lang="ts">
-	import {
-	  type TableOfContentsItem,
-	  type TableOfContentsElements,
-	  melt,
-	} from '@melt-ui/svelte';
-  
-	export let tree: TableOfContentsItem[] = [];
-	export let activeHeadingIdxs: number[];
-	export let item: TableOfContentsElements['item'];
-	export let level = 1;
-  </script>
-  
-  <ul class="m-0 list-none {level !== 1 ? 'pl-4' : ''}">
+	import { page } from '$app/stores';
+	import { cn } from '$lib/utils';
+	import { melt, type TableOfContentsElements, type TableOfContentsItem } from '@melt-ui/svelte';
+
+	let {
+		tree = [],
+		activeHeadingIdxs,
+		item,
+		level = 1
+	} = $props<{
+		tree?: TableOfContentsItem[];
+		activeHeadingIdxs?: number[];
+		item: TableOfContentsElements['item'];
+		level?: number;
+	}>();
+</script>
+
+<ul class={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
 	{#if tree && tree.length}
-	  {#each tree as heading, i (i)}
-		<li class="mt-0 pt-2">
-		  <a
-			href="#{heading.id}"
-			use:melt={$item(heading.id)}
-			class="inline-flex items-center justify-center gap-1 text-neutral-500 no-underline transition-colors
-			 hover:!text-magnum-600 data-[active]:text-magnum-700"
-		  >
-			<!--
-			  Along with the heading title, the original heading node
-			  is also passed down, so you can display headings
-			  however you want.
-			-->
-			{@html heading.node.innerHTML}
-		  </a>
-		  {#if heading.children && heading.children.length}
-			<svelte:self
-			  tree={heading.children}
-			  level={level + 1}
-			  {activeHeadingIdxs}
-			  {item}
-			/>
-		  {/if}
-		</li>
-	  {/each}
+		{#each tree as heading, i (i)}
+			<li class={cn('mt-0 pt-2')}>
+				<a
+					href="#{heading.id}"
+					use:melt={$item(heading.id)}
+					class={cn(
+						`w-full rounded-full px-4 py-1 capitalize 
+						text-on-surface-variant/70 ring-primary transition-all 
+						hover:ring-2 hover:text-on-surface data-[active]:hover:ring-2`
+					)}
+				>
+					{@html heading.node.innerHTML}
+				</a>
+				{#if heading.children && heading.children.length}
+					<svelte:self tree={heading.children} level={level + 1} {activeHeadingIdxs} {item} />
+				{/if}
+			</li>
+		{/each}
 	{/if}
-  </ul>
+</ul>
+
+<style lang="postcss">
+	[data-active] {
+		--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
+			var(--tw-ring-offset-color);
+		--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width))
+			var(--tw-ring-color);
+		box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+		font-weight: 500;
+		color: theme(colors.on-surface);
+	}
+</style>

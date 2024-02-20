@@ -1,27 +1,5 @@
 .mdsvex code {
-	@apply relative rounded bg-surface-variant px-[0.3rem] py-[0.2rem] font-mono text-body-small;
-}
-
-[data-theme='default'] {
-	display: flex;
-}
-
-[data-style='new-york'] [data-style='default'] {
-	display: none;
-}
-
-[data-style='default'] [data-style='default'] {
-	display: flex;
-	flex-direction: column;
-}
-
-[data-style='new-york'] [data-style='new-york'] {
-	display: flex;
-	flex-direction: column;
-}
-
-[data-style='default'] [data-style='new-york'] {
-	display: none;
+	@apply relative rounded bg-surface px-[0.3rem] py-[0.2rem] font-mono text-label-small;
 }
 
 [data-rehype-pretty-code-fragment] {

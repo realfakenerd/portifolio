@@ -8,9 +8,13 @@ category:
   - tutorial
 ---
 
-I'm using **TypeScript** but **types are optional** and can be ignored, so use JavaScript if you prefer it. Use the **spacebar** to select **ESLint** to find problems in the code and **Prettier** to format the code.
-
 ## init
+
+- Banana
+- Uva
+- Maçã
+
+---
 
 Use the `init` command to initialize dependencies for a new project.
 
@@ -31,7 +35,7 @@ Configure the import alias for components: › $lib/components
 Configure the import alias for utils: › $lib/utils
 ```
 
-### Options 1
+## options 1
 
 ```txt
 Usage: shadcn-svelte init [options]
@@ -69,7 +73,7 @@ Which components would you like to add? › Space to select. Return to submit.
 ◯  collapsible
 ```
 
-### Options 2
+## options 2
 
 ```txt
 Usage: shadcn-svelte add [options] [components...]

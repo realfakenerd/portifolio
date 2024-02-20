@@ -9,10 +9,6 @@ interface ContentType {
 export const load = (async ({ params }) => {
 	try {
 		const post = (await import(`../../../posts/${params.articleId}.md`)) as ContentType;
-
-		console.log(post.metadata);
-		console.log(post.default);
-		
 		return {
 			content: post.default,
 			meta: post.metadata

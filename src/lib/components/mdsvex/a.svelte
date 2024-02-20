@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { cn } from '$lib/utils'
+	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
 
 	let {
 		class: className = undefined,
 		href,
+		children,
 		...restProps
-	} = $props<{ class?: string; href: string; }>();
+	} = $props<{ class?: string; href: string; children: Snippet }>();
 
 	let internal = $derived(href.startsWith('/') || href.startsWith('#'));
 	let rel = $derived(!internal ? 'noopener noreferrer' : undefined);
@@ -16,8 +18,8 @@
 	{href}
 	{target}
 	{rel}
-	class={cn('font-medium decoration-wavy underline decoration-primary', className)}
+	class={cn('font-medium underline decoration-primary decoration-slice', className)}
 	{...restProps}
 >
-	<slot />
+	{@render children()}
 </a>
