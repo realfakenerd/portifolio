@@ -58,9 +58,9 @@ export const mdsvexOptions = {
 	smartypants: {
 		quotes: false,
 		ellipses: false,
-		backticks: false,
+		backticks: true,
 		dashes: false
 	},
-	rehypePlugins: [rehypeSlug],
-	remarkPlugins: [remarkUnwrapImages]
+	rehypePlugins: [rehypeSlug()],
+	remarkPlugins: [remarkUnwrapImages()]
 };

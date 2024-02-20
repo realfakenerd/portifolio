@@ -41,3 +41,22 @@ Ready to start writing? Either start changing stuff on the left or
 
 [Marked]: https://github.com/markedjs/marked/
 [Markdown]: http://daringfireball.net/projects/markdown/
+
+## Usage
+
+```svelte
+<script lang="ts">
+  import * as Alert from "$lib/components/ui/alert";
+</script>
+
+<Alert.Root>
+  <Alert.Title>Heads up!</Alert.Title>
+  <Alert.Description>
+    You can add components to your app using the cli.
+  </Alert.Description>
+</Alert.Root>
+```
+
+## Examples
+
+## Default
