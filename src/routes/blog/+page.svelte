@@ -21,7 +21,7 @@
 			<div class="flex justify-between">
 				<div class="flex flex-col gap-y-2">
 					<a class="text-tertiary hover:underline" href={'/blog/' + post.slug}>
-						<h1 style:--title="title-{title}" class="text-title-medium">
+						<h1 class="text-title-medium">
 							{post.title}
 						</h1>
 					</a>
@@ -54,13 +54,5 @@
 <style>
 	ul.grid {
 		grid-template-columns: repeat(auto-fill, minmax(18rem, 22rem));
-	}
-
-	h1 {
-		view-transition-name: var(--title);
-	}
-
-	img {
-		view-transition-name: var(--post);
 	}
 </style>

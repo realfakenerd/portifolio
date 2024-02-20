@@ -2,23 +2,10 @@
 	import { onNavigate } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
 	import '@fontsource-variable/noto-sans-display';
-	import '../app.css';
-	import type { LayoutData } from './$types';
 	import { enableCache } from '@iconify/svelte';
+	import '../app.css';
 
 	enableCache('local');
-	// onMount(() => {
-	// 	const color = Math.floor(Math.random() * 16777215)
-	// 		.toString(16)
-	// 		.padStart(6, '0');
-	// 	updateTheme(
-	// 		{
-	// 			primary: `#${color}`
-	// 		},
-	// 		'class'
-	// 	);
-	// });
-
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 		return new Promise((resolve) => {
@@ -29,13 +16,13 @@
 		});
 	});
 
-	export let data: LayoutData;
+	let {data, children} = $props()
 </script>
 
 <Header currentRoute={data.currentRoute} />
 
 <main class="flex-1 p-2">
-	<slot />
+	{@render children()}
 </main>
 
 <style>

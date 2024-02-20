@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type { PageServerData } from './$types';
-	export let data: PageServerData;
+	let { data } = $props();
+	const { meta: _meta, content } = data;
 
-	const { meta, content } = data;
-
-	const title = meta.title.replaceAll(' ', '').replace('/', '');
+	const component = $derived(content);
+	const meta = $derived(_meta);
 </script>
 
 <svelte:head>
@@ -24,20 +23,14 @@
 
 <div class="min-h-screen">
 	<hgroup class="my-32 flex flex-col gap-4 text-center">
-		<h1 style:--title="title-{title}" aria-level={1} class="text-display-medium text-primary">
+		<h1 aria-level={1} class="text-display-medium text-primary">
 			{meta.title}
 		</h1>
 		<p aria-level={2} class="text-body-large">{meta.description}</p>
 	</hgroup>
 	<article class="prose w-[40ch] max-w-4xl md:w-full">
 		<main class="text-body-small md:text-body-medium">
-			{@html content}
+			<svelte:component this={component} />
 		</main>
 	</article>
 </div>
-
-<style>
-	hgroup h1 {
-		view-transition-name: var(--title);
-	}
-</style>

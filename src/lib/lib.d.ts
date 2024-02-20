@@ -24,14 +24,6 @@ interface Post {
 	draft?: string;
 }
 
-interface Fm {
-	title: string;
-	description: string;
-	slug: string;
-	published: string;
-	category: string;
-}
-
 interface GitUser {
 	login: string;
 	id: number;
