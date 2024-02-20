@@ -1,7 +1,32 @@
-.mdsvex code {
-	@apply relative rounded bg-surface px-[0.3rem] py-[0.2rem] font-mono text-label-small;
+.mdsvex p:has(code) code {
+	@apply bg-surface relative rounded px-[0.3rem] py-[0.2rem] font-mono text-label-small;
 }
 
+.mdsvex pre:has(code) {
+	color: hsl(220, 23%, 95%);
+	@apply bg-surface mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg p-1 py-4;
+}
+
+.mdsvex .token .punctuation {
+	color: hsl(230, 14%, 41%);
+}
+
+.mdsvex .token .keyword {
+	color: hsl(22, 99%, 52%);
+}
+
+.mdsvex .token .tag {
+	color: hsl(189, 70%, 42%);
+}
+
+.mdsvex .token .attr-name {
+	color: hsl(35, 77%, 49%);
+}
+.mdsvex .token .attr-value {
+	color: hsl(109, 58%, 40%);
+}
+
+/* 
 [data-rehype-pretty-code-fragment] {
 	@apply relative;
 }
@@ -60,4 +85,4 @@
 
 [data-rehype-pretty-code-title] + pre {
 	@apply mt-2;
-}
+} */

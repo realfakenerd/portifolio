@@ -21,7 +21,7 @@
 
 <Header currentRoute={data.currentRoute} />
 
-<main class="flex-1 p-2">
+<main class="flex-1 p-2 relative min-h-screen">
 	{@render children()}
 </main>
 

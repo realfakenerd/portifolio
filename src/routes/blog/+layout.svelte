@@ -20,7 +20,7 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<Hero>
+<Hero class="relative">
 	<div class="flex w-full flex-col gap-4">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}

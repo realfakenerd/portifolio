@@ -1,66 +1,54 @@
 import { resolve } from 'path';
 import rehypeSlug from 'rehype-slug';
 import remarkUnwrapImages from 'remark-unwrap-images';
+import remarkGfm from 'remark-gfm';
+import codeImport from 'remark-code-import';
+import rehypePrettyCode from 'rehype-pretty-code';
 import { fileURLToPath } from 'url';
-
-export const codeBlockPrettierConfig = {
-	useTabs: false,
-	tabWidth: 2,
-	singleQuote: false,
-	trailingComma: 'none',
-	printWidth: 80,
-	endOfLine: 'lf',
-	pluginSearchDirs: ['node_modules/prettier-plugin-svelte'],
-	parser: 'svelte',
-	svelteIndexScriptAndStyle: true,
-	svelteStrictMode: false,
-	svelteSortOrder: 'scripts-markup-styles-options',
-	plugins: ['prettier-plugin-svelte'],
-	overrides: [
-		{
-			files: '*.svelte',
-			options: {
-				parser: 'svelte',
-				svelteIndentScriptAndStyle: true,
-				svelteStrictMode: false,
-				svelteSortOrder: 'scripts-markup-styles-options'
-			}
-		}
-	],
-	bracketSameLine: false,
-	importOrder: [
-		'<TYPES>',
-		'<TYPES>^[.]',
-		'<BUILTIN_MODULES>',
-		'<THIRD_PARTY_MODULES>',
-		'^\\$app',
-		'^\\$env',
-		'^\\$service-worker',
-		'^\\$lib/server',
-		'^\\$(?![^\\/]*\\/)',
-		'^\\$[^/]*\\/[^/]+',
-		'^[./]',
-		'\\.js$',
-		'\\.svelte$'
-	],
-	importOrderSeparation: false,
-	importOrderSortSpecifiers: true,
-	importOrderBuiltinModulesToTop: true,
-	importOrderParserPlugins: ['typescript', 'svelte'],
-	importOrderMergeDuplicateImports: true
-};
+import { getHighlighter } from 'shiki/index.mjs';
+import { readFileSync } from 'fs';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+/** @type {import('rehype-pretty-code').Options} */
+export const prettyCodeOptions = {
+	theme: JSON.parse(String(readFileSync(resolve(__dirname, './dark.json')))),
+	getHighlighter: (options) =>
+		getHighlighter({
+			...options,
+			langs: [
+				'plaintext',
+				import('shiki/langs/javascript.mjs'),
+				import('shiki/langs/typescript.mjs'),
+				import('shiki/langs/css.mjs'),
+				import('shiki/langs/svelte.mjs'),
+				import('shiki/langs/shell.mjs'),
+				import('shiki/langs/markdown.mjs')
+			]
+		}),
+	keepBackground: false,
+	onVisitLine(node) {
+		// @ts-expect-error - we're changing the node type
+		node.children = { type: 'text', value: ' ' };
+	},
+	onVisitHighlightedLine(node) {
+		node.properties.className = ['line--highlighted'];
+	},
+	onVisitHighlightedChars(node) {
+		node.properties.className = ['chars--highlighted'];
+	}
+};
+
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
 	extensions: ['.md'],
 	layout: resolve(__dirname, './src/lib/components/mdsvex/mdsvex.svelte'),
 	smartypants: {
-		quotes: false,
+		quotes: true,
 		ellipses: false,
 		backticks: true,
 		dashes: false
 	},
-	rehypePlugins: [rehypeSlug()],
-	remarkPlugins: [remarkUnwrapImages()]
+	rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]],
+	remarkPlugins: [remarkUnwrapImages, codeImport, remarkGfm]
 };

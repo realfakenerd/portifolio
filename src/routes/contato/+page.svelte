@@ -3,7 +3,6 @@
 	import Chips from '$lib/components/Chips.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import TextField from '$lib/components/TextField.svelte';
-	import { marked } from 'marked';
 
 	const inputs = [
 		{
@@ -37,11 +36,6 @@
 	];
 
 	let value = $state('');
-	async function parse() {
-		const md = await marked(value, {
-			async: true
-		});
-	}
 </script>
 
 <svelte:head>
@@ -133,7 +127,6 @@
 						{:else}
 							<TextField
 								bind:value
-								on:input={parse}
 								isTextarea
 								title={label}
 								{icon}

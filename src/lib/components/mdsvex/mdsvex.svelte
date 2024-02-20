@@ -26,7 +26,7 @@
 </script>
 
 <script lang="ts">
-	let {title = '', description = '', source = '', component = '', radix = ''} = $props()
+	let { title = '', description = '', source = '', component = '', radix = '' } = $props();
 </script>
 
 <slot {title} {description} {source} {component} {radix} />

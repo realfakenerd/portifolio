@@ -1,5 +1,6 @@
 import { withMaterialColors } from 'tailwind-material-colors';
 import type { Config } from 'tailwindcss';
+import { colors } from 'tailwindcss/defaultTheme';
 import tail from 'tail-material-design';
 export default withMaterialColors(
 	{
@@ -7,6 +8,8 @@ export default withMaterialColors(
 		plugins: [tail],
 		theme: {
 			extend: {
+				backgroundColor: { ...colors },
+				colors: { ...colors },
 				animation: {
 					slit: 'slit-vertically 500ms linear 0s 1 normal none'
 				},

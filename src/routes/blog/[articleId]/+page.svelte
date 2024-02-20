@@ -21,7 +21,7 @@
 	<meta name="robots" content="index, follow" />
 </svelte:head>
 
-<div class="flex flex-col gap-4">
+<div class="relative flex flex-col gap-4">
 	<header>
 		<hgroup class="card flex min-h-[544px] flex-col justify-center gap-4 text-center">
 			<h1 aria-level={1} class="w-full text-display-large text-primary">
@@ -31,10 +31,12 @@
 		</hgroup>
 	</header>
 	<main class="flex flex-row-reverse justify-center">
-		<div class="mx-4 mt-8 w-[256px]">
-			{#key $page.url.pathname}
-				<TableOfContents />
-			{/key}
+		<div class="hidden md:block">
+			<div class="mx-4 mt-8 w-[256px]">
+				{#key $page.url.pathname}
+					<TableOfContents />
+				{/key}
+			</div>
 		</div>
 		<article
 			id="mdsvex"

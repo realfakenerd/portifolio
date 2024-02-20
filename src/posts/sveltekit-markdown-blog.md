@@ -20,6 +20,19 @@ Use the `init` command to initialize dependencies for a new project.
 
 The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.cjs`, and creates CSS variables for the project.
 
+```svelte
+<script>
+	export let title;
+	export let author;
+	export let date;
+</script>
+
+<h1>{title}</h1>
+<p class="date">on: {date}</p>
+<p class="date">by: {author}</p>
+<slot />
+```
+
 ```bash
 npx shadcn-svelte@latest init
 ```
