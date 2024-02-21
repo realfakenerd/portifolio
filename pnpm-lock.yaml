@@ -31,6 +31,12 @@ devDependencies:
   '@prettier/sync':
     specifier: ^0.5.1
     version: 0.5.1(prettier@3.2.5)
+  '@shikijs/transformers':
+    specifier: ^1.1.6
+    version: 1.1.6
+  '@shikijs/twoslash':
+    specifier: ^1.1.6
+    version: 1.1.6(typescript@5.3.3)
   '@sveltejs/adapter-vercel':
     specifier: ^5.1.0
     version: 5.1.0(@sveltejs/kit@2.5.0)
@@ -813,6 +819,26 @@ packages:
     resolution: {integrity: sha512-cKc5vGQ4p/4sjx48BHIO7CvLaN32vqpz5Wh7v2n+U1EezGdfX4Wms7khBctKz3iCg9yYq4sfGUc2t+JWj6EUsw==}
     dev: true
 
+  /@shikijs/core@1.1.6:
+    resolution: {integrity: sha512-kt9hhvrWTm0EPtRDIsoAZnSsFlIDBVBBI5CQewpA/NZCPin+MOKRXg+JiWc4y+8fZ/v0HzfDhu/UC+OTZGMt7A==}
+    dev: true
+
+  /@shikijs/transformers@1.1.6:
+    resolution: {integrity: sha512-R+eI1I9sQv0MCJyfR4kAG1G1SKSctw5ILszP0tHVrAgzSHWTpaHbXreZrDueahqtUCNHjt+MKmKJ8EMFtiitOQ==}
+    dependencies:
+      shiki: 1.1.6
+    dev: true
+
+  /@shikijs/twoslash@1.1.6(typescript@5.3.3):
+    resolution: {integrity: sha512-0HJK7Il7HevTpRvpPlnJ0ow8UyoQxhvxQ0/lhfw1C0xW/7eLtSAtZfSKdel5Nch6HgbbtfucEzuUFmRIRXUFUg==}
+    dependencies:
+      '@shikijs/core': 1.1.6
+      twoslash: 0.2.4(typescript@5.3.3)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /@sveltejs/adapter-vercel@5.1.0(@sveltejs/kit@2.5.0):
     resolution: {integrity: sha512-Z9yRJ4H2/7LcBlvN2/TKu1H0hWoRGonr8kPhP1GJ23LRW76IbiiX5gs/MLc6+ZGogCZYVJ4USmx6m+RFtvQTRw==}
     peerDependencies:
@@ -1143,6 +1169,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.21.0
       eslint-visitor-keys: 3.4.3
+    dev: true
+
+  /@typescript/vfs@1.5.0:
+    resolution: {integrity: sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@ungap/structured-clone@1.2.0:
@@ -3996,6 +4030,12 @@ packages:
       '@shikijs/core': 1.1.5
     dev: true
 
+  /shiki@1.1.6:
+    resolution: {integrity: sha512-j4pcpvaQWHb42cHeV+W6P+X/VcK7Y2ctvEham6zB8wsuRQroT6cEMIkiUmBU2Nqg2qnHZDH6ZyRdVldcy0l6xw==}
+    dependencies:
+      '@shikijs/core': 1.1.6
+    dev: true
+
   /signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
@@ -4461,6 +4501,22 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 5.3.3
+    dev: true
+
+  /twoslash-protocol@0.2.4:
+    resolution: {integrity: sha512-AEGTJj4mFGfvQc/M6qi0+s82Zq+mxLcjWZU+EUHGG8LQElyHDs+uDR+/3+m1l+WP7WL+QmWrVzFXgFX+hBg+bg==}
+    dev: true
+
+  /twoslash@0.2.4(typescript@5.3.3):
+    resolution: {integrity: sha512-hc3y11BjLHP4kV37TR6lUKksxpZp0LQi9kCy95ka6qobye/gV49PqXZIuWlRaRVGNvp4AJBMg8aiwkp0M8x/nQ==}
+    peerDependencies:
+      typescript: '*'
+    dependencies:
+      '@typescript/vfs': 1.5.0
+      twoslash-protocol: 0.2.4
+      typescript: 5.3.3
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /type-check@0.4.0:

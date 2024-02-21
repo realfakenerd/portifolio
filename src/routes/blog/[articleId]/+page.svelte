@@ -8,6 +8,14 @@
 
 	const component = $derived(content);
 	const meta = $derived(_meta);
+
+	$effect(() => {
+		const copyBtn = $state<HTMLButtonElement>(document.querySelector('.copy')!);
+		const code = $derived(copyBtn.parentElement?.lastChild);
+		copyBtn.addEventListener('click', () => {
+			navigator.clipboard.writeText(code?.textContent!);
+		});
+	});
 </script>
 
 <svelte:head>
@@ -22,13 +30,14 @@
 </svelte:head>
 
 <div class="relative flex flex-col gap-4">
-	<header>
-		<hgroup class="card flex min-h-[544px] flex-col justify-center gap-4 text-center">
+	<header class="flex flex-col md:flex-row gap-4">
+		<hgroup class="card flex min-h-[544px] w-1/2 flex-col justify-center gap-4 text-center">
 			<h1 aria-level={1} class="w-full text-display-large text-primary">
 				{meta.title}
 			</h1>
-			<p aria-level={2} class="w-full text-body-large">{meta.description}</p>
+			<p aria-level={2} class="w-full text-title-large text-pretty">{meta.description}</p>
 		</hgroup>
+		<img class="card p-0 w-1/2 object-cover object-right" src="/svelte-machine.jpg" alt="s">
 	</header>
 	<main class="flex flex-row-reverse justify-center">
 		<div class="hidden md:block">

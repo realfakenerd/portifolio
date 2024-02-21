@@ -1,43 +1,19 @@
+import {
+	transformerMetaHighlight,
+	transformerNotationDiff,
+	transformerNotationErrorLevel,
+	transformerNotationHighlight,
+	transformerRenderWhitespace
+} from '@shikijs/transformers';
+import { escapeSvelte } from 'mdsvex';
 import { resolve } from 'path';
 import rehypeSlug from 'rehype-slug';
-import remarkUnwrapImages from 'remark-unwrap-images';
-import remarkGfm from 'remark-gfm';
 import codeImport from 'remark-code-import';
-import rehypePrettyCode from 'rehype-pretty-code';
+import remarkGfm from 'remark-gfm';
+import remarkUnwrapImages from 'remark-unwrap-images';
+import { getHighlighter } from 'shiki/bundle-web.mjs';
 import { fileURLToPath } from 'url';
-import { getHighlighter } from 'shiki/index.mjs';
-import { readFileSync } from 'fs';
-
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-
-/** @type {import('rehype-pretty-code').Options} */
-export const prettyCodeOptions = {
-	theme: JSON.parse(String(readFileSync(resolve(__dirname, './dark.json')))),
-	getHighlighter: (options) =>
-		getHighlighter({
-			...options,
-			langs: [
-				'plaintext',
-				import('shiki/langs/javascript.mjs'),
-				import('shiki/langs/typescript.mjs'),
-				import('shiki/langs/css.mjs'),
-				import('shiki/langs/svelte.mjs'),
-				import('shiki/langs/shell.mjs'),
-				import('shiki/langs/markdown.mjs')
-			]
-		}),
-	keepBackground: false,
-	onVisitLine(node) {
-		// @ts-expect-error - we're changing the node type
-		node.children = { type: 'text', value: ' ' };
-	},
-	onVisitHighlightedLine(node) {
-		node.properties.className = ['line--highlighted'];
-	},
-	onVisitHighlightedChars(node) {
-		node.properties.className = ['chars--highlighted'];
-	}
-};
 
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
@@ -49,6 +25,41 @@ export const mdsvexOptions = {
 		backticks: true,
 		dashes: false
 	},
-	rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]],
+	highlight: {
+		highlighter: async (code, lang) => {
+			const highlighter = await getHighlighter({
+				langs: ['javascript', 'typescript', 'svelte', 'html', 'text', 'bash'],
+				themes: ['github-dark-dimmed']
+			});
+
+			const htmlHighlighted = highlighter.codeToHtml(code.trim(), {
+				// @ts-expect-error lang is not undefined
+				lang,
+				theme: 'github-dark-dimmed',
+				transformers: [
+					transformerNotationDiff(),
+					transformerMetaHighlight(),
+					transformerNotationErrorLevel(),
+					transformerRenderWhitespace(),
+					transformerNotationHighlight()
+				]
+			});
+
+			await highlighter.loadLanguage('svelte', 'typescript', 'bash');
+			const html = escapeSvelte(htmlHighlighted);
+
+			return `
+				<div class="code-block">
+					<button class="copy"></button>
+					<span class="lang">${lang}</span>
+					{@html \`${html}\` }
+					<span style="display: none;">${escapeSvelte(code)}</span>
+				</div>
+			`;
+		}
+	},
+	// @ts-expect-error just ignore it
+	rehypePlugins: [rehypeSlug],
+	// @ts-expect-error just ignore it
 	remarkPlugins: [remarkUnwrapImages, codeImport, remarkGfm]
 };

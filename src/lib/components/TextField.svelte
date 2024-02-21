@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { createEventDispatcher } from 'svelte';
-
+	
 	let wrapper = $state<HTMLDivElement|null>(null), textarea = $state<HTMLTextAreaElement|null>(null);
 
 	interface Props {
@@ -33,7 +32,6 @@
 	} = $props<Props>();
 
 	let id = title ?? `input-${crypto.randomUUID()}`;
-	const dispatch = createEventDispatcher();
 
 	function resize() {
 		textarea!.style.height = 'unset';
@@ -90,7 +88,7 @@
 			</span>
 		{/if}
 		{#if trailingIcon}
-			<button class="trailing-button" onclick={() => dispatch('trailingClick')}>
+			<button class="trailing-button">
 				<Icon icon={trailingIcon} />
 			</button>
 		{/if}
