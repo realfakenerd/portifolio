@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { TableOfContents } from '$lib/components/table-of-contents';
 	import { cn } from '$lib/utils';
+	import imgSrc from '$lib/static/svelte-machine.jpg?enhanced';
 
 	let { data } = $props();
 	const { meta: _meta, content } = data;
@@ -30,14 +31,16 @@
 </svelte:head>
 
 <div class="relative flex flex-col gap-4">
-	<header class="flex flex-col md:flex-row gap-4">
+	<header class="flex flex-col gap-4 md:flex-row">
 		<hgroup class="card flex min-h-[544px] w-1/2 flex-col justify-center gap-4 text-center">
 			<h1 aria-level={1} class="w-full text-display-large text-primary">
 				{meta.title}
 			</h1>
-			<p aria-level={2} class="w-full text-title-large text-pretty">{meta.description}</p>
+			<p aria-level={2} class="w-full text-pretty text-title-large">{meta.description}</p>
 		</hgroup>
-		<img class="card p-0 w-1/2 object-cover object-right" src="/svelte-machine.jpg" alt="s">
+		<div class="card min-h-[544px] w-1/2 object-cover object-right p-0">
+			<enhanced:img src={imgSrc} alt="sssdkjgjf" />
+		</div>
 	</header>
 	<main class="flex flex-row-reverse justify-center">
 		<div class="hidden md:block">
