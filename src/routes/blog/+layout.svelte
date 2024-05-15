@@ -24,7 +24,7 @@
 	<div class="flex w-full flex-col gap-4">
 		<div class="flex flex-row gap-4">
 			{#if data.currentRoute.match('/blog/')}
-				<button class="fill-on-surface-variant px-4" on:click={() => goto('/blog')}>
+				<button class="fill-on-surface-variant px-4" onclick={() => goto('/blog')}>
 					<Icon icon="mdi:arrow-left" width="24" />
 				</button>
 			{/if}

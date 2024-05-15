@@ -10,8 +10,6 @@
 		current: 'dark' | 'light';
 	}
 
-	const userTheme = typeof window !== 'undefined' && localStorage.getItem('color-scheme');
-
 	export const theme = persisted<ThemeDef>('color-scheme', {
 		preference: 'system',
 		current: browser
@@ -66,7 +64,7 @@
 	{#if init}
 		<button
 			in:fly={{ easing: easeEmphasized, y: 150, duration: 300 }}
-			on:click={toggle}
+			onclick={toggle}
 			class="fab fab-normal interactive-bg-tertiary fill-on-tertiary"
 			aria-label="theme toggler"
 		>

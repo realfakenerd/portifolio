@@ -39,7 +39,7 @@
 			<p aria-level={2} class="w-full text-pretty text-title-large">{meta.description}</p>
 		</hgroup>
 		<div class="card min-h-[544px] w-1/2 object-cover object-right p-0">
-			<enhanced:img src={imgSrc} alt="sssdkjgjf" />
+			<enhanced:img src={imgSrc} alt="imagem"></enhanced:img>
 		</div>
 	</header>
 	<main class="flex flex-row-reverse justify-center">

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	
-	let wrapper = $state<HTMLDivElement|null>(null), textarea = $state<HTMLTextAreaElement|null>(null);
+	import type { FormEventHandler } from 'svelte/elements';
+
+	let wrapper = $state<HTMLDivElement | null>(null),
+		textarea = $state<HTMLTextAreaElement | null>(null);
 
 	interface Props {
 		value?: string;
@@ -15,10 +17,11 @@
 		display?: string;
 		isTextarea?: boolean;
 		supportingText?: string;
+		oninput?: FormEventHandler<HTMLTextAreaElement | HTMLInputElement>;
 	}
 
 	let {
-		value = '',
+		value = $bindable(''),
 		error = false,
 		style = 'outlined',
 		icon,
@@ -28,8 +31,9 @@
 		name = null ?? title,
 		display = 'inline-flex',
 		isTextarea = false,
-		supportingText
-	} = $props<Props>();
+		supportingText,
+		oninput
+	}: Props = $props();
 
 	let id = title ?? `input-${crypto.randomUUID()}`;
 
@@ -50,7 +54,10 @@
 	>
 		{#if isTextarea}
 			<textarea
-				on:input
+				oninput={(e) => {
+					resize()
+					if (oninput)oninput(e);
+				}}
 				{name}
 				bind:value
 				bind:this={textarea}
@@ -59,13 +66,12 @@
 				class:value
 				required
 				rows="1"
-				on:input={resize}
 				aria-label="Enter your input {title}"
 				aria-invalid={error ? 'true' : 'false'}
-			/>
+			></textarea>
 		{:else}
 			<input
-				on:input
+				{oninput}
 				{name}
 				bind:value
 				class:value
@@ -92,7 +98,7 @@
 				<Icon icon={trailingIcon} />
 			</button>
 		{/if}
-		<div class="text-field-layer" />
+		<div class="text-field-layer"></div>
 		<label for={id}>
 			{title}
 		</label>

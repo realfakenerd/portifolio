@@ -2,9 +2,9 @@ import type { LayoutServerLoad } from './$types';
 
 export const load = (async () => {
 	const posts: Post[] = [];
-	const paths = import.meta.glob<Post[]>('/src/posts/*.md', { eager: true });
+	const paths = import.meta.glob<Post[]>('/src/posts/*.md');
 	for (const path in paths) {
-		const file = paths[path];
+		const file = await paths[path]();
 		const slug = path.split('/').at(-1)?.replace('.md', '');
 
 		if(file && typeof file === 'object' && 'metadata' in file && slug) {

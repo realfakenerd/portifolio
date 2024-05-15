@@ -117,13 +117,13 @@
 				</section>
 				<section>
 					<p class="text-body-medium">
-						Quer saber um pouco mais sobre mim? Sou um entusiasta de tecnologia, apaixonado por
-						aprender e aprimorar minhas habilidades em desenvolvimento de sistemas. <br />
-						Atualmente, como Analista de Sistemas, estou focando meus esforços em me tornar um especialista
-						em Rust no backend e em aprimorar meu conhecimento em banco de dados, especialmente com Redis.
-						<br />
-						Acredito que sempre há espaço para crescer e me desafio a aprender algo novo a cada dia.
-						Quer se juntar a mim nesta jornada de aprimoramento contínuo? Vamos lá!
+						Sou um entusiasta de tecnologia apaixonado por aprender e aprimorar minhas habilidades
+						em desenvolvimento de sistemas. Atualmente, como Analista de Sistemas, estou focando
+						meus esforços em me tornar um especialista em Rust no backend e em aprimorar meu
+						conhecimento em banco de dados, especialmente com Redis. <br/>
+						Tenho experiência em várias linguagens de programação, incluindo Typescript, Svelte e Rust.
+						Também já trabalhei com diversos bancos de dados, como MySQL, PostgreSQL e IndexedDB. 
+						Nos últimos anos, tenho me dedicado ao desenvolvimento de aplicações web e mobile. <br/>
 					</p>
 				</section>
 			</div>
@@ -138,7 +138,7 @@
 						isUl
 						list={editor_terminal}
 						let:item
-						class="text-body-medium bg-surface-variant w-full rounded-md md:w-fit"
+						class="bg-surface-variant w-full rounded-md text-body-medium md:w-fit"
 					>
 						{@const title = item.title}
 						{@const klass = item.klass}

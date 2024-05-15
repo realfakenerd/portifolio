@@ -2,5 +2,10 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"markdownlint.config": {
 		"hard_tab": false
-	}
+	},
+	"IDX.aI.enableCodebaseIndexing": true,
+	"IDX.aI.enableInlineCompletion": true,
+	"conventionalCommits.scopes": [
+		"app"
+	]
 }

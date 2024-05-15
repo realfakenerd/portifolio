@@ -1,11 +1,13 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	let { tag = 'section', class: className, children, ...atributtes } = $props<{
+	interface Props {
 		tag?: string;
 		class?: string;
 		children: Snippet;
-	}>();
+	}
+
+	let { tag = 'section', class: className, children, ...atributtes }: Props = $props();
 </script>
 
 <svelte:element {...atributtes} this={tag} class="card {className}">

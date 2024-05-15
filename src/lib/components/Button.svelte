@@ -2,16 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import type { Snippet } from 'svelte';
 
-	let {
-		isLink = false,
-		isBlock = false,
-		isRoute = true,
-		icon = null,
-		href = null,
-		class: className,
-		children,
-		...attributes
-	} = $props<{
+	interface Props {
 		isLink?: boolean;
 		isBlock?: boolean;
 		isRoute?: boolean;
@@ -19,7 +10,18 @@
 		href?: string;
 		class?: string;
 		children: Snippet;
-	}>();
+	}
+
+	let {
+		isLink = false,
+		isBlock = false,
+		isRoute = true,
+		icon = '',
+		href = '',
+		class: className,
+		children,
+		...attributes
+	}: Props = $props();
 
 	let element = isLink ? 'a' : 'button';
 	const a = {

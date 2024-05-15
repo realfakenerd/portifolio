@@ -3,10 +3,10 @@
 	import Card from './Card.svelte';
 	import Chips from './Chips.svelte';
 
-	let {repo = {}} = $props<{repo?: Partial<Repo>}>();
+	let { repo = {} }: { repo?: Partial<Repo> } = $props();
 </script>
 
-<Card tag="li" class="interactive-bg-background justify-between gap-2">
+<Card tag="li" class="bg-background justify-between gap-2">
 	<section class="flex flex-col gap-y-2">
 		<h2 class="text-title-large capitalize" aria-label="Nome do repositório: {repo.name}">
 			<span>{repo.name}</span>

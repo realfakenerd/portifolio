@@ -1,13 +1,13 @@
 <script lang="ts" generics="T">
-	let {
-		class:className,
-		list = [],
-		isUl = true,
-	} = $props<{
+
+
+	interface Props {
 		class?: string;
 		list?: T[];
-		isUl?: boolean
-	}>()
+		isUl?: boolean;
+	}
+
+	let { class: className, list = [], isUl = true }: Props = $props();
 
 	let tag = isUl ? 'ul' : 'ol';
 </script>

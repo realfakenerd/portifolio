@@ -2,11 +2,12 @@
 	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 
-	let {
-		class: className = undefined,
-		children,
-		...attributes
-	} = $props<{ class?: string; children: Snippet }>();
+	interface Props {
+		class?: string;
+		children: Snippet;
+	}
+
+	let { class: className = undefined, children, ...attributes }: Props = $props();
 </script>
 
 <section

@@ -1,15 +1,21 @@
 <script lang="ts">
-	let {
-		class: className = '',
-		lines = 1,
-		heading = null,
-		description = null
-	} = $props<{
+	import type { Snippet } from "svelte";
+
+	interface Props {
 		class?: string;
 		lines?: 1 | 2 | 3;
 		heading?: string;
 		description?: string;
-	}>();
+		children: Snippet;
+	}
+
+	let {
+		class: className = '',
+		lines = 1,
+		heading = '',
+		description = '',
+		children
+	}: Props = $props();
 </script>
 
 <li
@@ -25,6 +31,6 @@
 		{#if description}
 			<p class="list-description">{description}</p>
 		{/if}
-		<slot />
+		{@render children()}
 	</div>
 </li>

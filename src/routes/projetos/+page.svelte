@@ -1,8 +1,6 @@
 <script lang="ts">
 	import Hero from '$lib/components/Hero.svelte';
 	import RepoCard from '$lib/components/RepoCard.svelte';
-	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
 
 	let init = $state(false);
 	$effect(() => {
