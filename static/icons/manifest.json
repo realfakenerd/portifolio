@@ -14,12 +14,6 @@
 			"purpose": "maskable"
 		},
 		{
-			"src": "./maskable_icon_x72.webp",
-			"sizes": "72x72",
-			"type": "image/webp",
-			"purpose": "maskable"
-		},
-		{
 			"src": "./maskable_icon_x96.webp",
 			"sizes": "96x96",
 			"type": "image/webp",

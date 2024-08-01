@@ -22,6 +22,11 @@ const config = {
 			}
 		})
 	],
+	server: {
+		fs: {
+			allow: ['..']
+		}
+	},
 	build: {
 		minify: 'terser',
 		reportCompressedSize: false,

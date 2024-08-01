@@ -19,7 +19,6 @@
 <svelte:element
 	this={tag}
 	{...attributes}
-	class:fill-on-surface-variant={icon}
 	class="chips items-center {className}"
 >
 	<div class="chips-layer" />

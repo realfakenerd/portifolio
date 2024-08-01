@@ -1,12 +1,15 @@
-@import url('styles/post.css');
-@import url('styles/code.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-	font-family: 'Noto Sans Display Variable', sans-serif;
-	font-display: swap;
+@layer base {
+	body {
+		background-color: theme('colors.surface');
+		color: theme('colors.on-surface');
+		font-feature-settings:
+			'liga' 1,
+			'calt' 1;
+	}
 }
 
 img {

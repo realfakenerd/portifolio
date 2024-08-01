@@ -25,8 +25,8 @@
 					use:melt={$item(heading.id)}
 					class={cn(
 						`w-full rounded-full px-4 py-1 capitalize 
-						text-on-surface-variant/70 ring-primary transition-all 
-						hover:ring-2 hover:text-on-surface data-[active]:hover:ring-2`
+						/70 ring-primary transition-all 
+						hover:ring-2 hover: data-[active]:hover:ring-2`
 					)}
 				>
 					{@html heading.node.innerHTML}
@@ -47,6 +47,6 @@
 			var(--tw-ring-color);
 		box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 		font-weight: 500;
-		color: theme(colors.on-surface);
+		color: theme(colors.primary.DEFAULT);
 	}
 </style>
