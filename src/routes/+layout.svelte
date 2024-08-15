@@ -17,7 +17,7 @@
 		});
 	});
 
-	let { children } = $props();
+	const { children } = $props();
 
 	$effect(() => {
 		timeline(

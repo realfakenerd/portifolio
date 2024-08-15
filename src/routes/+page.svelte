@@ -23,7 +23,7 @@
 			],
 			[
 				'.letter',
-				{ fontVariationSettings: `'wght' 500, 'slnt' 0`, opacity: [0, 1] },
+				{ fontVariationSettings: `'wght' 500, 'ital' 0`, opacity: [0, 1] },
 				{
 					duration: 1.5,
 					delay: stagger(0.1, { from: 'center', easing: 'ease-in-out' }),
@@ -113,7 +113,7 @@
 		.letter {
 			font-variation-settings:
 				'wght' 10,
-				'slnt' -10;
+				'ital' 1;
 			opacity: 0;
 		}
 	}

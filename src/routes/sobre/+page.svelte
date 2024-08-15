@@ -19,7 +19,7 @@
 				rotateZ: '359deg'
 			},
 			{
-				repeat: Infinity,
+				repeat: Number.POSITIVE_INFINITY,
 				duration: 20,
 				easing: 'ease-in-out'
 			}
