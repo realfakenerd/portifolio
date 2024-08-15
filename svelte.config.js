@@ -11,7 +11,6 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			runtime: 'nodejs18.x',
 			split: true,
 			regions: ['gru1']
 		}),
