@@ -1,32 +1,43 @@
 <script lang="ts">
-	import { stagger, timeline } from 'motion';
+	import { glide, stagger, timeline } from 'motion';
 
 	$effect(() => {
 		timeline([
 			[
 				'.box',
-				{ transform: 'translateX(0%) translateY(0%)', opacity: 1 },
+				{ transform: [null, 'translateX(0%) translateY(0%)'], opacity: 1 },
 				{
 					duration: 1.6,
 					opacity: {
 						duration: 1.2,
 						offset: [0, 1]
 					},
-					easing: [0.16, 1, 0.26, 0.98],
+					easing: glide({
+						velocity: 40,
+						power: 1,
+						decay: .3,
+						bounceStiffness: 500
+					}),
 					delay: stagger(0.1, { from: 'first' })
 				}
 			],
 			[
 				'.box span',
 				{ opacity: 1 },
-				{ duration: 2, at: '-1', easing: 'step-start', delay: stagger(0.1, { from: 'first' }) }
+				{
+					duration: 2,
+					at: '-1',
+					easing: 'step-start',
+					delay: stagger(0.1, { from: 'first' })
+				}
 			],
 			[
 				'.letter',
 				{ fontVariationSettings: `'wght' 500, 'ital' 0`, opacity: [0, 1] },
 				{
-					duration: 1.5,
-					delay: stagger(0.1, { from: 'center', easing: 'ease-in-out' }),
+					duration: 1.8,
+					easing: [0.16, 1, 0.26, 0.98],
+					delay: stagger(0.1, { from: 'center' }),
 					at: '-1.5'
 				}
 			]
@@ -44,16 +55,15 @@
 </svelte:head>
 
 <section>
-	<hgroup>
-		<h1>
-			<span class="letter">W</span>
-			<span class="letter">E</span>
-			<span class="letter">B</span>
-			<span class="letter">D</span>
-			<span class="letter">E</span>
-			<span class="letter">V</span>
-		</h1>
-	</hgroup>
+	<h1>
+		<!-- Usando h1 para o título principal -->
+		<span class="letter" aria-label="W">W</span>
+		<span class="letter" aria-label="E">E</span>
+		<span class="letter" aria-label="B">B</span>
+		<span class="letter" aria-label="D">D</span>
+		<span class="letter" aria-label="E">E</span>
+		<span class="letter" aria-label="V">V</span>
+	</h1>
 	<ul>
 		<li style="--translateXPos: 220%;" class="box">
 			<span>M</span>
@@ -97,15 +107,12 @@
 		overflow: hidden;
 	}
 
-	hgroup {
+	h1 {
 		position: absolute;
 		top: 2rem;
 		left: 50%;
 		z-index: 20;
 		transform: translateX(-50%);
-	}
-
-	h1 {
 		display: inline-flex;
 		font-size: 8rem;
 		color: theme('colors.on-surface');
@@ -123,7 +130,7 @@
 		flex-direction: row;
 		gap: 1rem;
 		height: 75%;
-		width: max(50dvw,100%);
+		width: max(50dvw, 100%);
 		position: absolute;
 		bottom: 1rem;
 		z-index: 0;

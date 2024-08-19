@@ -1,4 +1,5 @@
 import type { cubicOut } from 'svelte/easing';
+import type { TransitionConfig } from 'svelte/transition';
 interface transitionOptions {
 	delay?: number;
 	duration?: number;
@@ -54,7 +55,7 @@ const createBezierLUT = (points: [number, number][], pointCount = 100) => {
 const createEase = (lutOptions: [number, number][][]) => {
 	let lut: ReturnType<typeof createBezierLUT>;
 	return (t: number) => {
-		if (!lut) lut = lutOptions.map((args) => createBezierLUT(args)).flat();
+		if (!lut) lut = lutOptions.flatMap((args) => createBezierLUT(args));
 		const closestPoint = lut.find((p) => p[0] >= t);
 		const closestY = closestPoint ? closestPoint[1] : 1;
 		return closestY;
@@ -103,7 +104,7 @@ export const sharedAxisTransition = (
 		easing: options.easing || easeEmphasized,
 		css: (t: number, u: number) => {
 			const opacity = (t - 0.35) * (1 / 0.35);
-			if (options.direction == 'Z') {
+			if (options.direction === 'Z') {
 				const factor = options.leaving ? u * 0.1 + 1 : t * 0.2 + 0.8;
 				let css = `transform: scale(${factor.toFixed(3)});`;
 				if (!options.leaving) css += `opacity: ${opacity.toFixed(3)};`;
@@ -116,4 +117,49 @@ export const sharedAxisTransition = (
 			);
 		}
 	};
+};
+
+function styleToString(style: StyleObject): string {
+	return Object.entries(style)
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		.filter(([_, value]) => value !== undefined)
+		.map(([key, value]) => `${key}:${value}`)
+		.join(';');
+}
+
+type StyleObject = Record<string, number | string | undefined>;
+
+const scaleConversion = (valueA: number, scaleA: [number, number], scaleB: [number, number]) => {
+	const [minA, maxA] = scaleA;
+	const [minB, maxB] = scaleB;
+
+	const percentage = (valueA - minA) / (maxA - minA);
+	const valueB = percentage * (maxB - minB) + minB;
+
+	return valueB;
+};
+
+interface FlyAndScaleOptions {
+	y: number;
+	start: number;
+	duration?: number;
+}
+
+export function flyAndScale(node: HTMLElement, options: FlyAndScaleOptions) {
+	const { transform } = getComputedStyle(node);
+
+	return {
+		duration: options.duration ?? 150,
+		delay: 0,
+		css: (t) => {
+			const y = scaleConversion(t, [0, 1], [options.y, 0]);
+			const scale = scaleConversion(t, [0, 1], [options.start, 1]);
+
+			return styleToString({
+				transform: `${transform !== 'none' ? transform : ''} translate3d(0, ${y}px, 0) scale(${scale})`,
+				opacity: t
+			});
+		},
+		easing: easeEmphasized
+	} as TransitionConfig;
 };

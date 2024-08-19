@@ -24,4 +24,4 @@ export default [
 		path: '/blog',
 		icon: 'mdi:post-outline'
 	}
-];
+] as const;

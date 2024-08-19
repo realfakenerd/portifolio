@@ -1,10 +1,9 @@
 <script lang="ts">
+	import { flyAndScale } from '$lib/transitions';
 	import Icon from '@iconify/svelte';
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { animate } from 'motion';
-	import { cubicOut } from 'svelte/easing';
-	import { fade, type TransitionConfig } from 'svelte/transition';
-
+	import { fade } from 'svelte/transition';
 	const {
 		elements: { content, title, trigger, portalled, overlay },
 		states: { open }
@@ -26,53 +25,24 @@
 		);
 	});
 
-	function styleToString(style: StyleObject): string {
-		return Object.entries(style)
-			.filter(([_, value]) => value !== undefined)
-			.map(([key, value]) => `${key}:${value};`)
-			.join('');
-	}
-
-	type StyleObject = Record<string, number | string | undefined>;
-
-	const scaleConversion = (valueA: number, scaleA: [number, number], scaleB: [number, number]) => {
-		const [minA, maxA] = scaleA;
-		const [minB, maxB] = scaleB;
-
-		const percentage = (valueA - minA) / (maxA - minA);
-		const valueB = percentage * (maxB - minB) + minB;
-
-		return valueB;
-	};
-
-	interface FlyAndScaleOptions {
-		y: number;
-		start: number;
-		duration?: number;
-	}
-
-	const flyAndScale = (node: HTMLElement, options: FlyAndScaleOptions): TransitionConfig => {
-		const { transform } = getComputedStyle(node);
-
-		return {
-			duration: options.duration ?? 150,
-			delay: 0,
-			css: (t) => {
-				const y = scaleConversion(t, [0, 1], [options.y, 0]);
-				const scale = scaleConversion(t, [0, 1], [options.start, 1]);
-
-				return styleToString({
-					transform: `${transform !== 'none' ? transform : ''} translate3d(0, ${y}px, 0) scale(${scale})`,
-					opacity: t
-				});
-			},
-			easing: cubicOut
-		};
-	};
+	
 </script>
 
 <svelte:head>
-	<title>Portfolio</title>
+	<title>Sobre</title>
+	<meta
+		name="description"
+		content="Procurando um desenvolvedor Svelte para dar vida ao seu projeto? Conheça meu trabalho e entre em contato para uma consultoria gratuita."
+	/>
+
+	<meta property="og:title" content="Lucas Silva - Desenvolvedor Web Svelte" />
+	<meta
+		property="og:description"
+		content="Desenvolvedor Svelte criando interfaces web de alta performance. Confira meu portfólio!"
+	/>
+	<meta property="og:image" content="https://www.example.com/lucas-profile-picture.jpg" />
+	<meta property="og:url" content="https://www.example.com/sobre" />
+	<meta property="og:type" content="website" />
 </svelte:head>
 
 <section class="section-hero container">
@@ -94,7 +64,7 @@
 						</svg>
 					</button>
 				</div>
-				<div class="w-full inline-flex items-center gap-4 text-title-medium">
+				<div class="inline-flex w-full items-center gap-4 text-title-medium">
 					<p>lucas210898@hotmail.com</p>
 					<Icon icon="mdi:email" />
 				</div>
@@ -538,7 +508,7 @@
 
 			.technologies {
 				grid-column: 1/3;
-				gap: .5rem;
+				gap: 0.5rem;
 			}
 		}
 	}

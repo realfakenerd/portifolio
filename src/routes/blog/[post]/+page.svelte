@@ -1,10 +1,10 @@
 <script>
-	let {
+	const {
 		data
 	} = $props();
 
 </script>
 
 <section class="flex flex-col pt-20 px-6">
-	<svelte:component this={data.post.default}/>
+	<div bind:this={data.post.default}></div>
 </section>

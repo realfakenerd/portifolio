@@ -24,11 +24,19 @@
 <section class="section-container">
 	<section class="projeto">
 		<div class="img-container">
-			<enhanced:img class="img" src="/static/pokedex/inicio.png" alt="inicio pokedex"
+			<enhanced:img class="img" loading="lazy" src="/static/pokedex/inicio.png" alt="inicio pokedex"
 			></enhanced:img>
-			<enhanced:img class="img" src="/static/pokedex/pokemon.png" alt="pokemon pokedex"
+			<enhanced:img
+				class="img"
+				loading="lazy"
+				src="/static/pokedex/pokemon.png"
+				alt="pokemon pokedex"
 			></enhanced:img>
-			<enhanced:img class="img" src="/static/pokedex/favorite.png" alt="favorite pokedex"
+			<enhanced:img
+				class="img"
+				loading="lazy"
+				src="/static/pokedex/favorite.png"
+				alt="favorite pokedex"
 			></enhanced:img>
 		</div>
 

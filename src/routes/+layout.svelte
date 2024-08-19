@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
+	import '@fontsource-variable/inter/standard.css';
 	import '@fontsource-variable/noto-sans-display';
 	import Icon, { enableCache } from '@iconify/svelte';
+	import { timeline } from 'motion';
 	import '../app.css';
-	import '@fontsource-variable/inter/standard.css';
-	import { animate, glide, timeline } from 'motion';
 
 	enableCache('local');
 	onNavigate((navigation) => {
@@ -55,7 +55,7 @@
 		</svg>
 	</a>
 	<nav class="links">
-		<li class="searchInput">
+		<li class="searchInput" aria-label="Pesquisar">
 			<Icon icon="mdi:search" width="18px" />
 		</li>
 		<li class="link">

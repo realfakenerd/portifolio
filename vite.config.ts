@@ -33,9 +33,16 @@ const config = {
 		target: 'esnext',
 		terserOptions: {
 			compress: {
-				keep_infinity: true,
-				pure_getters: true,
-				drop_console: true
+				unsafe: true,
+				unsafe_comps: true,
+				unsafe_math: true,
+				unsafe_proto: true,
+				pure_funcs: ['console.log'], // Lista de funções a serem removidas
+				passes: 3
+			},
+			
+			format: {
+				comments: false
 			}
 		}
 	},
