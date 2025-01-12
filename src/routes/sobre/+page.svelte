@@ -1,15 +1,8 @@
 <script lang="ts">
-	import { flyAndScale } from '$lib/transitions';
 	import Icon from '@iconify/svelte';
-	import { createDialog, melt } from '@melt-ui/svelte';
 	import { animate } from 'motion';
-	import { fade } from 'svelte/transition';
-	const {
-		elements: { content, title, trigger, portalled, overlay },
-		states: { open }
-	} = createDialog({
-		forceVisible: true
-	});
+
+	let hidden = $state(true);
 
 	$effect(() => {
 		animate(
@@ -23,9 +16,9 @@
 				easing: 'ease-in-out'
 			}
 		);
-	});
 
-	
+		$inspect(hidden);
+	});
 </script>
 
 <svelte:head>
@@ -55,7 +48,7 @@
 				<div class="profile-text">
 					<p>SOU O <br /> WEBDEV <br /> <span class="slanted">lucas</span></p>
 
-					<button class="btn-trigger" use:melt={$trigger}>
+					<button class="btn-trigger" onclick={() => (hidden = !hidden)} aria-label="Open dialog">
 						<svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24">
 							<path
 								class="fill-secondary"
@@ -86,23 +79,60 @@
 		<hgroup class="titulo">
 			<h1>Sobre mim</h1>
 		</hgroup>
-		<div class="biography">
-			<p>
-				Olá! Sou um webdev que curte muito o que faz. Com anos de experiência, amo Typescript, CSS e
-				Svelte. A criação de interfaces interativas e de alto desempenho é minha especialidade,
-				sempre focando em detalhes.
-			</p>
-			<p>
-				Quando não estou desenvolvendo sites extraordinários, estou curtindo um bom jogo, filmes e
-				séries dos melhores super-heróis ou épicos do sci-fi ou simplesmente aprendendo a aprimorar
-				meus projetos.
-			</p>
-			<p>
-				Então não deixe sua ideia só na ficção, entre em <button
-					use:melt={$trigger}
-					class="underline">contato comigo</button
-				> que transformo ficção em realidade, ponho suas ideias no mundo digital.
-			</p>
+		<div
+			class={[
+				'biography',
+				hidden ? 'bg-secondary text-on-secondary' : 'bg-tertiary text-on-tertiary'
+			]}
+		>
+			{#if !hidden}
+				<p>
+					Olá! Sou um webdev que curte muito o que faz. Com anos de experiência, amo Typescript, CSS
+					e Svelte. A criação de interfaces interativas e de alto desempenho é minha especialidade,
+					sempre focando em detalhes.
+				</p>
+				<p>
+					Quando não estou desenvolvendo sites extraordinários, estou curtindo um bom jogo, filmes e
+					séries dos melhores super-heróis ou épicos do sci-fi ou simplesmente aprendendo a
+					aprimorar meus projetos.
+				</p>
+				<p>
+					Então não deixe sua ideia só na ficção, entre em <button
+						onclick={() => (hidden = !hidden)}
+						class="underline">contato comigo</button
+					> que transformo ficção em realidade, ponho suas ideias no mundo digital.
+				</p>
+			{:else}
+				<form>
+					<header>
+						<h1>Fale comigo</h1>
+						<h2>Escreva para mim que eu receberei em meu e-mail :)</h2>
+					</header>
+					<main>
+						<ul>
+							<li class="text-field">
+								<label for="nome"> Nome </label>
+
+								<input id="nome" type="text" />
+							</li>
+							<li class="text-field">
+								<label for="email"> E-mail </label>
+
+								<input id="email" type="email" />
+							</li>
+							<li class="text-field">
+								<label for="assunto"> Assunto </label>
+
+								<input id="assunto" type="text" />
+							</li>
+						</ul>
+						<div class="text-field w-1/2">
+							<label for="mensagem">Mensagem</label>
+							<textarea id="mensagem" class="h-full"></textarea>
+						</div>
+					</main>
+				</form>
+			{/if}
 		</div>
 		<div class="stat">
 			<div class="w-1/2">
@@ -211,59 +241,7 @@
 	</main>
 </section>
 
-{#if $open}
-	<div use:melt={$portalled}>
-		<div
-			transition:fade={{ duration: 150 }}
-			class="fixed inset-0 z-20 bg-surface/50"
-			use:melt={$overlay}
-		></div>
-		<section
-			in:flyAndScale={{
-				y: 200,
-				start: 1
-			}}
-			out:flyAndScale={{
-				y: 100,
-				start: 1,
-				duration: 400
-			}}
-			class="dialog"
-			use:melt={$content}
-		>
-			<div class="drag-handle"></div>
-			<header>
-				<h1 use:melt={$title} class="text-title-large">Fale comigo</h1>
-				<h2 class="text-title-small">Escreva para mim que eu receberei em meu e-mail :)</h2>
-			</header>
-			<main>
-				<ul>
-					<li class="text-field">
-						<label for="nome"> Nome </label>
-
-						<input id="nome" type="text" />
-					</li>
-					<li class="text-field">
-						<label for="email"> E-mail </label>
-
-						<input id="email" type="email" />
-					</li>
-					<li class="text-field">
-						<label for="assunto"> Assunto </label>
-
-						<input id="assunto" type="text" />
-					</li>
-				</ul>
-				<div class="text-field w-1/2">
-					<label for="mensagem">Mensagem</label>
-					<textarea id="mensagem" class="h-full"></textarea>
-				</div>
-			</main>
-		</section>
-	</div>
-{/if}
-
-<style>
+<style lang="postcss">
 	.section-hero {
 		margin-inline: auto;
 		display: flex;
@@ -314,13 +292,12 @@
 					width: 100%;
 					justify-content: flex-end;
 
-					img {
+					:global(img) {
 						height: 260px;
 						width: 260px;
 						border-radius: 999px;
 						object-fit: cover;
 						backdrop-filter: blur(48px);
-
 						@apply ring-4 ring-secondary-container;
 					}
 				}
@@ -358,16 +335,14 @@
 		}
 
 		.biography {
-			background-color: theme('colors.tertiary');
-			color: theme('colors.on-tertiary');
 			display: flex;
 			grid-column: 1/3;
 			flex-direction: column;
 			text-wrap: pretty;
-			gap: theme('size.2');
+			gap: theme('size.4');
 			padding: 1rem;
 
-			@apply text-body-large;
+			@apply text-body-medium;
 		}
 
 		.stat {
@@ -399,76 +374,61 @@
 		}
 	}
 
-	.drag-handle {
-		width: 10%;
-		height: 6px;
-		border-radius: 999px;
-		background-color: theme('colors.on-surface-variant');
-		margin-block: 22px;
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		cursor: pointer;
-	}
-
-	.dialog {
-		position: fixed;
-		padding: theme('size.6') theme('size.4');
+	.text-field {
+		width: 100%;
 		display: flex;
-		gap: theme('size.4');
 		flex-direction: column;
-		left: 50%;
-		bottom: 0;
-		transform: translateX(-50%);
-		min-height: 50dvh;
-		width: min(100%, 640px);
-		background-color: theme('colors.surface-variant');
-		z-index: 30;
-		border-radius: 28px 28px 0 0;
+		gap: theme('size[0.5]');
 
-		.text-field {
+		@apply text-label-large;
+
+		input,
+		textarea {
+			outline: none;
+			height: theme('size.8');
 			width: 100%;
-			display: flex;
-			flex-direction: column;
-			gap: theme('size[1.5]');
+			padding: theme('size.2');
+			color: theme('colors.on-secondary');
+			background-color: transparent;
+			border-radius: theme('borderRadius.md');
+			transition: 250ms ease-in-out;
+			caret-color: theme('colors.on-secondary');
 
-			@apply text-label-large;
-
-			input,
-			textarea {
-				outline: none;
-				height: theme('size.10');
-				width: 100%;
-				padding: theme('size.2') theme('size.2');
-				color: theme('colors.on-surface-variant');
-				background-color: theme('colors.surface-variant');
-				border-radius: theme('borderRadius.md');
-				transition: 250ms ease-in-out;
-
-				&:hover {
-					background-color: theme('colors.surface-variant-hover');
-				}
-
-				&:focus-visible {
-					@apply ring-1;
-				}
-
-				&::placeholder {
-					color: theme('colors.surface');
-				}
-
-				@apply ring-2 ring-primary;
+			&:hover {
+				background-color: theme('colors.on-secondary' / .1);
 			}
 
-			textarea {
-				height: 100%;
+			&:focus-visible {
+				@apply ring-1;
+			}
+
+			&::placeholder {
+				color: theme('colors.surface');
+			}
+
+			@apply ring-2 ring-secondary-container;
+		}
+
+		textarea {
+			height: 100%;
+			resize: true;
+		}
+	}
+
+	form {
+		header {
+			h1 {
+				@apply text-title-large;
+			}
+
+			h2 {
+				@apply text-title-small
 			}
 		}
 
 		main {
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			gap: theme('size.4');
 
 			ul {
