@@ -1,10 +1,14 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { animate, timeline } from 'motion';
+	import NumberFlow from '@number-flow/svelte';
 
 	let hidden = $state(true);
+	let projects = $state(0);
 
 	$effect(() => {
+		projects = 10;
+
 		animate(
 			'#logoIcon',
 			{
@@ -21,27 +25,38 @@
 			[
 				'#statOne',
 				{
-					clipPath: ['polygon(0 0, 100% 0, 100% 100%, 0% 100%)', 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)']
-				}, {
-					duration: 2
+					clipPath: [
+						'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+						'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)'
+					]
+				},
+				{
+					duration: 2,
+					easing: 'ease-in-out'
 				}
 			],
 			[
 				'#statTwo',
 				{
-					clipPath: ['polygon(0 0, 100% 0, 100% 100%, 0% 100%)', 'polygon(0 0, 0 0, 0 100%, 0 100%)']
-				}, {
-					duration: 2
+					clipPath: [
+						'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+						'polygon(0 0, 0 0, 0 100%, 0 100%)'
+					]
+				},
+				{
+					duration: 1,
+					easing: 'ease-out'
 				}
 			],
 			[
 				'#techBackground',
 				{
 					clipPath: ['circle(0% at 50% 50%)']
-				}, 
+				},
 				{
-					duration: 2,
-					easing: 'ease-in'
+					duration: 3,
+					easing: 'ease-in-out',
+					at: '-1'
 				}
 			]
 		]);
@@ -109,10 +124,10 @@
 		<div
 			class={[
 				'biography',
-				hidden ? 'bg-secondary text-on-secondary' : 'bg-tertiary text-on-tertiary'
+				!hidden ? 'bg-secondary text-on-secondary' : 'bg-tertiary text-on-tertiary'
 			]}
 		>
-			{#if !hidden}
+			{#if hidden}
 				<div class="contents">
 					<p>
 						Olá! Sou um webdev que curte muito o que faz. Com anos de experiência, amo Typescript,
@@ -162,16 +177,16 @@
 			{/if}
 		</div>
 		<div class="stat relative">
-			<span id="statOne" class="absolute w-full h-full bg-tertiary"></span>
+			<span id="statOne" class="bg-tertiary absolute h-full w-full"></span>
 			<div class="w-1/2">
-				<p class="font-thin">+20</p>
+				<p class="font-thin"><NumberFlow value={projects} /></p>
 			</div>
 			<div class="bg-tertiary w-full rounded-l-3xl">
 				<p class="font-black">projetos</p>
 			</div>
 		</div>
 		<div class="stat">
-			<span id="statTwo" class="absolute w-full h-full bg-tertiary"></span>
+			<span id="statTwo" class="bg-tertiary absolute h-full w-full"></span>
 			<div class="bg-tertiary w-1/2 rounded-r-3xl">
 				<p class="font-light">+4</p>
 			</div>
@@ -180,7 +195,11 @@
 			</div>
 		</div>
 		<div class="technologies">
-			<span id="techBackground" style="clip-path: circle(100% at 50% 50%);" class="bg-secondary absolute h-full w-full"></span>
+			<span
+				id="techBackground"
+				style="clip-path: circle(100% at 50% 50%);"
+				class="bg-secondary absolute h-full w-full"
+			></span>
 
 			<svg xmlns="http://www.w3.org/2000/svg" width="3.5em" height="3.5em" viewBox="0 0 24 24"
 				><path
