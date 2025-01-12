@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { colors } from 'tailwindcss/defaultTheme';
 import tail from 'tail-material-design';
-import {withMaterialColors} from 'tailwind-material-colors';
+import { withMaterialColors } from 'tailwind-material-colors';
 export default withMaterialColors({
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	plugins: [tail],
@@ -47,4 +47,8 @@ export default withMaterialColors({
 	primary: '#FFFB00',
 	secondary: '#003B73',
 	tertiary: '#FF4500'
+}, {
+	scheme: 'vibrant',
+	contrast: 0,
+	extend: true
 });

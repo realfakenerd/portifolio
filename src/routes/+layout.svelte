@@ -38,7 +38,7 @@
 </script>
 
 <header>
-	<a href="/" class="logo">
+	<a href="/" class="logo" aria-label="Home">
 		<svg
 			class="logo-icon"
 			width="34px"
