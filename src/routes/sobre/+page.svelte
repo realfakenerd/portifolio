@@ -17,7 +17,34 @@
 			}
 		);
 
-		
+		timeline([
+			[
+				'#statOne',
+				{
+					clipPath: ['polygon(0 0, 100% 0, 100% 100%, 0% 100%)', 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)']
+				}, {
+					duration: 2
+				}
+			],
+			[
+				'#statTwo',
+				{
+					clipPath: ['polygon(0 0, 100% 0, 100% 100%, 0% 100%)', 'polygon(0 0, 0 0, 0 100%, 0 100%)']
+				}, {
+					duration: 2
+				}
+			],
+			[
+				'#techBackground',
+				{
+					clipPath: ['circle(0% at 50% 50%)']
+				}, 
+				{
+					duration: 2,
+					easing: 'ease-in'
+				}
+			]
+		]);
 	});
 </script>
 
@@ -134,7 +161,8 @@
 				</form>
 			{/if}
 		</div>
-		<div class="stat">
+		<div class="stat relative">
+			<span id="statOne" class="absolute w-full h-full bg-tertiary"></span>
 			<div class="w-1/2">
 				<p class="font-thin">+20</p>
 			</div>
@@ -143,6 +171,7 @@
 			</div>
 		</div>
 		<div class="stat">
+			<span id="statTwo" class="absolute w-full h-full bg-tertiary"></span>
 			<div class="bg-tertiary w-1/2 rounded-r-3xl">
 				<p class="font-light">+4</p>
 			</div>
@@ -151,6 +180,8 @@
 			</div>
 		</div>
 		<div class="technologies">
+			<span id="techBackground" style="clip-path: circle(100% at 50% 50%);" class="bg-secondary absolute h-full w-full"></span>
+
 			<svg xmlns="http://www.w3.org/2000/svg" width="3.5em" height="3.5em" viewBox="0 0 24 24"
 				><path
 					fill="currentColor"
@@ -263,6 +294,7 @@
 		.biography,
 		.stat,
 		.technologies {
+			position: relative;
 			border-radius: theme('borderRadius.3xl');
 			overflow: hidden;
 			height: 100%;
