@@ -2,11 +2,10 @@
 	import { onNavigate } from '$app/navigation';
 	import '@fontsource-variable/inter/standard.css';
 	import '@fontsource-variable/noto-sans-display';
-	import Icon, { enableCache } from '@iconify/svelte';
+	import Icon from '@iconify/svelte';
 	import { timeline } from 'motion';
 	import '../app.css';
 
-	enableCache('local');
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 		return new Promise((resolve) => {
