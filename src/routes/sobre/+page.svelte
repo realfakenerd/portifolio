@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { animate } from 'motion';
+	import { animate, timeline } from 'motion';
 
 	let hidden = $state(true);
 
@@ -17,7 +17,7 @@
 			}
 		);
 
-		$inspect(hidden);
+		
 	});
 </script>
 
@@ -86,51 +86,51 @@
 			]}
 		>
 			{#if !hidden}
-				<p>
-					Olá! Sou um webdev que curte muito o que faz. Com anos de experiência, amo Typescript, CSS
-					e Svelte. A criação de interfaces interativas e de alto desempenho é minha especialidade,
-					sempre focando em detalhes.
-				</p>
-				<p>
-					Quando não estou desenvolvendo sites extraordinários, estou curtindo um bom jogo, filmes e
-					séries dos melhores super-heróis ou épicos do sci-fi ou simplesmente aprendendo a
-					aprimorar meus projetos.
-				</p>
-				<p>
-					Então não deixe sua ideia só na ficção, entre em <button
-						onclick={() => (hidden = !hidden)}
-						class="underline">contato comigo</button
-					> que transformo ficção em realidade, ponho suas ideias no mundo digital.
-				</p>
+				<div class="contents">
+					<p>
+						Olá! Sou um webdev que curte muito o que faz. Com anos de experiência, amo Typescript,
+						CSS e Svelte. A criação de interfaces interativas e de alto desempenho é minha
+						especialidade, sempre focando em detalhes.
+					</p>
+					<p>
+						Quando não estou desenvolvendo sites extraordinários, estou curtindo um bom jogo, filmes
+						e séries dos melhores super-heróis ou épicos do sci-fi ou simplesmente aprendendo a
+						aprimorar meus projetos.
+					</p>
+					<p>
+						Então não deixe sua ideia só na ficção, entre em <button
+							onclick={() => (hidden = !hidden)}
+							class="underline">contato comigo</button
+						> que transformo ficção em realidade, ponho suas ideias no mundo digital.
+					</p>
+				</div>
 			{:else}
 				<form>
 					<header>
 						<h1>Fale comigo</h1>
 						<h2>Escreva para mim que eu receberei em meu e-mail :)</h2>
 					</header>
-					<main>
-						<ul>
-							<li class="text-field">
-								<label for="nome"> Nome </label>
+					<ul>
+						<li class="text-field">
+							<label for="nome"> Nome </label>
 
-								<input id="nome" type="text" />
-							</li>
-							<li class="text-field">
-								<label for="email"> E-mail </label>
+							<input id="nome" type="text" />
+						</li>
+						<li class="text-field">
+							<label for="email"> E-mail </label>
 
-								<input id="email" type="email" />
-							</li>
-							<li class="text-field">
-								<label for="assunto"> Assunto </label>
+							<input id="email" type="email" />
+						</li>
+						<li class="text-field">
+							<label for="assunto"> Assunto </label>
 
-								<input id="assunto" type="text" />
-							</li>
-						</ul>
-						<div class="text-field w-1/2">
+							<input id="assunto" type="text" />
+						</li>
+						<li class="text-field">
 							<label for="mensagem">Mensagem</label>
 							<textarea id="mensagem" class="h-full"></textarea>
-						</div>
-					</main>
+						</li>
+					</ul>
 				</form>
 			{/if}
 		</div>
@@ -395,7 +395,7 @@
 			caret-color: theme('colors.on-secondary');
 
 			&:hover {
-				background-color: theme('colors.on-secondary' / .1);
+				background-color: theme('colors.on-secondary' / 0.1);
 			}
 
 			&:focus-visible {
@@ -416,27 +416,26 @@
 	}
 
 	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+
 		header {
 			h1 {
 				@apply text-title-large;
 			}
 
 			h2 {
-				@apply text-title-small
+				@apply text-title-small;
 			}
 		}
 
-		main {
+		ul {
 			display: flex;
+			width: 100%;
 			flex-direction: column;
 			gap: theme('size.4');
-
-			ul {
-				display: flex;
-				width: 100%;
-				flex-direction: column;
-				gap: theme('size.4');
-			}
 		}
 	}
 
