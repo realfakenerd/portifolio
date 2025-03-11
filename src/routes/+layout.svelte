@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
-	import '@fontsource-variable/inter/standard.css';
+	import '@fontsource-variable/inter';
 	import '@fontsource-variable/noto-sans-display';
-	import Icon from '@iconify/svelte';
+	// import Icon from '@iconify/svelte';
 	import { timeline } from 'motion';
 	import '../app.css';
 
@@ -26,7 +26,7 @@
 				['#ellLogo4', { cy: 210 }, { duration: 0.5, at: '<' }],
 				['#ellLogo2', { cx: 210 }, { duration: 0.5 }],
 				['#ellLogo4', { cx: 210 }, { duration: 0.5, at: '<' }],
-				['#ellLogo2', { cy: 50 },  { duration: 0.5 }]
+				['#ellLogo2', { cy: 50 }, { duration: 0.5 }]
 			],
 			{
 				defaultOptions: {
@@ -55,16 +55,13 @@
 	</a>
 	<nav class="links">
 		<li class="searchInput" aria-label="Pesquisar">
-			<Icon icon="mdi:search" width="18px" />
+			<!-- <Icon icon="mdi:search" width="18px" /> -->
 		</li>
 		<li class="link">
 			<a href="/sobre">Sobre</a>
 		</li>
 		<li class="link">
 			<a href="/portfolio"> Portfolio </a>
-		</li>
-		<li class="link">
-			<a href="/blog">Blog</a>
 		</li>
 	</nav>
 </header>
@@ -100,8 +97,7 @@
 		padding-inline: 24px;
 		overflow: hidden;
 		backdrop-filter: blur(6px);
-		background-color: theme('colors.surface' / .6);
-
+		background-color: theme('colors.surface' / 0.6);
 	}
 
 	.logo {
