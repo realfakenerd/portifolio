@@ -7,7 +7,7 @@
 	let { data } = $props();
 	const { meta: _meta, content } = data;
 
-	const component = $derived(content);
+	const Component = $derived(content);
 	const meta = $derived(_meta);
 
 	$effect(() => {
@@ -55,7 +55,7 @@
 			class={cn(`mdsvex ml-32 mt-8
 			max-w-[852px] flex-1 overflow-visible pb-12 [&>*]:mx-auto`)}
 		>
-			<svelte:component this={component} />
+			<Component />
 		</article>
 	</main>
 </div>

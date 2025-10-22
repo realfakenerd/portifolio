@@ -1,7 +1,5 @@
 <script lang="ts">
-	import TextField from '$lib/components/TextField.svelte';
 	import { easeEmphasized } from '$lib/transitions';
-	import { formatDate } from '$lib/utils';
 	import { slide } from 'svelte/transition';
 	let value = $state('');
 
@@ -13,7 +11,7 @@
 	});
 </script>
 
-<TextField bind:value style="filled" title={'Search'} trailingIcon="mdi:search" />
+<!-- <TextField bind:value style="filled" title={'Search'} trailingIcon="mdi:search" /> -->
 <ul class="grid gap-2">
 	{#each data.posts.filter(pesquisa) as post, i (i)}
 		{@const title = post.title.replaceAll(' ', '').replace('/', '')}
@@ -45,7 +43,7 @@
 				</figure> -->
 			</div>
 			<span class="bg-surface-variant w-fit rounded-lg px-2 py-1">
-				<p class="text-label-large">{formatDate(post.published)}</p>
+				<p class="text-label-large">{post.published}</p>
 			</span>
 		</li>
 	{/each}

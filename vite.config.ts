@@ -1,17 +1,15 @@
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
 import type { UserConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
-import lightningCSS from 'vite-plugin-lightningcss';
-// @ts-expect-error complaining about not having a type;
 import removeConsole from 'vite-plugin-remove-console';
+
 const config = {
 	plugins: [
+		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
-		lightningCSS({
-			browserslist: '> 1%'
-		}),
 		removeConsole(),
 		viteCompression({
 			algorithm: 'brotliCompress',

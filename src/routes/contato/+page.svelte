@@ -121,7 +121,7 @@
 					/>
 					<input type="hidden" name="_subject" value="New submission!" />
 					<input type="hidden" name="_captcha" value="false" />
-					{#each inputs as { input, label, id, icon, name } (id)}
+					<!-- {#each inputs as { input, label, id, icon, name } (id)}
 						{#if input !== 'textarea'}
 							<TextField title={label} {icon} {name} />
 						{:else}
@@ -134,7 +134,7 @@
 								supportingText="use Markdown aqui!"
 							/>
 						{/if}
-					{/each}
+					{/each} -->
 				</fieldset>
 				<Button class="interactive-bg-primary" isBlock icon="mdi:send">Enviar</Button>
 			</form>

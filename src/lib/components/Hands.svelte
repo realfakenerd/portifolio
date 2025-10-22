@@ -1,85 +1,82 @@
 <script lang="ts">
-	import { animate, spring, timeline } from 'motion';
+	// function animation(_: Element) {
+	// 	timeline(
+	// 		[
+	// 			[
+	// 				'#arrow',
+	// 				{
+	// 					offsetDistance: ['0%', '25.891651%', null, '100%']
+	// 				},
+	// 				{
+	// 					easing: [
+	// 						[0.25, 1, 0.25, 1],
+	// 						[0.4, 0, 0.2, 1]
+	// 					],
+	// 					offset: [0, 0.16, 0.2, 0.83, 1],
+	// 					duration: 3
+	// 				}
+	// 			],
+	// 			[
+	// 				'#blackhole',
+	// 				{
+	// 					scale: [null, 1]
+	// 				},
+	// 				{
+	// 					duration: 1,
+	// 					at: 0.5,
+	// 					easing: spring({ mass: 0.8 })
+	// 				}
+	// 			],
+	// 			[
+	// 				'#hand',
+	// 				{
+	// 					opacity: [0, 1],
+	// 					scale: [0, 1]
+	// 				},
+	// 				{
+	// 					duration: 1,
+	// 					at: '<',
+	// 					easing: spring({ mass: 0.5 })
+	// 				}
+	// 			],
+	// 			[
+	// 				'#browser',
+	// 				{
+	// 					opacity: [0, 1],
+	// 					scale: [0, 1]
+	// 				},
+	// 				{
+	// 					duration: 1,
+	// 					at: '<',
+	// 					easing: [[0.4, 0, 0.2, 1]],
+	// 					scale: {
+	// 						easing: [[0.4, 0, 0.2, 1.2]]
+	// 					}
+	// 				}
+	// 			]
+	// 		],
+	// 		{
+	// 			defaultOptions: { allowWebkitAcceleration: true }
+	// 		}
+	// 	);
 
-	function animation(_: Element) {
-		timeline(
-			[
-				[
-					'#arrow',
-					{
-						offsetDistance: ['0%', '25.891651%', null, '100%']
-					},
-					{
-						easing: [
-							[0.25, 1, 0.25, 1],
-							[0.4, 0, 0.2, 1]
-						],
-						offset: [0, 0.16, 0.2, 0.83, 1],
-						duration: 3
-					}
-				],
-				[
-					'#blackhole',
-					{
-						scale: [null, 1]
-					},
-					{
-						duration: 1,
-						at: 0.5,
-						easing: spring({ mass: 0.8 })
-					}
-				],
-				[
-					'#hand',
-					{
-						opacity: [0, 1],
-						scale: [0, 1]
-					},
-					{
-						duration: 1,
-						at: '<',
-						easing: spring({ mass: 0.5 })
-					}
-				],
-				[
-					'#browser',
-					{
-						opacity: [0, 1],
-						scale: [0, 1]
-					},
-					{
-						duration: 1,
-						at: '<',
-						easing: [[0.4, 0, 0.2, 1]],
-						scale: {
-							easing: [[0.4, 0, 0.2, 1.2]]
-						}
-					}
-				]
-			],
-			{
-				defaultOptions: { allowWebkitAcceleration: true }
-			}
-		);
-
-		animate(
-			'#browser',
-			{
-				y: [10, -10]
-			},
-			{
-				duration: 2,
-				delay: 0.1,
-				easing: [0.85, 0, 0.15, 1],
-				direction: 'alternate',
-				repeat: Infinity
-			}
-		);
-	}
+	// 	animate(
+	// 		'#browser',
+	// 		{
+	// 			y: [10, -10]
+	// 		},
+	// 		{
+	// 			duration: 2,
+	// 			delay: 0.1,
+	// 			easing: [0.85, 0, 0.15, 1],
+	// 			direction: 'alternate',
+	// 			repeat: Infinity
+	// 		}
+	// 	);
+	// }
 </script>
 
 <svg
-	use:animation
 	xmlns="http://www.w3.org/2000/svg"
 	width="212"
 	height="361"

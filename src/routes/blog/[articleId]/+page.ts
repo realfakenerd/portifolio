@@ -13,7 +13,7 @@ export const load = (async ({ params }) => {
 			content: post.default,
 			meta: post.metadata
 		};
-	} catch (e) {
+	} catch {
 		throw error(404, `Could not find ${params.articleId}`);
 	}
 }) as PageLoad;

@@ -2,12 +2,12 @@ import type { PageLoad } from './$types';
 
 export const prerender = true;
 export const load = (async ({ fetch }) => {
-	const res = await fetch('/api/git/repo');
-	const data = (await res.json()) as Repo[];
+	const [repo_res, org_res] = await Promise.all([
+		fetch('/api/git/repo'),
+		fetch('/api/git/org')
+	]);
 	return {
-		repos: data,
-		streamed: {
-			org: fetch('/api/git/org').then((r) => r.json()) as Promise<Repo[]>
-		}
+		repos: (await repo_res.json()) as Repo[],
+		org: (await org_res.json()) as Repo[]
 	};
 }) satisfies PageLoad;

@@ -10,5 +10,11 @@ export const GET = (async ({ fetch }) => {
 		}
 	});
 
-	return json(await res.json());
+	const data = await res.json();
+
+	return json(data, {
+		headers: {
+			'Cache-Control': 'max-age=86400'
+		}
+	});
 }) satisfies RequestHandler;
